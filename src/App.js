@@ -6,9 +6,10 @@ import './App.css';
 import { GlobalStyle } from './styles/GlobalStyles'
 
 import { Home } from './pages/Home'
-import { OtherPage } from './pages/OtherPage'
+import { Course } from './pages/Course'
 
 import { NotFound } from './components/NotFound'
+import { NavBar } from './components/NavBar'
 
 import {Context}  from './Context'
 
@@ -19,11 +20,11 @@ const {isAuth} = useContext(Context)
   return (
     <Suspense fallback={<div />}>
       <GlobalStyle />
-      {/* <NavBar /> */}
+      <NavBar />
     <Router>
           <NotFound default />
           <Home path='/' />
-          <OtherPage path='/other' />
+          <Course path='/course/:id' />
     </Router>
   </Suspense>
   );

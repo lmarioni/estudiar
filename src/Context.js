@@ -4,25 +4,28 @@ import Cookies from 'js-cookie'
 export const Context = createContext();
 
 const Provider = ({children}) => {
+  const [token, setToken] = useState('')
 
   const [isAuth, setIsAuth] = useState(() => {
-    if(Cookies.get('token')){
+    const token = Cookies.get('token');
+
+    if(token){
+      setToken(token)
       return true
     }else{
       return false
     }
   });
 
-  const [email, setEmail] = useState('')
+
 
   //en activateAuth() sacar sessionStorage y usar cookies que ya estan seteadas
   const value = {
       isAuth,
-      email,
+      token,
       activateAuth: (token, email = '') => {
         setIsAuth(true)
         window.sessionStorage.setItem('token',token)
-        setEmail(email)
       },
       removeAuth: () =>{
         setIsAuth(false)

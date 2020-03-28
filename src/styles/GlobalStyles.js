@@ -8,5 +8,21 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     padding-bottom: 10px;
   } */
+  .spin {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.div-menu{
+  border-right: 1px solid #EBEBEB;
+}
 
 `
