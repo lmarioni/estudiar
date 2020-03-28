@@ -29,7 +29,7 @@ export const Course = ({ id }) => {
       })
     };
 
-    fetch(" https://express-now-alpha-lac.now.sh/curso/" + id, data)
+    fetch(" https://express-now-alpha-lac.now.sh/cursos/" + id, data)
       .then(res => res.json())
       .then(response => {
         setCourse(response);
@@ -53,9 +53,10 @@ export const Course = ({ id }) => {
           {course.lecciones && (
             <div className="col-md-3 div-menu" style={{ paddingTop: 5 }}>
               <ul>
-                {course.lecciones.map(leccion => {
+                {course.lecciones.map((leccion, i) => {
                   return (
                     <MenuLeccion
+                      key={i}
                       leccion={leccion}
                       onModuleChange={(idLeccion, idModulo) => {
                         cambiarModulo(idLeccion, idModulo);
