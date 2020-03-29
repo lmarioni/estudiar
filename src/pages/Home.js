@@ -52,7 +52,6 @@ export const Home = () => {
                 :
                 <ListOfCourses courses={courses} />
             }
-
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import { GlobalStyle } from './styles/GlobalStyles';
 
 import { Home } from './pages/Home';
 import { Course } from './pages/Course';
+import { Invite } from './pages/Invite';
 
 import { NotFound } from './components/NotFound';
 import { NavBar } from './components/NavBar';
@@ -32,6 +33,7 @@ function App() {
         {!isAuth && <Redirect noThrow from='/' to='/notRegister' /> }
         {!isAuth && <Redirect noThrow from='/course/:id' to='/notRegister' /> }
         {!isAuth && <Redirect noThrow from='/panel/:id' to='/notRegister' /> }
+        <Invite path='/invite/:code' />
         <Home path='/' />
         <NewCourse path="/newCourse" />
         <Course path='/course/:id' />
