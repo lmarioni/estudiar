@@ -5,14 +5,17 @@ import Button from 'react-bootstrap/Button';
 import QRCode from 'qrcode.react';
 
 export const ListOfCourses = ({ courses = [] }) => {
+    console.log(courses)
     const [show, setShow] = useState(false);
     const [inviteQR, setInviteQR] = useState('');
+    const [inviteCode, setInviteCode] = useState('');
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const invite = (courseId) => {
+    const invite = (courseId, codigoInvitacion) => {
         console.log('Queres invitar al curso: ', courseId);
         setInviteQR('inviteCode');
+        setInviteCode(codigoInvitacion);
         handleShow();
     }
 
@@ -23,7 +26,7 @@ export const ListOfCourses = ({ courses = [] }) => {
                     <Modal.Title>Invitar</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h1>Usa este código QR para invitar a tus alumnos!</h1>
+                    <h5>Usa este código QR para invitar a tus alumnos!</h5>
                     <div>
                         <QRCode
                             id="123456"
@@ -32,13 +35,14 @@ export const ListOfCourses = ({ courses = [] }) => {
                             level={"H"}
                             includeMargin={true}
                         />
-                        
                     </div>
+                    <h5 className="text-center">Invita con esta url:</h5>
+                    <p className='text-center'>https://estudiar.btcj.com.ar/i/{inviteCode}</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Cerrar
-          </Button>
+            </Button>
                 </Modal.Footer>
             </Modal>
             {
@@ -47,9 +51,13 @@ export const ListOfCourses = ({ courses = [] }) => {
                         <div className="card mb-4">
                             <div className="card-body">
                                 <h4 className='mb-0'>{course.nombre}
-                                    <Link to={`/panel/${course.idcurso}`} className="btn btn-outline-primary float-right ml-1" > Alumnos </Link>
-                                    <Link to={`/course/${course.idcurso}`} className="btn btn-outline-primary float-right" > Ingresar al curso </Link>
-                                    <button onClick={() => invite(course.idcurso)} className="btn btn-outline-primary float-right mr-1"> Invitar </button>
+                                {
+                                    course.creador && <React.Fragment>
+                                        <Link to={`/panel/${course.idcurso}`} className="btn btn-outline-primary float-right mr-1" > Alumnos </Link>
+                                        <button onClick={() => invite(course.idcurso, course.codigoInvitacion)} className="btn btn-outline-primary float-right mr-1"> Invitar </button>
+                                    </React.Fragment>
+                                }
+                                    <Link to={`/course/${course.idcurso}`} className="btn btn-outline-primary float-right mr-1" > Ingresar al curso </Link>
                                 </h4>
                             </div>
                         </div>

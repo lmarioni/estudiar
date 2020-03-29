@@ -30,6 +30,8 @@ function App() {
         <NotFound default />
         {!isAuth && <NotRegister path="/notRegister" /> }
         {!isAuth && <Redirect noThrow from='/' to='/notRegister' /> }
+        {!isAuth && <Redirect noThrow from='/course/:id' to='/notRegister' /> }
+        {!isAuth && <Redirect noThrow from='/panel/:id' to='/notRegister' /> }
         <Home path='/' />
         <NewCourse path="/newCourse" />
         <Course path='/course/:id' />
