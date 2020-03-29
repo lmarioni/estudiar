@@ -1,5 +1,5 @@
 import React, { useContext, Suspense } from 'react';
-import { Router } from '@reach/router';
+import { Router, Redirect } from '@reach/router';
 
 import './App.css';
 
@@ -15,10 +15,12 @@ import { Context } from './Context';
 
 import { Panel } from './pages/Panel';
 import { NewCourse } from './pages/NewCourse';
+import { NotRegister } from './pages/NotRegister';
 
 
 function App() {
   const { isAuth } = useContext(Context)
+  console.log('auth', isAuth);
 
   return (
     <Suspense fallback={<div />}>
@@ -26,6 +28,8 @@ function App() {
       <NavBar />
       <Router>
         <NotFound default />
+        {!isAuth && <NotRegister path="/notRegister" /> }
+        {!isAuth && <Redirect noThrow from='/' to='/notRegister' /> }
         <Home path='/' />
         <NewCourse path="/newCourse" />
         <Course path='/course/:id' />

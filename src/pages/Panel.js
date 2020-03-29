@@ -34,7 +34,7 @@ export const Panel = ({ id }) => {
               <div className="row">
                 {students && students.length ?
                   students.map((student, i) => {
-                    <div><h6 key={i}>{student.id}</h6></div>
+                    return(<div><h6 key={i}>{student.id}</h6> <br /></div>)
                   }) : <h2> No hay alumnos todavia </h2>
                 }
               </div>
