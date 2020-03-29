@@ -14,7 +14,7 @@ export const ListOfCourses = ({ courses = [] }) => {
     const handleShow = () => setShow(true);
     const invite = (courseId, codigoInvitacion) => {
         console.log('Queres invitar al curso: ', courseId);
-        setInviteQR('inviteCode');
+        setInviteQR(`https://www.estudi.ar/invite/${courseId}`);
         setInviteCode(codigoInvitacion);
         handleShow();
     }
