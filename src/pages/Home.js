@@ -18,7 +18,7 @@ export const Home = () => {
       })
     }
 
-    fetch("http://localhost:3002/cursos", data)
+    fetch("https://express-now-alpha-lac.now.sh/cursos", data)
       .then(res => res.json())
       .then(response => {
         setCourses(response)

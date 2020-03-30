@@ -22,7 +22,7 @@ const [error, setError] = useState({error: false, text: ''});
               })
             };
 
-            fetch(" http://localhost:3002/invitation/" + code , data)
+            fetch("https://express-now.lucasmarioni.now.sh/invitation/" + code , data)
               .then(res => res.json())
               .then(response => {
                 setCurso(response)

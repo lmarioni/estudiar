@@ -29,7 +29,7 @@ export const Course = ({ id }) => {
       })
     };
 
-    fetch(" https://express-now-alpha-lac.now.sh/cursos/" + id, data)
+    fetch("https://express-now-alpha-lac.now.sh/cursos/" + id, data)
       .then(res => res.json())
       .then(response => {
         setCourse(response);
