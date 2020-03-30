@@ -4,7 +4,7 @@ import { Context } from "../Context";
 import { MenuLeccion } from "../components/MenuLeccion";
 import { Loading } from "../components/Loading";
 
-export const Course = ({ id }) => {
+export default ({ id }) => {
   const { token } = useContext(Context);
   const [course, setCourse] = useState({});
   const [moduleSelected, setSelected] = useState({});

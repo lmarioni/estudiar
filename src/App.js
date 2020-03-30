@@ -1,12 +1,10 @@
 import React, { useContext, Suspense } from 'react';
 import { Router, Redirect } from '@reach/router';
 
-import './App.css';
-
 import { GlobalStyle } from './styles/GlobalStyles';
 
 import { Home } from './pages/Home';
-import { Course } from './pages/Course';
+//import { Course } from './pages/Course';
 
 import { NotFound } from './components/NotFound';
 import { NavBar } from './components/NavBar';
@@ -16,6 +14,8 @@ import { Context } from './Context';
 import { Panel } from './pages/Panel';
 import { NewCourse } from './pages/NewCourse';
 import { NotRegister } from './pages/NotRegister';
+
+const Course = React.lazy(() => import('./pages/Course.js'));
 
 
 function App() {
@@ -30,8 +30,6 @@ function App() {
         <NotFound default />
         {!isAuth && <NotRegister path="/notRegister" /> }
         {!isAuth && <Redirect noThrow from='/' to='/notRegister' /> }
-        {!isAuth && <Redirect noThrow from='/course/:id' to='/notRegister' /> }
-        {!isAuth && <Redirect noThrow from='/panel/:id' to='/notRegister' /> }
         <Home path='/' />
         <NewCourse path="/newCourse" />
         <Course path='/course/:id' />
