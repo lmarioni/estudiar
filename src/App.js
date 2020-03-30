@@ -4,7 +4,7 @@ import { Router, Redirect } from '@reach/router';
 import { GlobalStyle } from './styles/GlobalStyles';
 
 import { Home } from './pages/Home';
-import { Course } from './pages/Course';
+
 import { Invite } from './pages/Invite';
 
 import { NotFound } from './components/NotFound';
@@ -43,7 +43,7 @@ function App() {
           <NotRegister path="/not-register" />
           {/* {!isAuth && <Redirect noThrow from='/' to='/not-register' /> }
           {!isAuth && <Redirect noThrow from='/course/:id' to='/not-register' /> } */}
-          <Invite path='/invite/:code' />
+          <Invite path='/i/:code' />
           <Home path='/' />
           <NewCourse path="/newCourse" />
           <Course path='/course/:id' />
