@@ -1,9 +1,9 @@
-import React, { useEffect, useContext, useState } from 'react'
-import { Context } from '../Context'
-import { Link } from '@reach/router'
+import React, { useEffect, useContext, useState } from 'react';
+import { Context } from '../Context';
+import { Link } from '@reach/router';
 
-import { ListOfCourses } from '../components/ListOfCourses'
-import { Loading } from '../components/Loading'
+import { ListOfCourses } from '../components/ListOfCourses';
+import { Loading } from '../components/Loading';
 
 export const Home = () => {
   const { token } = useContext(Context)
