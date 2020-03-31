@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { Context } from '../Context'
+import { Context } from '../Context';
 
-import {Inscripto} from '../components/Invite/Inscripto'
-import {Error} from '../components/Invite/Error'
-import {Success} from '../components/Invite/Success'
+import {Inscripto} from '../components/Invite/Inscripto';
+import {Error} from '../components/Invite/Error';
+import {Success} from '../components/Invite/Success';
 
-import {Loading} from '../components/Loading'
+import {Loading} from '../components/Loading';
 
 export const Invite = ({code}) => {
   const { token } = useContext(Context)
