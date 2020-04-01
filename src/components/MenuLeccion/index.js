@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { A, Li } from './styles'
+import { A, Li } from './styles';
 
 export const MenuLeccion = (props) => {
     const { leccion } = props;
