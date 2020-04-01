@@ -1,8 +1,10 @@
-import React, { useEffect, useContext, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from '@reach/router';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import QRCode from 'qrcode.react';
+
+import { MdPersonAdd, MdPersonOutline } from "react-icons/md";
 
 export const ListOfCourses = ({ courses = [] }) => {
     const [show, setShow] = useState(false);
@@ -79,8 +81,8 @@ export const ListOfCourses = ({ courses = [] }) => {
                                 <h4 className='mb-0'>{course.nombre}
                                     {
                                         course.creador && <React.Fragment>
-                                            <Link to={`/panel/${course.idcurso}`} className="btn btn-outline-primary float-right mr-1" > Alumnos </Link>
-                                            <button onClick={() => invite(course.idcurso, course.codigoInvitacion)} className="btn btn-outline-primary float-right mr-1"> Invitar </button>
+                                            <Link to={`/panel/${course.idcurso}`} className="btn btn-outline-primary float-right mr-1" > <MdPersonOutline /> Alumnos </Link>
+                                            <button onClick={() => invite(course.idcurso, course.codigoInvitacion)} className="btn btn-outline-primary float-right mr-1"> <MdPersonAdd /> Invitar </button>
                                         </React.Fragment>
                                     }
                                     <Link to={`/course/${course.idcurso}`} className="btn btn-outline-primary float-right mr-1" > Ingresar al curso </Link>

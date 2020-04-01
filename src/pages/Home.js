@@ -6,9 +6,11 @@ import { ListOfCourses } from '../components/ListOfCourses';
 import { Loading } from '../components/Loading';
 
 export const Home = () => {
-  const { token } = useContext(Context)
+  const { token, isAuth } = useContext(Context)
   const [courses, setCourses] = useState([])
   const [loading, setLoading] = useState(false)
+
+console.log('isAuth en cursos', isAuth)
 
   useEffect(function () {
     setLoading(true)
@@ -18,14 +20,13 @@ export const Home = () => {
       })
     }
 
-    fetch("https://express-now-alpha-lac.now.sh/cursos", data)
+    fetch("http://localhost:3002/cursos", data)
       .then(res => res.json())
       .then(response => {
         setCourses(response)
         setLoading(false)
       });
   }, []);
-
 
   return (
     <div>

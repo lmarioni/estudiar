@@ -4,13 +4,18 @@ import Cookies from 'js-cookie'
 export const Context = createContext();
 
 const Provider = ({children}) => {
-  const [token, setToken] = useState('')
+
+  const [token, setToken] = useState(() => {
+    const tk = Cookies.get('token')
+    if(tk){
+      return tk;
+    }else{
+      return ''
+    }
+  })
 
   const [isAuth, setIsAuth] = useState(() => {
-    const token = Cookies.get('token');
-
-    if(token){
-      setToken(token)
+    if(Cookies.get('token')){
       return true
     }else{
       return false
@@ -23,9 +28,10 @@ const Provider = ({children}) => {
   const value = {
       isAuth,
       token,
-      activateAuth: (token, email = '') => {
+      activateAuth: (tkn) => {
+        Cookies.set('token',tkn);
         setIsAuth(true)
-        window.sessionStorage.setItem('token',token)
+        setToken(tkn)
       },
       removeAuth: () =>{
         setIsAuth(false)
