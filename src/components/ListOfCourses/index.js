@@ -3,15 +3,16 @@ import { Link } from '@reach/router';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import QRCode from 'qrcode.react';
+import './styles.scss';
 
 import { Letra, Icono, Title, Img, TeacherName } from './styles'
 
-import { MdPersonAdd, MdPersonOutline } from "react-icons/md";
+import { MdPersonAdd, MdPersonOutline, MdBuild } from "react-icons/md";
 
 export const ListOfCourses = ({ courses = [] }) => {
     const [show, setShow] = useState(false);
     const [inviteQR, setInviteQR] = useState('');
-    const [copySuccess, setCopySuccess] = useState('');
+    const [copySuccess, setCopySuccess] = useState(false);
     const [inviteCode, setInviteCode] = useState('');
     const textAreaRef = useRef(null);
 
@@ -35,10 +36,10 @@ export const ListOfCourses = ({ courses = [] }) => {
             document.getSelection().removeAllRanges();
             document.getSelection().addRange(selected);
         }
-        setCopySuccess('Copied!');
+        setCopySuccess(true);
 
         setTimeout(()=>{
-            setCopySuccess('');
+            setCopySuccess(false);
         }, 1500);
 
     };
@@ -69,8 +70,8 @@ export const ListOfCourses = ({ courses = [] }) => {
                         />
                     </div>
                     <h5 className="text-center">Invita con esta url:</h5>
-                    <p className="text-center pointer" ref={textAreaRef} onClick={copyToClipboard}>https://estudiar.btcj.com.ar/i/{inviteCode}</p>
-                    <p className="text-center">{copySuccess}</p>
+                    <p className="link-url" ref={textAreaRef} onClick={copyToClipboard}>https://estudiar.btcj.com.ar/i/{inviteCode}</p>
+                    <p className={` text-center faded-text${copySuccess ? "-visible" : ""}`}>Copiado al portapapeles!</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}> Cerrar </Button>
@@ -83,6 +84,7 @@ export const ListOfCourses = ({ courses = [] }) => {
                     return(
                         <React.Fragment key={i}>
                         <div className="card mb-4">
+<<<<<<< HEAD
                             <div className="card-body" style={{paddingBottom: 6}}>
                                 <div className="row">
                                     <div className="col-md-1" >
@@ -110,6 +112,18 @@ export const ListOfCourses = ({ courses = [] }) => {
                                     </div>
                                 </div>
                                 
+=======
+                            <div className="card-body">
+                                <h4 className='mb-0'>{course.nombre}
+                                    {
+                                        course.creador && 
+                                        <React.Fragment>
+                                            <Link to={`/panel/${course.idcurso}`} className="btn btn-outline-primary float-right mr-1" > <MdBuild /> Opciones </Link>
+                                        </React.Fragment>
+                                    }
+                                    <Link to={`/course/${course.idcurso}`} className="btn btn-outline-primary float-right mr-1" > Ingresar al curso </Link>
+                                </h4>
+>>>>>>> Agregado tabs para opciones
                             </div>
                         </div>
                     </React.Fragment>
@@ -119,3 +133,10 @@ export const ListOfCourses = ({ courses = [] }) => {
         </React.Fragment>
     )
 }
+
+/*
+
+<Link to={`/panel/${course.idcurso}`} className="btn btn-outline-primary float-right mr-1" > <MdPersonOutline /> Alumnos </Link>
+<button onClick={() => invite(course.idcurso, course.codigoInvitacion)} className="btn btn-outline-primary float-right mr-1"> <MdPersonAdd /> Invitar </button>
+
+*/
