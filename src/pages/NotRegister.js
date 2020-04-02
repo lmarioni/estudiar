@@ -1,7 +1,18 @@
 import React from 'react';
 import '../styles/NotRegister.css';
+import { navigate } from "@reach/router"
+import Cookies from 'universal-cookie';
+
+const authCookie = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOiIyMTA5NSJ9.MezTb9xGhGCU0h-JkjBuLAN1KfyysJslNd5n130403g`;
 
 export const NotRegister = () => {
+
+    const login = () => {
+        const cookies = new Cookies();
+        cookies.set('token', authCookie);
+        navigate("/");
+    }
+
     return (
         <div>
             <span dangerouslySetInnerHTML={{
@@ -18,18 +29,12 @@ export const NotRegister = () => {
             }} />
 
 
-            <div class="message-box text-center">
+            <div className="message-box">
                 <h2>No estás logueado</h2>
                 <p>Debes ingresar al sistema para seguir</p>
-                <div class="buttons-con">
-                    <div class="action-link-wrap ">
-
-                    <form action="http://www.btcj.com.ar/sitio/login.php" method="post">
-                        <input type="hidden" name="vuelta" value="https://estudiar.btcj.com.ar/" />
-                        <button type="submit" class="btn btn-success btn-lg">
-                        Ingresar
-                        </button>
-                    </form>
+                <div className="buttons-con">
+                    <div className="action-link-wrap">
+                        <a onClick={login} className="link-button">Ingresar</a>
                     </div>
                 </div>
             </div>

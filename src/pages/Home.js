@@ -10,8 +10,6 @@ export const Home = () => {
   const [courses, setCourses] = useState([])
   const [loading, setLoading] = useState(false)
 
-console.log('isAuth en cursos', isAuth)
-
   useEffect(function () {
     setLoading(true)
     const data = {
