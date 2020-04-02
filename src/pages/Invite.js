@@ -22,7 +22,7 @@ export const Invite = ({ code }) => {
 
     useEffect(function() {
         if (code) {
-            fetch("http://localhost:3002/invitation/exist/" + code)
+            fetch("https://express-now.lucasmarioni.now.sh/invitation/exist/" + code)
             .then(res => res.json())
             .then(response => {
                 setIdCurso(response.curso.id)
@@ -35,7 +35,7 @@ export const Invite = ({ code }) => {
                             })
                             };
 
-                            fetch("http://localhost:3002/invitation/" + code , data)
+                            fetch("https://express-now.lucasmarioni.now.sh/invitation/" + code , data)
                             .then(res => res.json())
                             .then(response => {
                                 if(response.status==='success'){

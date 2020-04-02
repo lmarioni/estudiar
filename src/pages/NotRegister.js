@@ -18,13 +18,18 @@ export const NotRegister = () => {
             }} />
 
 
-            <div class="message-box">
+            <div class="message-box text-center">
                 <h2>No estás logueado</h2>
                 <p>Debes ingresar al sistema para seguir</p>
                 <div class="buttons-con">
-                    <div class="action-link-wrap">
+                    <div class="action-link-wrap ">
 
-                        <a href="http://btcj.com.ar/sitio/login" class="link-button">Ingresar</a>
+                    <form action="http://www.btcj.com.ar/sitio/login.php" method="post">
+                        <input type="hidden" name="vuelta" value="https://estudiar.btcj.com.ar/" />
+                        <button type="submit" class="btn btn-success btn-lg">
+                        Ingresar
+                        </button>
+                    </form>
                     </div>
                 </div>
             </div>

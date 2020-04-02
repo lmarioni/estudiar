@@ -39,7 +39,7 @@ export const Register = ({idCurso = ''}) => {
         if(inputs.pwdconfirm !== inputs.pwd){
             setError('Las contraseñas deben coincidir');
         }else{
-            var url = 'http://localhost:3002/usuarios';
+            var url = 'https://express-now.lucasmarioni.now.sh/usuarios';
             var data = {...inputs, 'idcurso': idCurso };
             fetch(url, {
             method: 'POST', // or 'PUT'
