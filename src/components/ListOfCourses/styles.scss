@@ -1,0 +1,14 @@
+.link-url {
+    cursor: pointer;
+    text-align: center;
+    &:hover{
+        color: blue;
+    }
+}
+.faded-text {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    &.visible {
+        opacity: 1;
+    }
+}
