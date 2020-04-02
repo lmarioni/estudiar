@@ -22,9 +22,7 @@ const Course = React.lazy(() => import('./pages/Course.js'));
 function App() {
   const { isAuth } = useContext(Context)
 
-  console.log('auth en App', isAuth);
-
-    return (
+  return (
       <Suspense fallback={<div />}>
         <GlobalStyle />
         <NavBar />

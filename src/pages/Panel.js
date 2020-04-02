@@ -16,8 +16,6 @@ export const Panel = ({ id }) => {
       const response = await fetch(`https://express-now-alpha-lac.now.sh/cursos/${id}/alumnos`, data);
       const json = await response.json();
       setStudents(json);
-
-      console.log(json);
       setLoading(false);
     }
     fetchStudents();
@@ -49,23 +47,23 @@ export const Panel = ({ id }) => {
                       {students && students.length ?
                         students.map((student) => {
                           return (
-                            <tr>
-                              <td>{student.nombre_usuario}</td>
-                              <td>{student.apellido_usuario}</td>
-                              <td>{student.email_usuario}</td>
-                              <td>
-                                <Button variant="primary">Ver datos</Button>{' '}
-                                <Button variant="secondary">Echar del curso</Button>                                
-                              </td>
-                            </tr>
+                            
+                              <tr key={student.id_usuario}>
+                                <td>{student.nombre_usuario}</td>
+                                <td>{student.apellido_usuario}</td>
+                                <td>{student.email_usuario}</td>
+                                <td>
+                                  <Button variant="primary">Ver datos</Button>{' '}
+                                  <Button variant="secondary">Echar del curso</Button>
+                                </td>
+                              </tr>
+                            
                           )
                         }
-                        ) : <tr>No hay alumnos cargados</tr>
+                        ) : <tr key="0">No hay alumnos cargados</tr>
                       }
-
                     </tbody>
                   </Table>
-
                 </div>
               </div>
             </div>
