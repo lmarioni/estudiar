@@ -33,15 +33,15 @@ console.log('isAuth en cursos', isAuth)
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-center">Mis cursos</h1>
+            <h1 className="text-center mb-5 mt-3" style={{fontWeight: 200}}>Mis cursos</h1>
           </div>
         </div>
         <div className="row">
           <div className="col-md-12">
             <h1 className="text-center">
-              <Link to="/newCourse">
+              {/* <Link to="/newCourse">
                 <button className="btn btn-primary"> Crear curso</button>
-              </Link>
+              </Link> */}
             </h1>
           </div>
         </div>
