@@ -106,8 +106,18 @@ export const ListOfCourses = ({ courses = [] }) => {
                                 <div className="row">
                                     <div className="col-md-1"></div>
                                     <div className="col-md-11">
-                                            <Img src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/286/square_64/erin-doyle_800x800.png"  alt="" />
-                                            <TeacherName>Diego Lerner</TeacherName>
+                                        {
+                                            course.profesores.length > 0 ? <React.Fragment>
+                                                 <Img src={ course.profesores[0].img_usuario ? `http://btcj.com.ar/imagenes/usuarios/${course.profesores[0].img_usuario}` : `http://btcj.com.ar/imagenes/user2.png`}  alt="" /> 
+                                                <TeacherName> {course.profesores[0].nombre + " " + course.profesores[0].apellido} </TeacherName>
+                                            </React.Fragment> 
+                                            : 
+                                            <React.Fragment>
+                                                <Img src="http://btcj.com.ar/imagenes/user2.png"  alt="" />
+                                                <TeacherName> Mr. X </TeacherName>
+                                            </React.Fragment>
+                                        }
+
                                     </div>
                                 </div>
                                 
