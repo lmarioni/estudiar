@@ -84,7 +84,6 @@ export const ListOfCourses = ({ courses = [] }) => {
                     return(
                         <React.Fragment key={i}>
                         <div className="card mb-4">
-<<<<<<< HEAD
                             <div className="card-body" style={{paddingBottom: 6}}>
                                 <div className="row">
                                     <div className="col-md-1" >
@@ -112,18 +111,6 @@ export const ListOfCourses = ({ courses = [] }) => {
                                     </div>
                                 </div>
                                 
-=======
-                            <div className="card-body">
-                                <h4 className='mb-0'>{course.nombre}
-                                    {
-                                        course.creador && 
-                                        <React.Fragment>
-                                            <Link to={`/panel/${course.idcurso}`} className="btn btn-outline-primary float-right mr-1" > <MdBuild /> Opciones </Link>
-                                        </React.Fragment>
-                                    }
-                                    <Link to={`/course/${course.idcurso}`} className="btn btn-outline-primary float-right mr-1" > Ingresar al curso </Link>
-                                </h4>
->>>>>>> Agregado tabs para opciones
                             </div>
                         </div>
                     </React.Fragment>
