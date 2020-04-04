@@ -1,0 +1,416 @@
+{
+    "nombre": "Estrategias para la búsqueda de empleo",
+    "imagen": "https://images.pexels.com/photos/935756/pexels-photo-935756.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "lecciones": [
+        {
+            "id": 3,
+            "nombre": "Introducción",
+            "orden": 1,
+            "icon": "<i class=\"far fa-handshake\"></i>",
+            "modulos": [
+                {
+                    "id": 5,
+                    "nombre": "Bienvenida ",
+                    "descripcion": "Bienvenido al curso!",
+                    "contenido": "<p class=\"MsoNormal\"><span lang=\"ES\" style=\"font-size: 12.0pt; line-height: 115%;\">Hola, </span></p>\r\n<p class=\"MsoNormal\"><span lang=\"ES\" style=\"font-size: 12.0pt; line-height: 115%;\">&iexcl;Aqu&iacute; tendr&aacute;s acceso al curso de <strong>Estrategias para</strong><strong><span style=\"background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; color: #000000;\">&nbsp;conseguir empleo!</span></strong>.</span></p>\r\n<p class=\"MsoNormal\"><span lang=\"ES\" style=\"font-size: 12.0pt; line-height: 115%;\"><span style=\"mso-spacerun: yes;\">&nbsp;</span>A continuaci&oacute;n podr&aacute;s encontrar todos los m&oacute;dulos que te guiar&aacute;n por las diferentes etapas que aumentar&aacute;n todas las probabilidades para conseguir un trabajo. Comenzando por crear tu curriculum, la difusi&oacute;n en las redes sociales, pasando por la entrevista y hasta el d&iacute;a de tu ingreso. Por eso te invitamos a que accedas uno a uno haciendo click sobre el enlace.</span></p>\r\n<p class=\"MsoNormal\"><span lang=\"ES\" style=\"font-size: 12.0pt; line-height: 115%;\"><span style=\"mso-spacerun: yes;\">&nbsp;</span>Aprovech&aacute; toda la informaci&oacute;n que hay aqu&iacute; porque estamos seguros de que si la aplic&aacute;s todos estos conocimientos, aprender&aacute;s en muchos aspectos del mundo laboral y sus diferentes visiones.</span></p>\r\n<p class=\"MsoNormal\"><span lang=\"ES\" style=\"font-size: 12.0pt; line-height: 115%;\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\"><strong style=\"mso-bidi-font-weight: normal;\"><span lang=\"ES\">&iquest;C&oacute;mo vas a aprender?</span></strong></p>\r\n<p class=\"MsoNormal\"><span lang=\"ES\">Este curso se encuentra dividido en Lecciones:</span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"mso-list: l1 level1 lfo1; tab-stops: list 36.0pt;\"><span lang=\"ES\">Informaci&oacute;n te&oacute;rica.</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l1 level1 lfo1; tab-stops: list 36.0pt;\"><span lang=\"ES\">Contenido audiovisual.</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l1 level1 lfo1; tab-stops: list 36.0pt;\"><span lang=\"ES\">Bonus de descarga</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l1 level1 lfo1; tab-stops: list 36.0pt;\"><span lang=\"ES\">Ejercicios al finalizar cada lecci&oacute;n para que puedas auto-evaluarte.</span></li>\r\n</ul>\r\n<p class=\"MsoNormal\"><strong style=\"mso-bidi-font-weight: normal;\"><u><span lang=\"ES\">M&oacute;dulos</span></u></strong></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo2;\"><span lang=\"ES\">Proyecci&oacute;n de b&uacute;squeda laboral</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo2;\"><span lang=\"ES\">Armado del Curriculum</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo2;\"><span lang=\"ES\">Redes Sociales</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo2;\"><span lang=\"ES\">Entrevista Laboral</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo2;\"><span lang=\"ES\">Entrevista Individual</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo2;\"><span lang=\"ES\">Entrevista Grupal</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo2;\"><span lang=\"ES\">Examen Psicot&eacute;cnico</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo2;\"><span lang=\"ES\">Ingreso al empleo<u></u></span></li>\r\n</ul>\r\n<p class=\"MsoNormal\"><strong style=\"mso-bidi-font-weight: normal;\"><span lang=\"ES\">Contacto</span></strong></p>\r\n<p class=\"MsoNormal\"><span lang=\"ES\">Cualquier duda podes escribirnos a cursos@btcj.com.ar.</span></p>\r\n<p class=\"MsoNormal\"><span lang=\"ES\">All&iacute; te estar&aacute;n esperando tutores que podr&aacute;n acompa&ntilde;arte durante todo el curso.</span></p>\r\n<p class=\"MsoNormal\"><span lang=\"ES\">Adem&aacute;s podes utilizar el panel derecho de sugerencias para enviarnos alg&uacute;n feedback.</span></p>",
+                    "orden": 1,
+                    "leccionid": 3,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 6,
+                    "nombre": "Contenidos",
+                    "descripcion": "",
+                    "contenido": "<p><span lang=\"ES\">Buscar trabajo es una ardua tarea que muchas veces puede resultar frustrante.&nbsp; En un mercado laboral tan competitivo lo importante es saber c&oacute;mo destacarse y tener las herramientas necesarias para superar el proceso de selecci&oacute;n. </span></p>\r\n<p><span lang=\"ES\">Con este curso podr&aacute;s aprender&nbsp; las competencias necesarias para conseguir el empleo que estas buscando. </span></p>\r\n<p><span lang=\"es-419\">&nbsp;</span></p>\r\n<p><strong><span lang=\"es-419\">El programa prepara al candidato para el mundo laboral.</span></strong></p>\r\n<p><span lang=\"es-419\"><br />Nuestro objetivo es ayudar al participante en la b&uacute;squeda laboral, bajar su ansieidad, eliminar miedos, sentirse m&aacute;s seguro de si mismo y orientarlo en la b&uacute;squeda brind&aacute;ndole las herramientas necesarias para el &ldquo;trabajo de buscar trabajo&rdquo;.</span></p>\r\n<p><span lang=\"es-419\">Con la realizacion del curso, el participante podr&aacute; incorporar y adue&ntilde;arse de capacidades que lo ayuden a destacarse y avanzar en los procesos de selecci&oacute;n con seguridad y habilidad.</span></p>\r\n<p class=\"MsoNormal\"><span lang=\"ES\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; line-height: normal;\"><strong><u><span lang=\"es-419\">CONTENIDOS</span></u></strong></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">M&Oacute;DULO 1: C&oacute;mo proyectar la b&uacute;squeda laboral. </span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l7 level1 lfo1;\"><span lang=\"es-419\">Miedos y&nbsp; exigencias</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l7 level1 lfo1;\"><span lang=\"es-419\">Marketing personal</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l7 level1 lfo1;\"><span lang=\"es-419\">D&oacute;nde y como buscar trabajo</span></li>\r\n</ul>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">M&Oacute;DULO 2: C&oacute;mo armar un CV efectivo</span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l2 level1 lfo2;\"><span lang=\"es-419\">Qu&eacute; es el CV, para que sirve y&nbsp; como se arma </span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l2 level1 lfo2;\"><span lang=\"es-419\">Formatos para armar el CV</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l2 level1 lfo2;\"><span lang=\"es-419\">Tips para el armado de CV</span></li>\r\n</ul>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">M&Oacute;DULO 3: Las redes sociales y la b&uacute;squeda de empleo</span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l3 level1 lfo8;\"><span lang=\"es-419\">Las redes sociales como potenciadoras de la busqueda</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l3 level1 lfo8;\"><span lang=\"es-419\">Portales de busqueda especializados</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l3 level1 lfo8;\"><span lang=\"es-419\">Tips a tener en cuenta</span></li>\r\n</ul>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\">&nbsp;</p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">M&Oacute;DULO 4: La entrevista laboral</span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l4 level1 lfo3;\"><span lang=\"es-419\">Qu&eacute; es la enrevista, cual es el objetivo. Tipos de entrevista</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l4 level1 lfo3;\"><span lang=\"es-419\">Herramientas corporales y lingu&iacute;sticas&nbsp;</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l4 level1 lfo3;\"><span lang=\"es-419\">C&oacute;mo prepararse para superar la entevista</span></li>\r\n</ul>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">&nbsp;</span><span lang=\"es-419\">M&Oacute;DULO 5: La entrevista individual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l5 level1 lfo4;\"><span lang=\"es-419\">Caracter&iacute;sticas y su desarrollo</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l5 level1 lfo4;\"><span lang=\"es-419\">C&oacute;mo prepararse</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l5 level1 lfo4;\"><span lang=\"es-419\">Tipos de preguntas</span></li>\r\n</ul>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">M&Oacute;DULO 6: La entrevista grupal</span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l6 level1 lfo5;\"><span lang=\"es-419\">Para qu&eacute; se utilizan y c&oacute;mo funcionan</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l6 level1 lfo5;\"><span lang=\"es-419\">Posibles ejercicios y actividades</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l6 level1 lfo5;\"><span lang=\"es-419\">Caracter&iacute;sticas que eval&uacute;an</span></li>\r\n</ul>\r\n<p class=\"MsoNormal\" style=\"text-align: justify; margin: 0cm 0cm .0001pt 36.0pt;\"><span lang=\"es-419\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">M&Oacute;DULO 7: Examen psicot&eacute;cnico</span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo6;\"><span lang=\"es-419\">Qu&eacute; es, para qu&eacute; sirve</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo6;\"><span lang=\"es-419\">Tips para destacarse</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo6;\"><span lang=\"es-419\">Modelos de examen</span></li>\r\n</ul>\r\n<p class=\"MsoNormal\" style=\"text-align: justify; margin: 0cm 0cm .0001pt 36.0pt;\">&nbsp;</p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\">M&Oacute;DULO 8: El ingreso al empleo</span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l1 level1 lfo7;\"><span lang=\"es-419\">Ingres&eacute; al empleo, &iquest;ahora qu&eacute; hago?</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l1 level1 lfo7;\"><span lang=\"es-419\">Documentaci&oacute;n a firmar</span></li>\r\n</ul>",
+                    "orden": 2,
+                    "leccionid": 3,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 7,
+                    "nombre": "Prácticas de repaso",
+                    "descripcion": "",
+                    "contenido": "<p class=\"MsoNormal\"><strong style=\"mso-bidi-font-weight: normal;\"><span lang=\"ES-AR\" style=\"mso-ansi-language: ES-AR;\">&iquest;Qu&eacute; son las pr&aacute;cticas de repaso?</span></strong></p>\r\n<p class=\"MsoNormal\"><span lang=\"ES-AR\" style=\"mso-ansi-language: ES-AR;\">En algunos m&oacute;dulos para finalizar la lecci&oacute;n deber&aacute;s realizar una evaluaci&oacute;n en formato&nbsp;<strong>Multiple Choice.&nbsp;</strong>Esto significa que tendr&aacute;s una pregunta con 4 respuestas, y una de ellas ser&aacute; la correcta. En otros m&oacute;dulos tendr&aacute;s&nbsp;</span><strong>Preguntas a Desarrollar</strong>&nbsp;y en&nbsp;los modulos finales podr&aacute;s ver que adjuntamos informaci&oacute;n complementaria en vez de ejercicios ya que consideramos no son temas a evaluar de esa forma.</p>\r\n<p class=\"MsoNormal\"><span lang=\"ES-AR\" style=\"mso-ansi-language: ES-AR;\">El resultado de tu examen estar&aacute; dado por el porcentaje de aciertos y desaciertos. Exceptuando los ejercicios del M&oacute;dulo de Entrevista Laboral, en el cual no habr&aacute; preguntas correctas o incorrectas, sino que podr&aacute;s consultar tus respuestas con alguno de los tutores.</span></p>\r\n<p class=\"MsoNormal\"><span lang=\"ES-AR\" style=\"mso-ansi-language: ES-AR;\">Las pr&aacute;cticas de repaso sirven como&nbsp;<strong>Autoevaluaci&oacute;n</strong>. De esta forma, podr&aacute;s evaluar cu&aacute;l es el contenido que tienes que reforzar. Sin embargo, nosotros no lo tendremos en cuenta para tu certificaci&oacute;n ya que consideramos que estos ejercicios ayudan a ponerse a pruba pero no crean un impedimento en el proceso de aprendizaje ni de tu b&uacute;squeda laboral.</span></p>",
+                    "orden": 3,
+                    "leccionid": 3,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 8,
+                    "nombre": "Tutoras",
+                    "descripcion": "",
+                    "contenido": "<p class=\"MsoNormal\">Durante este curso tendr&aacute;s dos instructoras; Micaela Mizrahi y Yael Bowerman<br /><br />Micaela Rachel Mizrahi, Lic. en Relaciones del Trabajo, recibida en la UBA, a&ntilde;o 2015.<br />Comenz&oacute; realizando trabajos administrativos en peque&ntilde;as pymes hasta encontrarse en el &aacute;rea de RRHH en una consultora reconocida, realizando tareas de liquidaci&oacute;n de sueldos y administraci&oacute;n de personal. Luego ingres&oacute; en una empresa IT en donde pudo expandir sus conocimientos y llevar a cabo procesos de reclutamiento y selecci&oacute;n, evaluaciones de desempe&ntilde;o; y por ultimo, armado y dictado de capacitaciones. A su vez, pudo incrementar sus conocimientos realizando cursos complementarios a los procesos que realizaba.</p>\r\n<p class=\"MsoNormal\">Durante el a&ntilde;o 2017 y parte del 2018 estuvo viviendo en Australia, en donde realiz&oacute; un Certificado en Business Managment y hoy en d&iacute;a se encuentra residiendo en Espa&ntilde;a desde donde contin&uacute;a desempe&ntilde;andose como responsable de RRHH de BTCJ.</p>\r\n<p class=\"MsoNormal\">Contacto: <strong>micaela.mizrahi@btcj.com.ar</strong></p>\r\n<p class=\"MsoNormal\"><br />Yael Denise Bowerman, Lic. en Relaciones del Trabajo, recibida de la UBA en el a&ntilde;o 2012.<br />Comenz&oacute; su carrera laboral en el &aacute;rea de RRHH en el a&ntilde;o 2008 en una peque&ntilde;a empresa, y desde ese entonces ha trabajado dentro del sector en empresas y consultoras desarrollando tareas de administraci&oacute;n de personal, control de contratistas, selecci&oacute;n y capacitaci&oacute;n; realizando a la par cursos de especializaci&oacute;n en dichas tareas.<br />Actualmente complementa sus estudios realizando la carrera de Psicolog&iacute;a y se desempe&ntilde;a dentro del &aacute;rea de outsorcing en una consultora de recursos humanos y como colaboradora de RRHH en BTCJ.</p>\r\n<p class=\"MsoNormal\">Contacto: <strong>yael.boweman@btcj.com.ar</strong></p>\r\n<p class=\"MsoNormal\">Ellas te estar&aacute;n acompa&ntilde;ando en tus dudas, preguntas y durante todo el proceso.<br />Pusimos a tu disposici&oacute;n el correo electr&oacute;nico de ambas para que puedas estar en contacto<br />Adem&aacute;s, contamos con un equipo que va a estar ayud&aacute;ndote durante la cursada: atenci&oacute;n al alumno, soporte t&eacute;cnico, equipo de coordinaci&oacute;n acad&eacute;mica, etc.</p>\r\n<p class=\"MsoNormal\"><br />Te deseamos una excelente cursada y ahora puedes comenzar.</p>",
+                    "orden": 4,
+                    "leccionid": 3,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "nombre": "Módulo 1: Proyección de búsqueda laboral",
+            "orden": 2,
+            "icon": "<i class=\"fas fa-chart-line\"></i>",
+            "modulos": [
+                {
+                    "id": 20,
+                    "nombre": "Introducción al módulo",
+                    "descripcion": "",
+                    "contenido": "<p class=\"MsoNormal\"><span lang=\"ES\">En este primer m&oacute;dulo te guiaremos para que puedas organizar la b&uacute;squeda de empleo desde el comienzo y sepas c&oacute;mo prepararte para llevar adelante el proceso que comienza.</span></p>\r\n<p class=\"MsoNormal\">&nbsp;</p>\r\n<p class=\"MsoNormal\"><span lang=\"ES\"><u style=\"text-align: justify;\"><span lang=\"ES\">CONTENIDO:</span></u></span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo1;\"><span lang=\"ES\">Planificaci&oacute;n de la b&uacute;squeda</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo1;\"><span lang=\"ES\">Portales de empleo</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo1;\"><span lang=\"ES\">Marketing personal</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo1;\"><span lang=\"ES\">FODA</span></li>\r\n<li class=\"MsoNormal\" style=\"mso-list: l0 level1 lfo1;\"><span lang=\"ES\">Miedos y exigencias</span></li>\r\n</ul>",
+                    "orden": 1,
+                    "leccionid": 1,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 43,
+                    "nombre": "Contenido teórico ",
+                    "descripcion": "",
+                    "contenido": "<p><iframe src=\"//www.youtube.com/embed/XZeyzkxCeDE\" width=\"100%\" height=\"400\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe></p>",
+                    "orden": 2,
+                    "leccionid": 1,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 40,
+                    "nombre": "Material de descarga",
+                    "descripcion": "",
+                    "contenido": "<p class=\"MsoNormal\" style=\"box-sizing: border-box; color: #3e3e3e; line-height: normal; margin: 0px 0px 7.5pt; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 18.2px;\"><span style=\"box-sizing: border-box; font-family: 'Times New Roman', serif; font-size: 14pt;\">Haz click en los siguientes t&iacute;tulos para descargar el contenido:</span></p>\r\n<ul>\r\n<li><span style=\"font-size: 14pt;\"><strong><a href=\"../../../../archivos/contenido/5b60e70e099d7.jpg\"><span style=\"box-sizing: border-box; font-family: 'Times New Roman', serif;\">Ejemplo de FODA</span></a></strong></span></li>\r\n<li><span style=\"font-size: 14pt;\"><strong><a href=\"../../../../archivos/contenido/5b60ed15e7859.pdf\">Cuaderno de apuntes</a></strong></span></li>\r\n</ul>\r\n<p>&nbsp;</p>",
+                    "orden": 4,
+                    "leccionid": 1,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "nombre": "Módulo 2: Armado de Curriculum Vitae",
+            "orden": 3,
+            "icon": "<i class=\"fas fa-edit\"></i>",
+            "modulos": [
+                {
+                    "id": 12,
+                    "nombre": "Introducción al módulo",
+                    "descripcion": null,
+                    "contenido": "<p class=\"MsoNormal\" style=\"text-align: center;\" align=\"center\"><strong style=\"mso-bidi-font-weight: normal;\"><u><span lang=\"ES\">ARMADO DE CURRICULUM</span></u></strong></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">En este m&oacute;dulo estaremos recorriendo el camino desde que comenzamos nuestra b&uacute;squeda laboral hasta el armado en s&iacute; de nuestro resumen.</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><u><span lang=\"ES\">CONTENIDO:</span></u></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\"><span style=\"mso-spacerun: yes;\">&nbsp;</span></span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Formato y Dise&ntilde;os para tu curriculum</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Objetivo-Pre Resumen</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Tips a tener en cuenta</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Datos Personales</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Foto</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Estudios</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Experiencia laboral</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Cursos e Idiomas</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Revisa, Compart&iacute; y Actualiza</span></li>\r\n</ul>",
+                    "orden": 1,
+                    "leccionid": 2,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 47,
+                    "nombre": "Contenido teórico ",
+                    "descripcion": "",
+                    "contenido": "<p><iframe src=\"//www.youtube.com/embed/h2SI-88dcFs\" width=\"100%\" height=\"500\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe></p>",
+                    "orden": 2,
+                    "leccionid": 2,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 42,
+                    "nombre": "Contenido Audiovisual",
+                    "descripcion": "",
+                    "contenido": "<p><strong>Tips para el Armado del CV</strong></p>\r\n<p><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b43e7d5e3860.mp4\" type=\"video/mp4\" /></video></p>\r\n<p><strong>Consejos para tu resumen</strong></p>\r\n<p><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b43de9c1ead4.mp4\" type=\"video/mp4\" /></video></p>\r\n<p>&nbsp;</p>\r\n<p><strong>Creando tu CV-Recomendaciones de grandes referentes</strong></p>\r\n<p><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b43e3e2df728.mp4\" type=\"video/mp4\" /></video></p>\r\n<p><strong>5 Cosas que deber&iacute;as evitar al armar tu curriculum</strong></p>\r\n<p><iframe src=\"//www.youtube.com/embed/A3GbBCdgJq4\" width=\"100%\" height=\"500\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe></p>\r\n<p>&nbsp;</p>\r\n<p><strong>Consejos de un profesional</strong></p>\r\n<p><strong><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b47dac7ebb3a.mp4\" type=\"video/mp4\" /></video></strong></p>",
+                    "orden": 4,
+                    "leccionid": 2,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 41,
+                    "nombre": "Material de descarga",
+                    "descripcion": "Modelos de CV",
+                    "contenido": "<p class=\"MsoNormal\" style=\"box-sizing: border-box; margin: 0px 0px 7.5pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 100; letter-spacing: 0.1px; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial; color: #3e3e3e; line-height: normal; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 18.2px;\"><span style=\"box-sizing: border-box; font-family: 'Times New Roman', serif; font-size: 14pt;\">Haz click en los siguientes t&iacute;tulos para descargar el contenido:</span></p>\r\n<p>&nbsp;</p>\r\n<p><a title=\"Material de Descarga Modelo de CV 1\" href=\"../../../../archivos/contenido/5b4a0eb066ae7.doc\" target=\"_blank\" rel=\"noopener\">Material de Descarga Modelo de CV 1</a></p>\r\n<p>&nbsp;</p>\r\n<p><a title=\"Material de Descarga Modelo de CV 2\" href=\"../../../../archivos/contenido/5b4a0ee4d416f.doc\" target=\"_blank\" rel=\"noopener\">Material de Descarga Modelo de CV 2</a></p>\r\n<p>&nbsp;</p>\r\n<p><a title=\"Material de Descarga Modelo  de CV 3\" href=\"../../../../archivos/contenido/5b4a0fcd71f88.doc\" target=\"_blank\" rel=\"noopener\">Material de Descarga Modelo de CV 3</a></p>\r\n<p>&nbsp;</p>\r\n<p><a title=\"Material de Descarga Modelo de CV 4\" href=\"../../../../archivos/contenido/5b4a110107913.doc\" target=\"_blank\" rel=\"noopener\">Material de Descarga Modelo de CV 4</a></p>\r\n<p>&nbsp;</p>\r\n<p><a title=\"Material de Descarga Modelo de CV 5\" href=\"../../../../archivos/contenido/5b4a113d433a0.docx\" target=\"_blank\" rel=\"noopener\">Material de Descarga Modelo de CV 5</a></p>\r\n<p>&nbsp;</p>\r\n<p><a title=\"Material de Descarga Modelo de CV 6\" href=\"../../../../archivos/contenido/5b4a11c6b8767.doc\" target=\"_blank\" rel=\"noopener\">Material de Descarga Modelo de CV 6</a></p>\r\n<p>&nbsp;</p>\r\n<p><a title=\"Material de Descarga Modelo de CV 7\" href=\"../../../../archivos/contenido/5b4a12d5aef30.doc\" target=\"_blank\" rel=\"noopener\">Material de Descarga Modelo de CV 7</a></p>\r\n<p>&nbsp;</p>\r\n<p><a title=\"Material de Descarga Modelo de CV 8\" href=\"../../../../archivos/contenido/5b4a1250ee9a0.doc\" target=\"_blank\" rel=\"noopener\">Material de Descarga Modelo de CV 8</a></p>",
+                    "orden": 5,
+                    "leccionid": 2,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "nombre": "Módulo 3: Redes Sociales",
+            "orden": 4,
+            "icon": "<i class=\"fab fa-internet-explorer\"></i>",
+            "modulos": [
+                {
+                    "id": 13,
+                    "nombre": "Introducción al módulo",
+                    "descripcion": null,
+                    "contenido": "<p class=\"MsoNormal\" style=\"text-align: center;\" align=\"center\"><strong style=\"mso-bidi-font-weight: normal;\"><u><span lang=\"ES\">REDES SOCIALES</span></u></strong></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">Una vez finalizado el curriculum, ya estamos listos para su difusi&oacute;n y para la creaci&oacute;n de nuestra Marca Personal. En la actualidad, el mundo laboral se maneja de forma virtual y debemos estar al d&iacute;a para potenciar nuestras posibilidades de llegada a los contactos clave.</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><u><span lang=\"ES\">CONTENIDO:</span></u></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\"><span style=\"mso-spacerun: yes;\">&nbsp;</span></span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Por qu&eacute; es importante</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Puntos esenciales para usar de forma positiva las redes en la b&uacute;squeda de empleo</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Portales &uacute;tiles para la b&uacute;squeda de empleo</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Presta atenci&oacute;n a determinados aspectos</span></li>\r\n</ul>",
+                    "orden": 1,
+                    "leccionid": 4,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 48,
+                    "nombre": "Contenido teórico",
+                    "descripcion": "",
+                    "contenido": "<p><iframe src=\"//www.youtube.com/embed/Nxiu3-t8KSE\" width=\"100%\" height=\"500\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe></p>",
+                    "orden": 2,
+                    "leccionid": 4,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 44,
+                    "nombre": "Contenido Audiovisual",
+                    "descripcion": "",
+                    "contenido": "<p><strong>C&oacute;mo utilizar las redes en tu b&uacute;squeda laboral</strong></p>\r\n<p><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b469ffb972d8.mp4\" type=\"video/mp4\" /></video></p>\r\n<p><strong>Tips para optimizar el uso de las redes en la b&uacute;squeda</strong></p>\r\n<p><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b46a25a825c7.mp4\" type=\"video/mp4\" /></video></p>",
+                    "orden": 4,
+                    "leccionid": 4,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "nombre": "Módulo 4: Entrevista Laboral",
+            "orden": 5,
+            "icon": "<i class=\"fas fa-code-branch\"></i>",
+            "modulos": [
+                {
+                    "id": 14,
+                    "nombre": "Introducción al módulo",
+                    "descripcion": null,
+                    "contenido": "<p class=\"MsoNormal\" style=\"text-align: center;\" align=\"center\"><strong style=\"mso-bidi-font-weight: normal;\"><u><span lang=\"ES\">ENTREVISTA LABORAL</span></u></strong></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">Ya contamos con nuestro CV y las herramientas necesarias para su difusi&oacute;n. Ahora estamos listos para el siguiente paso: la entrevista laboral. Es la oportunidad que nos permitir&aacute; explayarnos en profundidad, y si sabemos aprovecharla y causar la mejor impresi&oacute;n de nosotros, estaremos a solo un paso de nuestro empleo.</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><u><span lang=\"ES\">CONTENIDO:</span></u></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\"><span style=\"mso-spacerun: yes;\">&nbsp;</span></span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">La entrevista telef&oacute;nica</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Desarrollo de la entrevista y sujetos</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">C&oacute;mo prepararnos para la entrevista</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Pasos previos</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Vestimenta a usar</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Preguntas posibles, c&oacute;mo prepararlas</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Claves para el &eacute;xito en la entrevista</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Herramientas corporales</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Herramientas ling&uuml;&iacute;sticas</span></li>\r\n</ul>\r\n<p class=\"MsoNormal\" style=\"text-align: justify; margin: 0cm 0cm .0001pt 36.0pt;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\"><span lang=\"ES\">&nbsp;</span></p>",
+                    "orden": 1,
+                    "leccionid": 5,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 49,
+                    "nombre": "Contenido teórico",
+                    "descripcion": "",
+                    "contenido": "<p><iframe src=\"//www.youtube.com/embed/gS2gMBo7H7M\" width=\"100%\" height=\"500\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe></p>",
+                    "orden": 2,
+                    "leccionid": 5,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 46,
+                    "nombre": "Contenido Audiovisual",
+                    "descripcion": "",
+                    "contenido": "<p><strong>5 Consejos para tu entrevista</strong></p>\r\n<p><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b46a51d472d9.mp4\" type=\"video/mp4\" /></video></p>\r\n<p><strong>No falles en tu entrevista laboral</strong></p>\r\n<p><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b46b7357a34d.mp4\" type=\"video/mp4\" /></video></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+                    "orden": 4,
+                    "leccionid": 5,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "nombre": "Módulo 5: Entrevista Individual",
+            "orden": 6,
+            "icon": "<i class=\"fas fa-people-carry\"></i>",
+            "modulos": [
+                {
+                    "id": 15,
+                    "nombre": "Introducción al módulo",
+                    "descripcion": null,
+                    "contenido": "<p class=\"MsoNormal\" style=\"text-align: center;\" align=\"center\"><strong style=\"mso-bidi-font-weight: normal;\"><u><span lang=\"ES\">ENTREVISTA INDIVIDUAL</span></u></strong></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">Las entrevistas pueden ser tanto Individuales como Grupales, pero en este caso estaremos ahondando en la individual, ya que en todo proceso de selecci&oacute;n, &eacute;sta suele ser un paso obligado para el ingreso al empleo.</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><u><span lang=\"ES\">CONTENIDO:</span></u></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\"><span style=\"mso-spacerun: yes;\">&nbsp;</span></span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Caracter&iacute;sticas</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Desarrollo</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Tipos de preguntas en cada etapa</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Tips para responder a preguntas clave</span></li>\r\n</ul>\r\n<p class=\"MsoNormal\" style=\"text-align: justify; margin: 0cm 0cm .0001pt 36.0pt;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">&nbsp;</span></p>",
+                    "orden": 1,
+                    "leccionid": 9,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 51,
+                    "nombre": "Contenido teórico",
+                    "descripcion": "",
+                    "contenido": "<p><iframe src=\"//www.youtube.com/embed/lKtBILb248I\" width=\"100%\" height=\"400\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe></p>",
+                    "orden": 2,
+                    "leccionid": 9,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 39,
+                    "nombre": "Contenido Audiovisual",
+                    "descripcion": "",
+                    "contenido": "<p><strong>C&oacute;mo tener &eacute;xito en tu entrevista laboral</strong></p>\r\n<p><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b46b91701f91.mp4\" type=\"video/mp4\" /></video></p>",
+                    "orden": 3,
+                    "leccionid": 9,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "nombre": "Módulo 6: Entrevista Grupal",
+            "orden": 7,
+            "icon": "<i class=\"fas fa-users\"></i>",
+            "modulos": [
+                {
+                    "id": 16,
+                    "nombre": "Introducción al módulo",
+                    "descripcion": null,
+                    "contenido": "<p class=\"MsoNormal\" style=\"text-align: center;\" align=\"center\"><strong style=\"mso-bidi-font-weight: normal;\"><u><span lang=\"ES\">ENTREVISTA GRUPAL</span></u></strong></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">Las entrevistas grupales son una de las etapas m&aacute;s desafiantes en el proceso de selecci&oacute;n, ya que es el momento en el cual nos encontraremos expuestos frente a las caracter&iacute;sticas, conocimientos y habilidades que detallamos en nuestro curriculum.</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><u><span lang=\"ES\">CONTENIDO:</span></u></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\"><span style=\"mso-spacerun: yes;\">&nbsp;</span></span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Caracter&iacute;sticas</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Para qu&eacute; se utilizan</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">C&oacute;mo funcionan</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Din&aacute;micas y tipos de actividades</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Qu&eacute; se eval&uacute;a en las entrevistas grupales</span></li>\r\n</ul>",
+                    "orden": 1,
+                    "leccionid": 6,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 50,
+                    "nombre": "Contenido teórico",
+                    "descripcion": "",
+                    "contenido": "<p><iframe src=\"//www.youtube.com/embed/3Wx636RthL0\" width=\"100%\" height=\"400\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe></p>",
+                    "orden": 2,
+                    "leccionid": 6,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 54,
+                    "nombre": "Contenido Audiovisual",
+                    "descripcion": "",
+                    "contenido": "<p><strong>&iquest;Sabes c&oacute;mo prepararte para tu entrevista grupal?</strong></p>\r\n<p><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b47e00ab967f.mp4\" type=\"video/mp4\" /></video></p>\r\n<p><strong>&iquest;Qu&eacute; es una entrevista grupal?</strong></p>\r\n<p><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b47dea124a7d.mp4\" type=\"video/mp4\" /></video></p>",
+                    "orden": 4,
+                    "leccionid": 6,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "nombre": "Módulo 7: Examen Psicotécnico",
+            "orden": 8,
+            "icon": "<i class=\"fas fa-file-alt\"></i>",
+            "modulos": [
+                {
+                    "id": 17,
+                    "nombre": "Introducción al módulo",
+                    "descripcion": null,
+                    "contenido": "<p class=\"MsoNormal\" style=\"text-align: center;\" align=\"center\"><strong style=\"mso-bidi-font-weight: normal;\"><u><span lang=\"ES\">EXAMEN PSICOT&Eacute;CNICO</span></u></strong></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">No todos los empleos cuentan con esta instancia como una esencial para el ingreso al trabajo, pero muchas otras s&iacute;. Ya pasamos las entrevistas y el siguiente paso es el del examen psicot&eacute;cnico. Generalmente se utiliza para puestos de liderazgo, gerenciales o con alguna caracter&iacute;stica puntual a la que la empresa quiera apuntar. Por eso en este m&oacute;dulo estaremos d&aacute;ndote una serie de tips y peque&ntilde;as ayudas para ir un poco m&aacute;s preparado a las mismas.</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><u><span lang=\"ES\">CONTENIDO:</span></u></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\"><span style=\"mso-spacerun: yes;\">&nbsp;</span></span></p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Qu&eacute; es el examen psicot&eacute;cnico</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Test de personalidad: cl&aacute;sicos y proyectivos</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Ejemplos de test</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Tips para tus dibujos</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Test de aptitudes</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Pruebas de razonamiento verbal y no verbal</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Test de memoria</span></li>\r\n</ul>",
+                    "orden": 1,
+                    "leccionid": 7,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 56,
+                    "nombre": "Contenido teórico",
+                    "descripcion": "",
+                    "contenido": "<p><iframe src=\"//www.youtube.com/embed/Dg8jVr0CLzo\" width=\"100%\" height=\"500\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe></p>",
+                    "orden": 2,
+                    "leccionid": 7,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 55,
+                    "nombre": "Contenido audiovisual",
+                    "descripcion": "",
+                    "contenido": "<p><strong>C&oacute;mo me presento al examen psicot&eacute;cnico</strong></p>\r\n<p><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b47e7c59d985.mp4\" type=\"video/mp4\" /></video></p>\r\n<p><strong>Test Persona bajo la lluvia</strong></p>\r\n<p><video controls=\"controls\" width=\"100%\" height=\"auto\">\r\n<source src=\"http://www.btcj.com.ar/archivos/contenido/5b47eb0bd0393.mp4\" type=\"video/mp4\" /></video></p>",
+                    "orden": 3,
+                    "leccionid": 7,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "nombre": "Módulo 8:  El Ingreso al empleo",
+            "orden": 9,
+            "icon": "<i class=\"fas fa-map-marked-alt\"></i>",
+            "modulos": [
+                {
+                    "id": 10,
+                    "nombre": "Ingresando al empleo",
+                    "descripcion": "",
+                    "contenido": "<p class=\"MsoNormal\" style=\"text-align: center;\"><span lang=\"ES\">&nbsp;</span><strong style=\"text-align: center;\"><u><span lang=\"ES\">INGRESANDO AL EMPLEO</span></u></strong></p>\r\n<p class=\"MsoNormal\" style=\"text-align: justify;\"><span lang=\"ES\">Ahora s&iacute;, luego de un largo camino &iexcl;conseguiste empleo!, pero &iquest;qu&eacute; ocurre al momento de comenzar a trabajar? &iquest;Qu&eacute; documentaci&oacute;n deben darte? &iquest;Qu&eacute; cosas debes firmar o qu&eacute; es lo que deber&iacute;as tener en cuenta? En este m&oacute;dulo y a modo de cierre del curso te daremos informaci&oacute;n sobre estos temas.</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span lang=\"ES\">&nbsp;</span></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\"><u><span lang=\"ES\">CONTENIDO:</span></u></p>\r\n<p class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify;\">&nbsp;</p>\r\n<ul style=\"margin-top: 0cm;\" type=\"disc\">\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Tipos de contrataci&oacute;n</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Beneficios</span></li>\r\n<li class=\"MsoNormal\" style=\"margin-bottom: .0001pt; text-align: justify; mso-list: l0 level1 lfo1;\"><span lang=\"es-419\" style=\"mso-ansi-language: #580A;\">Documentaci&oacute;n</span></li>\r\n</ul>",
+                    "orden": 1,
+                    "leccionid": 8,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 57,
+                    "nombre": "Contenido teórico",
+                    "descripcion": "",
+                    "contenido": "<p><img src=\"http://www.btcj.com.ar/archivos/contenido/5b4a218145a83.JPG\" alt=\"\" width=\"100%\" height=\"auto\" /></p>\r\n<p><img src=\"http://www.btcj.com.ar/archivos/contenido/5b4a21e4b8bfc.JPG\" alt=\"\" width=\"100%\" height=\"auto\" /></p>\r\n<p><img src=\"http://www.btcj.com.ar/archivos/contenido/5b4a227cf16c1.JPG\" alt=\"\" width=\"100%\" height=\"auto\" /></p>\r\n<p><img src=\"http://www.btcj.com.ar/archivos/contenido/5b4a229f9c2b4.JPG\" alt=\"\" width=\"100%\" height=\"auto\" /></p>\r\n<p><img src=\"http://www.btcj.com.ar/archivos/contenido/5b4a22bfa6a14.JPG\" alt=\"\" width=\"100%\" height=\"auto\" /></p>\r\n<p><img src=\"http://www.btcj.com.ar/archivos/contenido/5b4a22e171d60.JPG\" alt=\"\" width=\"100%\" height=\"auto\" /><img src=\"http://www.btcj.com.ar/archivos/contenido/5b4a22ff663d0.JPG\" alt=\"\" width=\"100%\" height=\"auto\" /></p>\r\n<p><img src=\"http://www.btcj.com.ar/archivos/contenido/5b4a23218484f.JPG\" alt=\"\" width=\"100%\" height=\"auto\" /></p>\r\n<p><img src=\"http://www.btcj.com.ar/archivos/contenido/5b4a234c056a3.JPG\" alt=\"\" width=\"100%\" height=\"auto\" /></p>\r\n<p><img src=\"http://www.btcj.com.ar/archivos/contenido/5b4a23679d7b2.JPG\" alt=\"\" width=\"100%\" height=\"auto\" /></p>\r\n<p><img src=\"http://www.btcj.com.ar/archivos/contenido/5b4a23871311a.JPG\" alt=\"\" width=\"100%\" height=\"auto\" /></p>\r\n<p><img src=\"http://www.btcj.com.ar/archivos/contenido/5b4a23a0c219b.JPG\" alt=\"\" width=\"100%\" height=\"auto\" /></p>",
+                    "orden": 2,
+                    "leccionid": 8,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "nombre": "Despedida",
+            "orden": 10,
+            "icon": "<i class=\"fab fa-staylinked\"></i>",
+            "modulos": [
+                {
+                    "id": 59,
+                    "nombre": "Mensaje de despedida",
+                    "descripcion": "",
+                    "contenido": "<p style=\"box-sizing: border-box; color: #3e3e3e; line-height: 1.5; margin: 0px 0px 10px; font-size: 18.2px; text-align: justify; font-family: dejavusans, sans-serif !important; font-weight: bold !important;\"><span style=\"box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-size: 12pt;\">Hola,</span><br style=\"box-sizing: border-box;\" /><br style=\"box-sizing: border-box;\" /><span style=\"box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-size: 12pt;\">&nbsp; Hoy llegaste a la &uacute;ltima lecci&oacute;n de este curso.&nbsp;<br /></span><br style=\"box-sizing: border-box;\" /><span style=\"box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-size: 12pt;\">&nbsp; Hoy, m&aacute;s que una despedida queremos reconocerte por tu esfuerzo, por contestar los cuestionarios al tutor, por haber, por haber hecho preguntas y por haber recorrido cada uno de los modulos. Pero m&aacute;s que nada, queremos reconocerte porque haz dado un salto importante en tu vida.</span><br style=\"box-sizing: border-box;\" /><br style=\"box-sizing: border-box;\" /><span style=\"box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-size: 12pt;\">&nbsp; Sabemos que muchos de los estudiantes de este curso han aplicado cada uno de los modulos/ ejercicos en sus vidas, para conseguir trabajo y perfeccionarse en la b&uacute;squeda</span><br style=\"box-sizing: border-box;\" /><br style=\"box-sizing: border-box;\" /><span style=\"box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-size: 12pt;\">&nbsp; Aprovechamos para enviarte un Cordial Saludo y desearte que tus sue&ntilde;os muy pronto se conviertan en Hechos Concretos !</span><br style=\"box-sizing: border-box;\" /><br style=\"box-sizing: border-box;\" /></p>\r\n<p style=\"box-sizing: border-box; color: #3e3e3e; line-height: 1.5; margin: 0px 0px 10px; font-size: 18.2px; text-align: justify; font-family: dejavusans, sans-serif !important; font-weight: bold !important;\">&nbsp;</p>\r\n<p style=\"box-sizing: border-box; color: #3e3e3e; line-height: 1.5; margin: 0px 0px 10px; font-size: 18.2px; font-family: dejavusans, sans-serif !important; font-weight: bold !important; text-align: left;\"><span style=\"box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-size: 12pt;\"><strong style=\"box-sizing: border-box; color: #000000; font-family: 'Noto Sans';\">Micaela Mizrahi y Yael Boweman</strong></span><br style=\"box-sizing: border-box;\" /><span style=\"box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; font-size: 12pt;\">Lic. en Recursos Humanos</span></p>",
+                    "orden": 1,
+                    "leccionid": 10,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                },
+                {
+                    "id": 58,
+                    "nombre": "Feedback",
+                    "descripcion": "",
+                    "contenido": "<p>Tu&nbsp; opini&oacute;n&nbsp; sobre&nbsp; el&nbsp; curso&nbsp; nos&nbsp; permitir&aacute;&nbsp; mejorar&nbsp; las&nbsp; actividades&nbsp; de&nbsp; formaci&oacute;n&nbsp; en&nbsp; el&nbsp; futuro.&nbsp; Por&nbsp; favor,&nbsp; contesta&nbsp; a&nbsp; todas&nbsp; las&nbsp; preguntas!&nbsp; Gracias!&nbsp;&nbsp;</p>\r\n<p>Te&nbsp; pedimos&nbsp; indiques&nbsp; la&nbsp; valoraci&oacute;n&nbsp; que&nbsp; merecen&nbsp; los&nbsp; siguientes&nbsp; aspectos&nbsp; del&nbsp; curso&nbsp; seg&uacute;n&nbsp; tu&nbsp; experiencia&nbsp; siendo&nbsp; 1 el valor m&aacute;s bajo y 10 el m&aacute;s alto</p>\r\n<p><a href=\"https://docs.google.com/forms/d/e/1FAIpQLSeRGS7nJ0ih8A7rB4J_uI85C_2phkEfrasps988SxfE8yV_nA/viewform?usp=sf_link\">Ver feedback</a></p>\r\n<p>&nbsp;</p>",
+                    "orden": 2,
+                    "leccionid": 10,
+                    "ejercicio": 0,
+                    "evalid": 0,
+                    "visible": 1
+                }
+            ]
+        }
+    ]
+}

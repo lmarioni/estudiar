@@ -40,4 +40,9 @@ html{
     border-radius: .25rem;
 }
 
+.bg-red{
+  background: red;
+}
+
+
 `

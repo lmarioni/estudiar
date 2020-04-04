@@ -3,27 +3,110 @@ import { Context } from "../Context";
 import { Loading } from "../components/Loading";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import Alert from "react-bootstrap/Alert";
+import { MdDelete } from "react-icons/md";
 
 export const StudentsList = ({ id }) => {
   const { token } = useContext(Context);
   const [students, setStudents] = useState([{}]);
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+
+  const [studentToDelete, setStudentToDelete] = useState({});
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+
+  const data = { headers: new Headers({ Authorization: "Bearer " + token }) };
+  
+  const fetchStudents = async () => {
+    const response = await fetch(`https://express-now-alpha-lac.now.sh/cursos/${id}/alumnos`, data);
+    const json = await response.json();
+    setStudents(json);
+    setLoading(false);
+  }
 
   useEffect(function () {
     setLoading(true);
-    const data = { headers: new Headers({ Authorization: "Bearer " + token }) };
-    async function fetchStudents() {
-      const response = await fetch(`https://express-now-alpha-lac.now.sh/cursos/${id}/alumnos`, data);
-      const json = await response.json();
-      setStudents(json);
-      setLoading(false);
-    }
     fetchStudents();
   }, []);
+  const deleteStudentModal = (student) => {
+    setStudentToDelete(student);
+    handleShow();
+  }
 
+  const deleteStudent = () => {
+    async function kickStudent() {
+      const requestOptions = {
+        method: 'DELETE',
+        headers: new Headers({ Authorization: "Bearer " + token }),
+      };
+      const response = await fetch(`https://express-now-alpha-lac.now.sh/usuarios/${studentToDelete.id_usuario}/curso/${id}`, requestOptions);
+      const json = await response.json();
+      fetchStudents();
+      setLoading(false);
+      handleClose();
+      const message = (json.status === 'success') ? `Echado estudiante: ${studentToDelete.nombre_usuario} del curso ${id}` : `Hubo un error al eliminar a ${studentToDelete.nombre_usuario} del curso ${id}`;
+      handleAlert(message);
+      setStudentToDelete({});
+    }
+    setLoading(true);
+    kickStudent();
+
+  }
+
+  const handleAlert = (message) => {
+    setAlertMessage(message);
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+      setAlertMessage('');
+    }, 3000)
+  }
+
+  const getStudentName = () => {
+    return `${studentToDelete.nombre_usuario} ${studentToDelete.apellido_usuario}`;
+  }
+
+  const renderTableData = () => {
+    return students.map((student) => {
+      const { id_usuario, nombre_usuario, apellido_usuario, email_usuario } = student;
+      return (
+        <tr key={id_usuario}>
+          <td>{nombre_usuario}</td>
+          <td>{apellido_usuario}</td>
+          <td>{email_usuario}</td>
+          <td>
+            <Button variant="primary">Ver datos</Button>{' '}
+            <Button onClick={() => deleteStudentModal(student)} variant="danger"> <MdDelete /> Echar del curso</Button>
+          </td>
+        </tr>
+      )
+    })
+  }
 
   return (
     <div>
+      {showAlert ? (<Alert variant="primary"> {alertMessage} </Alert>) : null}
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Está seguro?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Está seguro que quiere echar del curso a {getStudentName()} ?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            No, volver.
+          </Button>
+          <Button variant="secondary" disabled={loading} onClick={deleteStudent}>
+            Si.
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       {loading
         ? <Loading />
         : (
@@ -45,22 +128,8 @@ export const StudentsList = ({ id }) => {
                     </thead>
                     <tbody>
                       {students && students.length ?
-                        students.map((student) => {
-                          return (
-                            
-                              <tr key={student.id_usuario}>
-                                <td>{student.nombre_usuario}</td>
-                                <td>{student.apellido_usuario}</td>
-                                <td>{student.email_usuario}</td>
-                                <td>
-                                  <Button variant="primary">Ver datos</Button>{' '}
-                                  <Button variant="secondary">Echar del curso</Button>
-                                </td>
-                              </tr>
-                            
-                          )
-                        }
-                        ) : <tr key="0">No hay alumnos cargados</tr>
+                        renderTableData()
+                        : <tr key="0">No hay alumnos cargados</tr>
                       }
                     </tbody>
                   </Table>

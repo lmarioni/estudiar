@@ -3,7 +3,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { A, Li } from './styles';
 
 export const MenuLeccion = (props) => {
-    const { leccion } = props;
+    const { leccion, close } = props;
     const [show, setShow] = useState(false);
 
     const handleClick = () => {
@@ -11,6 +11,7 @@ export const MenuLeccion = (props) => {
     }
 
     const handleModule = (idLeccion, idModulo) => {
+        if(close) close()
         props.onModuleChange(idLeccion, idModulo)
     }
 
@@ -24,7 +25,7 @@ export const MenuLeccion = (props) => {
                 {
                     leccion.modulos.map((modulo, i) => (
                         <React.Fragment key={i}>
-                            <Li onClick={() => handleModule(leccion.id, modulo.id)} style={{ listStyle: 'none', marginBottom: '.25rem', marginTop: '.25rem', padding: 6, cursor: 'pointer', fontSize: 14 }}>
+                            <Li onClick={() => handleModule(leccion.id, modulo.id)} style={{ textAlign: 'left', listStyle: 'none', marginBottom: '.25rem', marginTop: '.25rem', padding: 6, cursor: 'pointer', fontSize: 14 }}>
                                 {modulo.nombre}
                             </Li>
                         </React.Fragment>

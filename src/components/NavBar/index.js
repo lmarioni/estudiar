@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+// import Nav from 'react-bootstrap/Nav';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 export const NavBar = () => {
 
     return (
@@ -10,7 +10,7 @@ export const NavBar = () => {
             <Navbar.Brand>
             <Link to="/" className="navbar-brand" > Estudi.ar </Link>
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
             {/* <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto" >
                     <Nav.Link href="#features">Features</Nav.Link>
