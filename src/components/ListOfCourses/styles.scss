@@ -27,6 +27,7 @@
 .preview-card {
     margin-top: 1.5625rem;
     overflow: hidden;
+    min-height: 65px;
 }
 .card, .card .card-title {
     transition: all .3s ease;
@@ -101,6 +102,7 @@
     color: #424242;
     line-height: 1.35;
     font-size: 1rem;
+    min-height: 25px;
 }
 
 .card .card-description>p:last-child {
