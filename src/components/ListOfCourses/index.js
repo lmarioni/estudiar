@@ -44,7 +44,6 @@ export const ListOfCourses = ({ courses = [] }) => {
                 </div>
               </div>
               <div className="card-description">
-
                  {
                      course.descripcion && <p>{course.descripcion}</p>
                  }

@@ -1,4 +1,6 @@
 import React, { useState, useRef } from "react";
+// import { Context } from "../Context";
+
 import Tab from "react-bootstrap/Tab";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,7 +13,7 @@ export const Panel = ({ id }) => {
   const tabsMapper = [
     { key: 'invite', label: 'Invitar alumnos' },
     { key: 'studentList', label: 'Listado de alumnos' },
-    { key: 'changeProfileImage', label: 'Cambiar imagen de perfil' },
+    { key: 'changeProfileImage', label: 'Datos del curso' },
   ];
 
   const [copySuccess, setCopySuccess] = useState(false);
@@ -58,7 +60,7 @@ export const Panel = ({ id }) => {
                   <h1 className="text-center">Opciones</h1>
                 </div>
                 <div className="col-sm-12">
-                  <Tab.Container id="left-tabs-example" defaultActiveKey="course-configuration">
+                  <Tab.Container id="left-tabs-example" defaultActiveKey="changeProfileImage">
                     <Row>
                       <Col sm={3}>
                         <Nav variant="pills" className="flex-column">
@@ -69,7 +71,7 @@ export const Panel = ({ id }) => {
                             <Nav.Link eventKey="invite">Invitar</Nav.Link>
                           </Nav.Item>
                           <Nav.Item>
-                            <Nav.Link eventKey="course-configuration">Configuracion</Nav.Link>
+                            <Nav.Link eventKey="changeProfileImage">Configuracion</Nav.Link>
                           </Nav.Item>
                         </Nav>
                       </Col>
