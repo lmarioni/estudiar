@@ -8,7 +8,7 @@ import { Invite }  from './pages/Invite';
 import { Panel } from './pages/Panel';
 import { NewCourse } from './pages/NewCourse';
 import { NotRegister } from './pages/NotRegister';
-import  Prueba from './pages/Prueba';
+import  { Prueba} from './pages/PruebaMenuH';
 
 import { NotFound } from './components/NotFound';
 import { NavBar } from './components/NavBar';
