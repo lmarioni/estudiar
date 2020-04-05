@@ -8,7 +8,6 @@ import { Invite }  from './pages/Invite';
 import { Panel } from './pages/Panel';
 import { NewCourse } from './pages/NewCourse';
 import { NotRegister } from './pages/NotRegister';
-import  Prueba from './pages/Prueba';
 
 import { NotFound } from './components/NotFound';
 import { NavBar } from './components/NavBar';
@@ -30,7 +29,6 @@ function App() {
         <Router>
           <NotFound default />
           <NotRegister path="/not-register" />
-          <Prueba path="/prueba" />
           { !isAuth && <Invite path='/i/:code' /> }
           { !isAuth && <Redirect noThrow from='/' to='/not-register' /> }
           { !isAuth && <Redirect noThrow from='/course/:id' to='/not-register/:id' /> }

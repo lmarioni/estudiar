@@ -1,6 +1,4 @@
 import React, { useState, useRef } from "react";
-// import { Context } from "../Context";
-import { Loading } from "../components/Loading";
 import Tab from "react-bootstrap/Tab";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,38 +7,47 @@ import QRCode from 'qrcode.react';
 import { StudentsList } from "./StudentsList";
 import { CourseConfiguration } from "../components/CourseConfiguration";
 export const Panel = ({ id }) => {
-  
+
+  const tabsMapper = [
+    { key: 'invite', label: 'Invitar alumnos' },
+    { key: 'studentList', label: 'Listado de alumnos' },
+    { key: 'changeProfileImage', label: 'Cambiar imagen de perfil' },
+  ];
+
   const [copySuccess, setCopySuccess] = useState(false);
   const textAreaRef = useRef(null);
   const [inviteCode, setInviteCode] = useState(id);
   const [inviteQR, setInviteQR] = useState(`https://estudiar.btcj.com.ar/i/${inviteCode}`);
 
+  const [selectedTab, setSelectedTab] = useState('Listado de alumnos');
+
   const copyToClipboard = () => {
-      const str = `https://estudiar.btcj.com.ar/i/${inviteCode}`;
-      const el = document.createElement('textarea');
-      el.value = str;
-      el.setAttribute('readonly', '');
-      el.style.position = 'absolute';
-      el.style.left = '-9999px';
-      document.body.appendChild(el);
-      const selected =
-          document.getSelection().rangeCount > 0
-              ? document.getSelection().getRangeAt(0)
-              : false;
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-      if (selected) {
-          document.getSelection().removeAllRanges();
-          document.getSelection().addRange(selected);
-      }
-      setCopySuccess(true);
+    const str = `https://estudiar.btcj.com.ar/i/${inviteCode}`;
+    const el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    const selected =
+      document.getSelection().rangeCount > 0
+        ? document.getSelection().getRangeAt(0)
+        : false;
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    if (selected) {
+      document.getSelection().removeAllRanges();
+      document.getSelection().addRange(selected);
+    }
+    setCopySuccess(true);
 
-      setTimeout(()=>{
-          setCopySuccess(false);
-      }, 1500);
-
+    setTimeout(() => {
+      setCopySuccess(false);
+    }, 1500);
   };
+
+  const handleSelectedTab = (tab) => { setSelectedTab(tabsMapper.find(eachTab => eachTab.key === tab).label); }
 
   return (
     <div>
@@ -97,7 +104,7 @@ export const Panel = ({ id }) => {
                 </div>
               </div>
             </div>
-          </React.Fragment>
+      </React.Fragment>
     </div>
   );
 };

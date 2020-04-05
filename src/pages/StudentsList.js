@@ -34,6 +34,7 @@ export const StudentsList = ({ id }) => {
     setLoading(true);
     fetchStudents();
   }, []);
+  
   const deleteStudentModal = (student) => {
     setStudentToDelete(student);
     handleShow();
@@ -113,9 +114,6 @@ export const StudentsList = ({ id }) => {
           <React.Fragment>
             <div className="container">
               <div className="row">
-                <div className="col-sm-12">
-                  <h1 className="text-center">Listado de Alumnos</h1>
-                </div>
                 <div className="col-sm-12">
                   <Table responsive striped bordered hover size="sm">
                     <thead>
