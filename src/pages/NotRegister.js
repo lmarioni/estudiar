@@ -34,7 +34,7 @@ export const NotRegister = () => {
                 <p>Debes ingresar al sistema para seguir</p>
                 <div className="buttons-con">
                     <div className="action-link-wrap">
-                        <a onClick={login} className="link-button">Ingresar</a>
+                        <button onClick={login} className="link-button">Ingresar</button>
                     </div>
                 </div>
             </div>

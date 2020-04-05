@@ -33,16 +33,4 @@ html{
   background: #F4F7F9;
 }
 
-.card{
-  border: none;
-  border-color: #e2e3e7;
-    box-shadow: 0 5px 30px -15px rgba(0,0,0,.2);
-    border-radius: .25rem;
-}
-
-.bg-red{
-  background: red;
-}
-
-
 `
