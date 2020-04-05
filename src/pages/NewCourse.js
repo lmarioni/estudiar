@@ -1,12 +1,8 @@
-import React, { useEffect, useContext, useState } from "react";
-import { Context } from "../Context";
+import React, { useState } from "react";
 import { Loading } from "../components/Loading";
 import { Link } from '@reach/router'
 
 export const NewCourse = () => {
-  const { token } = useContext(Context);
-  const [course, setCourse] = useState({});
-  const [moduleSelected, setSelected] = useState({});
   const [loading, setLoading] = useState(true);
 
   setTimeout(() => {

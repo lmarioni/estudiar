@@ -1,5 +1,5 @@
-import React, { useContext, useState, useRef } from "react";
-import { Context } from "../Context";
+import React, { useState, useRef } from "react";
+// import { Context } from "../Context";
 import { Loading } from "../components/Loading";
 import Tab from "react-bootstrap/Tab";
 import Row from "react-bootstrap/Row";
@@ -8,9 +8,6 @@ import Nav from "react-bootstrap/Nav";
 import QRCode from 'qrcode.react';
 import { StudentsList } from "./StudentsList";
 export const Panel = ({ id }) => {
-  
-  const { token } = useContext(Context);
-  const [loading, setLoading] = useState(false);
   
   const [copySuccess, setCopySuccess] = useState(false);
   const textAreaRef = useRef(null);
@@ -46,9 +43,6 @@ export const Panel = ({ id }) => {
 
   return (
     <div>
-      {loading
-        ? <Loading />
-        : (
           <React.Fragment>
             <div className="container">
               <div className="row">
@@ -97,8 +91,6 @@ export const Panel = ({ id }) => {
               </div>
             </div>
           </React.Fragment>
-        )
-      }
     </div>
   );
 };

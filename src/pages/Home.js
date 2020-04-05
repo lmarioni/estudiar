@@ -1,12 +1,11 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Context } from '../Context';
-import { Link } from '@reach/router';
 
 import { ListOfCourses } from '../components/ListOfCourses';
 import { Loading } from '../components/Loading';
 
 export const Home = () => {
-  const { token, isAuth } = useContext(Context)
+  const { token } = useContext(Context)
   const [courses, setCourses] = useState([])
   const [loading, setLoading] = useState(false)
 
@@ -44,7 +43,7 @@ export const Home = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-8 offset-md-2">
             {
               loading ?
                 <Loading />

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Helmet} from 'react-helmet'
 
 import { Menu } from "./Menu";
 import { MenuMobile } from "./MenuMobile";
@@ -7,7 +8,7 @@ import './menu.css';
 
 export const Course = ({ curso }) => {
   const [moduleSelected, setSelected] = useState({});
-
+  console.log(curso)
   //func: paso como param para ver que seleccionó
   const cambiarModulo = (idLeccion, idModulo) => {
     //seteo cual es el modulo que eligió para mostrarlo
@@ -17,10 +18,14 @@ export const Course = ({ curso }) => {
           modulo.id === idModulo && setSelected(modulo);
         });
     });
+    
   };
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title> {curso.nombre ? curso.nombre : 'Cargando...'} | Estudi.ar </title>
+        </Helmet>
       <div className="fluid-container">
         <div className="row">
           {curso.lecciones && (
@@ -61,6 +66,8 @@ export const Course = ({ curso }) => {
                 </div>
               </React.Fragment>
             ) : <div className="text-center mt-5">
+
+              <img src={curso.imagen} alt=""/>
               <h2>Bienvenido!!</h2>
               <p>Selecciona un modulo para comenzar</p>
               
