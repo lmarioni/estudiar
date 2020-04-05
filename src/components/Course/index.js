@@ -67,7 +67,7 @@ export const Course = ({ curso }) => {
               </React.Fragment>
             ) : <div className="text-center mt-5">
 
-              <img src={curso.imagen} alt=""/>
+              {/* <img src={curso.imagen} alt=""/> */}
               <h2>Bienvenido!!</h2>
               <p>Selecciona un modulo para comenzar</p>
               
