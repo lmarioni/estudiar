@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import QRCode from 'qrcode.react';
 import { StudentsList } from "./StudentsList";
+import { CourseConfiguration } from "../components/CourseConfiguration";
 export const Panel = ({ id }) => {
   
   const [copySuccess, setCopySuccess] = useState(false);
@@ -50,7 +51,7 @@ export const Panel = ({ id }) => {
                   <h1 className="text-center">Opciones</h1>
                 </div>
                 <div className="col-sm-12">
-                  <Tab.Container id="left-tabs-example" defaultActiveKey="studentList">
+                  <Tab.Container id="left-tabs-example" defaultActiveKey="course-configuration">
                     <Row>
                       <Col sm={3}>
                         <Nav variant="pills" className="flex-column">
@@ -60,12 +61,18 @@ export const Panel = ({ id }) => {
                           <Nav.Item>
                             <Nav.Link eventKey="invite">Invitar</Nav.Link>
                           </Nav.Item>
+                          <Nav.Item>
+                            <Nav.Link eventKey="course-configuration">Configuracion</Nav.Link>
+                          </Nav.Item>
                         </Nav>
                       </Col>
                       <Col sm={9}>
                         <Tab.Content>
                           <Tab.Pane eventKey="studentList">
                             <StudentsList id={id} />
+                          </Tab.Pane>
+                          <Tab.Pane eventKey="course-configuration">
+                            <CourseConfiguration id={id} />
                           </Tab.Pane>
                           <Tab.Pane eventKey="invite">
                             <h2>Invitar alumnos</h2>
