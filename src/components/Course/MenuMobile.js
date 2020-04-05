@@ -1,13 +1,9 @@
-import React from 'react'
+import React, {forwardRef} from 'react'
 import Popup from "reactjs-popup";
 import './menu.css';
 
 import { MenuLeccion } from "../MenuLeccion";
 
-const styles = {
-    fontFamily: "sans-serif",
-    marginTop: "40px"
-  };
   const contentStyle = {
     background: "rgba(255,255,255,0)",
     width: "95%",
@@ -15,13 +11,13 @@ const styles = {
   };
   
 
-const BurgerIcon = ({ open, ...props }) => (
-  <div className={open ? "burger-menu open" : "burger-menu"} {...props}>
+const BurgerIcon = forwardRef(({ ref, open, ...props }) => (
+  <div ref={ref} className={open ? "burger-menu open" : "burger-menu"} {...props}>
     <div className="bar1" key="b1" />
     <div className="bar2" key="b2" />
     <div className="bar3" key="b3" />
   </div>
-);
+));
 
 const Menu = ({ lecciones, close, onModuleChange }) => (
     <div className="menu">
@@ -43,7 +39,7 @@ const Menu = ({ lecciones, close, onModuleChange }) => (
 
 
 export const MenuMobile = ({lecciones, onModuleChange}) => {
- 
+
     return (
         <div  className="menu-mobile">
            <Popup
