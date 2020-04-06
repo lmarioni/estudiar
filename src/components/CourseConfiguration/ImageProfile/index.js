@@ -121,7 +121,7 @@ class ImageProfile extends PureComponent {
       imagenActual: blobFile
     });
 
-    fetch("http://btcj.com.ar/api/imagen.php", {
+    fetch("https://btcj.com.ar/api/imagen.php", {
       method: "POST",
       body: fd
     })
@@ -173,7 +173,7 @@ class ImageProfile extends PureComponent {
                   <p className="text-center">Puedes elegir una imagen de icono para tu curso</p>
                  
                 <input type="file" id="file" onChange={this.onSelectFile} />
-                <label for="file">Subir Imagen</label>
+                <label htmlFor="file">Subir Imagen</label>
 
                   {/* <input type="file" /> */}
 
