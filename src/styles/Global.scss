@@ -1,0 +1,19 @@
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #007bff;
+    background-color: #F4F7F9;
+    border-left: 3px solid #007bff;
+    border-radius: 0;
+
+}
+.nav-link:focus, .nav-link:hover {
+    text-decoration: none;
+    outline: none;
+}
+
+.main-title{
+    font-weight: 200;
+}
+
+.tab-content{
+    margin-top: 2em;
+}
