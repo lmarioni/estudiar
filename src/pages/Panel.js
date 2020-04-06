@@ -80,7 +80,7 @@ export const Panel = ({ id }) => {
                           <Tab.Pane eventKey="studentList">
                             <StudentsList id={id} />
                           </Tab.Pane>
-                          <Tab.Pane eventKey="course-configuration">
+                          <Tab.Pane eventKey="changeProfileImage">
                             <CourseConfiguration id={id} />
                           </Tab.Pane>
                           <Tab.Pane eventKey="invite">
