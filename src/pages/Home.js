@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Context } from '../Context';
-
+import '../styles/Global.scss'
 import { ListOfCourses } from '../components/ListOfCourses';
 import { Loading } from '../components/Loading';
 
@@ -30,7 +30,7 @@ export const Home = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-center mb-5 mt-3" style={{fontWeight: 200}}>Mis cursos</h1>
+            <h1 className="text-center mb-5 mt-3 main-title" >Mis cursos</h1>
           </div>
         </div>
         <div className="row">
