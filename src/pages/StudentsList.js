@@ -74,10 +74,10 @@ export const StudentsList = ({ id }) => {
   }
 
   const renderTableData = () => {
-    return students.map((student) => {
+    return students.map((student, key) => {
       const { id_usuario, nombre_usuario, apellido_usuario, email_usuario } = student;
       return (
-        <tr key={id_usuario}>
+        <tr key={key}>
           <td>{nombre_usuario}</td>
           <td>{apellido_usuario}</td>
           <td>{email_usuario}</td>
