@@ -1,3 +1,5 @@
+
+import PropTypes from "prop-types";
 import React, { useEffect, useState, useContext } from 'react';
 import { Context } from "../../Context";
 import ImageProfile from './ImageProfile';
@@ -6,15 +8,20 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { MdBuild } from "react-icons/md";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import Toasts from "../Toasts/Toasts";
+import { addToast } from "../../actions";
 
 
-export const CourseConfiguration = ({ id }) => {
+const CourseConfiguration = ({ id, actions }) => {
   const { token } = useContext(Context);
 
   const [validated, setValidated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [course, setCourse] = useState({});
   const [newTitle, setNewTitle] = useState('');
+  const [toastActions, setToastActions] = useState({});
 
   useEffect(function () {
     setLoading(true);
@@ -23,6 +30,8 @@ export const CourseConfiguration = ({ id }) => {
         Authorization: "Bearer " + token
       })
     };
+
+    setToastActions(actions);
 
     fetch("https://express-now-alpha-lac.now.sh/cursos/" + id, data)
       .then(res => res.json())
@@ -45,6 +54,8 @@ export const CourseConfiguration = ({ id }) => {
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
+    const { addToast } = toastActions;
+    addToast({ text: "Hello, World!" });
     console.log({form});
     if (!validate()) {
       event.preventDefault();
@@ -56,6 +67,7 @@ export const CourseConfiguration = ({ id }) => {
 
   return (
     <div>
+    <Toasts />
       <ImageProfile idCurso={id} imagenActual={course.imagen_perfil} />
       <div>
         <div className="container">
@@ -77,3 +89,16 @@ export const CourseConfiguration = ({ id }) => {
     </div>
   )
 }
+
+
+CourseConfiguration.propTypes = {
+  actions: PropTypes.shape({
+    addToast: PropTypes.func.isRequired
+  }).isRequired
+};
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ addToast }, dispatch)
+});
+
+export default connect(null, mapDispatchToProps)(CourseConfiguration);

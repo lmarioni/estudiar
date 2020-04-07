@@ -11,7 +11,7 @@ import { Context } from "../Context";
 import { Loading } from '../components/Loading'
 
 import { StudentsList } from "./StudentsList";
-import { CourseConfiguration } from "../components/CourseConfiguration";
+import CourseConfiguration from "../components/CourseConfiguration";
 import '../styles/Global.scss';
 
 export const Panel = ({ id }) => {
