@@ -9,7 +9,7 @@ import './Toast.scss';
 const Toasts = ({ actions, toasts }) => {
   const { removeToast } = actions;
   return (
-    <ul className="toasts">
+    <ul className="custom-toasts">
       {toasts.map(toast => {
         const { id } = toast;
         return (

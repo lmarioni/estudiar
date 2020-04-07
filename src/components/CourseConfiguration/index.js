@@ -53,9 +53,9 @@ const CourseConfiguration = ({ id, actions }) => {
   const isDisabled = () => newTitle === '' || newTitle === course.nombre;
 
   const handleSubmit = (event) => {
-    const form = event.currentTarget;
     const { addToast } = toastActions;
-    addToast({ text: "Hello, World!" });
+    const form = event.currentTarget;
+    addToast({ text: "Toast prueba!" });
     console.log({form});
     if (!validate()) {
       event.preventDefault();
