@@ -1,6 +1,5 @@
-import React, { useState, useRef } from "react";
-// import { Context } from "../Context";
-
+import React, { useEffect, useState, useContext, useRef } from "react";
+import { Context } from "../Context";
 import Tab from "react-bootstrap/Tab";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -10,6 +9,7 @@ import { StudentsList } from "./StudentsList";
 import CourseConfiguration from "../components/CourseConfiguration";
 import '../styles/Global.scss';
 export const Panel = ({ id }) => {
+  const { token } = useContext(Context);
 
   const tabsMapper = [
     { key: 'invite', label: 'Invitar alumnos' },
@@ -19,8 +19,24 @@ export const Panel = ({ id }) => {
 
   const [copySuccess, setCopySuccess] = useState(false);
   const textAreaRef = useRef(null);
-  const [inviteCode, setInviteCode] = useState(id);
-  const [inviteQR, setInviteQR] = useState(`https://estudiar.btcj.com.ar/i/${inviteCode}`);
+  const [inviteCode, setInviteCode] = useState('');
+  const [inviteQR, setInviteQR] = useState('');
+
+
+  const data = { headers: new Headers({ Authorization: "Bearer " + token }) };
+
+  const fetchCode = async () => {
+    const response = await fetch(`https://express-now-alpha-lac.now.sh/cursos/${id}`, data);
+    const json = await response.json();
+    setInviteCode(json.codigoInvitacion);
+    setInviteQR(`https://estudiar.btcj.com.ar/i/${json.codigoInvitacion}`);
+    
+  }
+
+  useEffect(function () {
+    fetchCode();
+  }, []);
+
 
   const [selectedTab, setSelectedTab] = useState('Listado de alumnos');
 

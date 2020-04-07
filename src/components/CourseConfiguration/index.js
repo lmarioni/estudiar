@@ -55,7 +55,7 @@ const CourseConfiguration = ({ id, actions }) => {
   const handleSubmit = (event) => {
     const { addToast } = toastActions;
     const form = event.currentTarget;
-    addToast({ text: "Toast prueba!" });
+    addToast({ text: "Exito :) "});
     console.log({form});
     if (!validate()) {
       event.preventDefault();
