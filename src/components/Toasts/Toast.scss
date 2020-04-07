@@ -1,4 +1,4 @@
-.toast {
+.custom-toast {
     align-items: flex-start;
     border-radius: 4px;
     color: #ffffff;
@@ -6,18 +6,18 @@
     padding: 16px;
   }
   
-  .toast:not(:last-child) {
+  .custom-toast:not(:last-child) {
     margin: 0 0 12px;
   }
   
-  .toast__content {
+  .custom-toast__content {
     flex: 1 1 auto;
     margin: 0 12px 0 0;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   
-  .toast__dismiss {
+  .custom-toast__dismiss {
     -webkit-appearance: none;
     -moz-appearance: none;
     background: transparent;
@@ -30,7 +30,7 @@
     padding: 0;
   }
   
-  .toasts {
+  .custom-toasts {
     bottom: 24px;
     position: fixed;
     right: 24px;
