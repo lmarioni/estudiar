@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import QRCode from 'qrcode.react';
 import { StudentsList } from "./StudentsList";
-import { CourseConfiguration } from "../components/CourseConfiguration";
+import CourseConfiguration from "../components/CourseConfiguration";
 import '../styles/Global.scss';
 export const Panel = ({ id }) => {
 
