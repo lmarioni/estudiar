@@ -20,7 +20,7 @@ export const Panel = ({ id }) => {
   const tabsMapper = [
     { key: 'invite', label: 'Invitar alumnos' },
     { key: 'student-list', label: 'Listado de alumnos' },
-    { key: 'course-configuration', label: 'Cambiar imagen de perfil' },
+    { key: 'course-configuration', label: 'Configuración del curso' },
   ];
 
   const [copySuccess, setCopySuccess] = useState(false);
