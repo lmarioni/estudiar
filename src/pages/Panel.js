@@ -1,17 +1,15 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-// import { Context } from "../Context";
-
+import React, { useEffect, useState, useContext, useRef } from "react";
+import { Context } from "../Context";
 import Tab from "react-bootstrap/Tab";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import QRCode from 'qrcode.react';
-import { Context } from "../Context";
 
 import { Loading } from '../components/Loading'
 
 import { StudentsList } from "./StudentsList";
-import { CourseConfiguration } from "../components/CourseConfiguration";
+import CourseConfiguration from "../components/CourseConfiguration";
 import '../styles/Global.scss';
 
 export const Panel = ({ id }) => {
@@ -20,7 +18,7 @@ export const Panel = ({ id }) => {
   const tabsMapper = [
     { key: 'invite', label: 'Invitar alumnos' },
     { key: 'student-list', label: 'Listado de alumnos' },
-    { key: 'course-configuration', label: 'Cambiar imagen de perfil' },
+    { key: 'course-configuration', label: 'Configuración del curso' },
   ];
 
   const [copySuccess, setCopySuccess] = useState(false);

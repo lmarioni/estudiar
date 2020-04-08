@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Loading } from "../components/Loading";
-import { Link } from '@reach/router'
+import { Link } from '@reach/router';
 
 export const NewCourse = () => {
   const [loading, setLoading] = useState(true);
