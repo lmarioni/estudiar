@@ -35,7 +35,12 @@ export const NotRegister = () => {
                 <p>Debes ingresar al sistema para seguir</p>
                 <div className="buttons-con">
                     <div className="action-link-wrap">
-                        <Button onClick={login} variant="primary">Ingresar</Button>
+                    <form action="https://www.btcj.com.ar/sitio/login.php" method="POST">
+                        <input type="hidden" name="vuelta" value="https://estudiar.btcj.com.ar/" />
+                        <button type="submit" class="btn btn-success btn-lg">
+                        Ingresar
+                        </button>
+                    </form>
                     </div>
                 </div>
             </div>

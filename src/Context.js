@@ -35,7 +35,7 @@ const Provider = ({children}) => {
       },
       removeAuth: () =>{
         setIsAuth(false)
-        window.sessionStorage.removeItem('token')
+        Cookies.remove('token')
       }
   }
 

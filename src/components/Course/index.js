@@ -4,7 +4,7 @@ import {Helmet} from 'react-helmet'
 import { Menu } from "./Menu";
 import { MenuMobile } from "./MenuMobile";
 
-import './menu.css';
+import './styles.css';
 
 export const Course = ({ curso }) => {
   const [moduleSelected, setSelected] = useState({});
@@ -18,7 +18,6 @@ export const Course = ({ curso }) => {
           modulo.id === idModulo && setSelected(modulo);
         });
     });
-    
   };
 
   return (
@@ -60,6 +59,7 @@ export const Course = ({ curso }) => {
                   {moduleSelected.nombre}
                 </h2>
                 <div
+                  className="contenido-modulo"
                   dangerouslySetInnerHTML={{ __html: moduleSelected.contenido }}
                 >
                   

@@ -8,6 +8,7 @@ import { Invite }  from './pages/Invite';
 import { Panel } from './pages/Panel';
 import { NewCourse } from './pages/NewCourse';
 import { NotRegister } from './pages/NotRegister';
+import { Logout } from './pages/Logout';
 
 import { NotFound } from './components/NotFound';
 import { NavBar } from './components/NavBar';
@@ -36,6 +37,7 @@ function App() {
           { !isAuth && <Redirect noThrow from='/newCourse' to='/not-register' /> }
           { !isAuth && <NotRegister default path="/not-register" /> }
           <Invite path='/i/:code' />
+          <Logout path='/logout' />
           <Home path='/' />
           <NewCourse path="/newCourse" />
           <Course path='/course/:id' />
