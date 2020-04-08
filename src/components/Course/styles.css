@@ -84,3 +84,16 @@
     color: black;
   }
   
+  .contenido-modulo .container{
+    width: 100% !important;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
+  }
+
+  .contenido-modulo .container .recuadro{
+    margin: 0px !important;
+  }
+
+  .contenido-modulo img {
+    width: 100%;
+}
+

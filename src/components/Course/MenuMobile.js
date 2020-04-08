@@ -1,6 +1,6 @@
 import React, {forwardRef} from 'react'
 import Popup from "reactjs-popup";
-import './menu.css';
+import './styles.css';
 
 import { MenuLeccion } from "../MenuLeccion";
 
