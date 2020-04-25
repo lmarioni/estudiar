@@ -2,7 +2,8 @@ import React, { useEffect, useContext, useState } from 'react';
 import { Context } from '../Context';
 import '../styles/Global.scss'
 import { ListOfCourses } from '../components/ListOfCourses';
-import { Loading } from '../components/Loading';
+import { ListCard } from "../components/ListCard";
+import {Skeleton} from '../components/Skeleton';
 
 export const Home = () => {
   const { token } = useContext(Context)
@@ -46,7 +47,9 @@ export const Home = () => {
           <div className="col-md-8 offset-md-2">
             {
               loading ?
-                <Loading />
+              <ListCard description={<Skeleton count={3} color="#bbb" />}/>
+                
+                
                 :
                 <ListOfCourses courses={courses} />
             }
