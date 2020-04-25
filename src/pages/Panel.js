@@ -85,31 +85,26 @@ export const Panel = ({ id }) => {
   };
 
   useEffect(function () {
-        const data = {
-          headers: new Headers({
-            Authorization: "Bearer " + token
-          })
-        };
-    
-        fetch("https://express-now-alpha-lac.now.sh/cursos/" + id, data)
-          .then(res => res.json())
-          .then(response => {
-            setInviteCode(`http://estudiar.btcj.com.ar/i/${response.codigoInvitacion}`);
-            setCourse(response);
-            setLoading(false);
-          });
+    const data = {
+      headers: new Headers({
+        Authorization: "Bearer " + token
+      })
+    };
+
+    fetch("https://express-now-alpha-lac.now.sh/cursos/" + id, data)
+      .then(res => res.json())
+      .then(response => {
+        setInviteCode(`http://estudiar.btcj.com.ar/i/${response.codigoInvitacion}`);
+        setCourse(response);
+        setLoading(false);
+      });
   }, []);
 
   const handleSelectedTab = (tab) => { setSelectedTab(tabsMapper.find(eachTab => eachTab.key === tab).label); }
-
-if(loading){
-  return <Loading />
-}
-
   
   return (
     <div>
-      <React.Fragment>
+      {loading ? <Loading /> : <React.Fragment>
         <div className="container">
           <div className="row">
             <div className="col-md-3"></div>
@@ -146,24 +141,24 @@ if(loading){
                             <div className="row">
                               <div className="col-md-12">
 
-                        <h5 className="text-center">Usa este código QR para invitar a tus alumnos!</h5>
-                        <div className="text-center">
-                          <QRCode
-                            id="qrcode"
-                            value={inviteQR}
-                            size={290}
-                            level={"H"}
-                            includeMargin={true}
-                          />
-                        </div>
-                        <h5 className="text-center">Invita con esta url:</h5>
-                        <p className="link-url" ref={textAreaRef} onClick={copyToClipboard}>{inviteCode}</p>
-                        <p className={` text-center faded-text${copySuccess ? "-visible" : ""}`}>Copiado al portapapeles!</p>
-                      </div>
-                      </div>
-                      </div>
+                                <h5 className="text-center">Usa este código QR para invitar a tus alumnos!</h5>
+                                <div className="text-center">
+                                  <QRCode
+                                    id="qrcode"
+                                    value={inviteQR}
+                                    size={290}
+                                    level={"H"}
+                                    includeMargin={true}
+                                  />
+                                </div>
+                                <h5 className="text-center">Invita con esta url:</h5>
+                                <p className="link-url" ref={textAreaRef} onClick={copyToClipboard}>{inviteCode}</p>
+                                <p className={` text-center faded-text${copySuccess ? "-visible" : ""}`}>Copiado al portapapeles!</p>
+                              </div>
+                            </div>
+                          </div>
 
-                      </div>
+                        </div>
                       </Tab.Pane>
                     </Tab.Content>
                   </Col>
@@ -173,6 +168,7 @@ if(loading){
           </div>
         </div>
       </React.Fragment>
+      }
     </div>
   );
 };
