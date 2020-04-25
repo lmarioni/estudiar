@@ -3,7 +3,7 @@ import { Context } from '../Context';
 import '../styles/Global.scss'
 import { ListOfCourses } from '../components/ListOfCourses';
 import { ListCard } from "../components/ListCard";
-import {Skeleton} from '../components/Skeleton';
+import { Skeleton } from '../components/Skeleton';
 
 export const Home = () => {
   const { token } = useContext(Context)
@@ -47,9 +47,11 @@ export const Home = () => {
           <div className="col-md-8 offset-md-2">
             {
               loading ?
-              <ListCard description={<Skeleton count={3} color="#bbb" />}/>
-                
-                
+                <div>
+                  <ListCard description={<Skeleton count={1} color="#bbb" />} />
+                  <ListCard description={<Skeleton count={1} color="#bbb" />} />
+                  <ListCard description={<Skeleton count={1} color="#bbb" />} />
+                </div>
                 :
                 <ListOfCourses courses={courses} />
             }
