@@ -34,7 +34,6 @@ const CourseConfiguration = ({ idCurso, course, actions }) => {
     const { addToast } = toastActions;
     const form = event.currentTarget;
     addToast({ text: "Exito :) "});
-    console.log({form});
     if (!validate()) {
       event.preventDefault();
       event.stopPropagation();
@@ -46,7 +45,6 @@ const CourseConfiguration = ({ idCurso, course, actions }) => {
   return (
     <div>
     <Toasts />
-
       <ImageProfile idCurso={idCurso} imagenActual={course.imagen_perfil} />
       <div>
         <div className="container">
