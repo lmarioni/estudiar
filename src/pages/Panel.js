@@ -17,6 +17,7 @@ import { Loading } from '../components/Loading'
 
 import { StudentsList } from "./StudentsList";
 import CourseConfiguration from "../components/CourseConfiguration";
+import CourseQuizz from "../components/CourseQuizz";
 import '../styles/Global.scss';
 
 export const Panel = ({ id }) => {
@@ -25,7 +26,8 @@ export const Panel = ({ id }) => {
   const tabsMapper = [
     { key: 'invite', label: 'Invitar alumnos' },
     { key: 'student-list', label: 'Listado de alumnos' },
-    { key: 'course-configuration', label: 'Configuración del curso' },
+    { key: 'course-configuration', label: 'Configuración' },
+    { key: 'course-test', label: 'Evaluación' },
   ];
 
   const [copySuccess, setCopySuccess] = useState(false);
@@ -101,7 +103,7 @@ export const Panel = ({ id }) => {
   }, []);
 
   const handleSelectedTab = (tab) => { setSelectedTab(tabsMapper.find(eachTab => eachTab.key === tab).label); }
-  
+
   return (
     <div>
       {loading ? <Loading /> : <React.Fragment>
@@ -124,6 +126,9 @@ export const Panel = ({ id }) => {
                       </Nav.Item>
                       <Nav.Item>
                         <Nav.Link eventKey="course-configuration">Configuracion</Nav.Link>
+                      </Nav.Item>
+                      <Nav.Item>
+                        <Nav.Link eventKey="course-test">Evaluacion</Nav.Link>
                       </Nav.Item>
                     </Nav>
                   </Col>
@@ -157,8 +162,10 @@ export const Panel = ({ id }) => {
                               </div>
                             </div>
                           </div>
-
                         </div>
+                      </Tab.Pane>
+                      <Tab.Pane eventKey="course-test">
+                        <CourseQuizz id={id} />
                       </Tab.Pane>
                     </Tab.Content>
                   </Col>
