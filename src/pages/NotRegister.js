@@ -37,7 +37,7 @@ export const NotRegister = () => {
                     <div className="action-link-wrap">
                     <form action="https://www.btcj.com.ar/sitio/login.php" method="POST">
                         <input type="hidden" name="vuelta" value="https://estudiar.btcj.com.ar/" />
-                        <button type="submit" class="btn btn-success btn-lg">
+                        <button type="submit" className="btn btn-success btn-lg">
                         Ingresar
                         </button>
                     </form>
