@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Context } from "../Context";
-import { Loading } from "../components/Loading";
+import { Skeleton } from '../components/Skeleton';
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -22,7 +22,7 @@ export const StudentsList = ({ id }) => {
   const handleShow = () => setShowModal(true);
 
   const data = { headers: new Headers({ Authorization: "Bearer " + token }) };
-  
+
   const fetchStudents = async () => {
     const response = await fetch(`https://express-now-alpha-lac.now.sh/cursos/${id}/alumnos`, data);
     const json = await response.json();
@@ -34,7 +34,7 @@ export const StudentsList = ({ id }) => {
     setLoading(true);
     fetchStudents();
   }, []);
-  
+
   const deleteStudentModal = (student) => {
     setStudentToDelete(student);
     handleShow();
@@ -109,7 +109,7 @@ export const StudentsList = ({ id }) => {
       </Modal>
 
       {loading
-        ? <Loading />
+        ? <Skeleton count={5} color="#bbb" />
         : (
           <React.Fragment>
             <div className="container">
