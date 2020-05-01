@@ -108,7 +108,7 @@ export const Panel = ({ id }) => {
   return (
     <div>
       {loading ? <Loading /> : <React.Fragment>
-        <div className="container">
+        <div className="w-100">
           <div className="row">
             <div className="col-md-3"></div>
             <div className="col-md-9 mt-4">
