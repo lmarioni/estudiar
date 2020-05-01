@@ -17,7 +17,7 @@ const CourseQuizz = ({ id }) => {
             })
         };
 
-        fetch("https://express-now-alpha-lac.now.sh/evaluacion/" + id, data)
+        fetch(`${process.env.REACT_APP_BASE_URL}/evaluacion/` + id, data)
             .then(res => res.json())
             .then(response => {
                 setQuizz(response);
@@ -49,6 +49,3 @@ const CourseQuizz = ({ id }) => {
     )
 }
 export default CourseQuizz;
-/*
-
-*/

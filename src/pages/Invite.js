@@ -19,10 +19,9 @@ export const Invite = ({ code }) => {
   const [template, setTemplate] = useState({template: 'sinPantalla', message: ''});
   const [idCurso, setIdCurso] = useState(0);
   
-
     useEffect(function() {
         if (code) {
-            fetch("https://express-now-alpha-lac.now.sh/invitation/exist/" + code)
+            fetch(`${process.env.REACT_APP_BASE_URL}/invitation/exist/` + code)
             .then(res => res.json())
             .then(response => {
                 setIdCurso(response.curso.id)
@@ -35,7 +34,7 @@ export const Invite = ({ code }) => {
                             })
                             };
 
-                            fetch("https://express-now-alpha-lac.now.sh/invitation/" + code , data)
+                            fetch(`${process.env.REACT_APP_BASE_URL}/invitation/` + code , data)
                             .then(res => res.json())
                             .then(response => {
                                 if(response.status==='success'){

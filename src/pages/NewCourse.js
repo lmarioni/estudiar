@@ -16,8 +16,8 @@ export const NewCourse = () => {
         Authorization: "Bearer " + token
       })
     };
- 
-    fetch(" https://express-now-alpha-lac.now.sh/curso/" + id, data)
+
+    fetch(` ${process.env.REACT_APP_BASE_URL}/curso/` + id, data)
       .then(res => res.json())
       .then(response => {
         setCourse(response);

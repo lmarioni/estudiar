@@ -25,7 +25,7 @@ export const StudentsList = ({ id }) => {
   const data = { headers: new Headers({ Authorization: "Bearer " + token }) };
 
   const fetchStudents = async () => {
-    const response = await fetch(`https://express-now-alpha-lac.now.sh/cursos/${id}/alumnos`, data);
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/cursos/${id}/alumnos`, data);
     const json = await response.json();
     setStudents(json);
     setLoading(false);
@@ -47,7 +47,7 @@ export const StudentsList = ({ id }) => {
         method: 'DELETE',
         headers: new Headers({ Authorization: "Bearer " + token }),
       };
-      const response = await fetch(`https://express-now-alpha-lac.now.sh/usuarios/${studentToDelete.id_usuario}/curso/${id}`, requestOptions);
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/usuarios/${studentToDelete.id_usuario}/curso/${id}`, requestOptions);
       const json = await response.json();
       fetchStudents();
       setLoading(false);

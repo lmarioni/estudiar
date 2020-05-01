@@ -67,11 +67,11 @@ export const Panel = ({ id }) => {
       })
     };
 
-    fetch("https://express-now-alpha-lac.now.sh/cursos/" + id, data)
+    fetch(`${process.env.REACT_APP_BASE_URL}/cursos/` + id, data)
       .then(res => res.json())
       .then(courseResponse => {
         setInviteCode(`http://estudiar.btcj.com.ar/i/${courseResponse.codigoInvitacion}`);
-        setCourse({...courseResponse, id});
+        setCourse({ ...courseResponse, id });
         setLoading(false);
       });
   }, []);
