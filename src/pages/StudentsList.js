@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Alert from "react-bootstrap/Alert";
 import { MdDelete } from "react-icons/md";
+import { MdRemoveRedEye } from "react-icons/md";
 
 export const StudentsList = ({ id }) => {
   const { token } = useContext(Context);
@@ -82,8 +83,10 @@ export const StudentsList = ({ id }) => {
           <td>{apellido_usuario}</td>
           <td>{email_usuario}</td>
           <td>
-            <Button variant="primary">Ver datos</Button>{' '}
-            <Button onClick={() => deleteStudentModal(student)} variant="danger"> <MdDelete /> Echar del curso</Button>
+          <div className="action-container">
+            <div className="pointer"> <MdRemoveRedEye /> </div>
+            <div className="pointer" onClick={() => deleteStudentModal(student)} > <MdDelete /> </div>
+          </div>
           </td>
         </tr>
       )

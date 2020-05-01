@@ -80,71 +80,68 @@ export const Panel = ({ id }) => {
   return (
     <div>
       {loading ? <Loading /> : <React.Fragment>
-        <div className="w-100">
-          <div className="row">
-            <div className="col-md-3"></div>
-            <div className="col-md-9 mt-4">
-              <h1 className="text-center main-title" >{selectedTab}</h1>
-            </div>
-            <div className="col-sm-12">
-              <Tab.Container defaultActiveKey="student-list" onSelect={handleSelectedTab}>
-                <Row>
-                  <Col sm={3}>
-                    <Nav variant="pills" className="flex-column">
-                      <Nav.Item>
-                        <Nav.Link eventKey="student-list">Listado de alumnos</Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link eventKey="invite">Invitar</Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link eventKey="course-configuration">Configuracion</Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link eventKey="course-lessons">Lecciones</Nav.Link>
-                      </Nav.Item>
-                    </Nav>
-                  </Col>
-                  <Col sm={9}>
-                    <Tab.Content>
-                      <Tab.Pane eventKey="student-list">
-                        <StudentsList id={id} />
-                      </Tab.Pane>
-                      <Tab.Pane eventKey="course-configuration">
-                        <CourseConfiguration idCurso={id} course={course} />
-                      </Tab.Pane>
-                      <Tab.Pane eventKey="invite">
-                        <div className="card preview-card" context="main">
-                          <div className="card-description">
-                            <div className="row">
-                              <div className="col-md-12">
+        <div className="row w-100">
+          <div className="col-sm-12 col-md-9 offset-md-3">
+            <h1 className="text-center main-title" >{selectedTab}</h1>
+          </div>
+          <div className="col-sm-12">
+            <Tab.Container defaultActiveKey="student-list" onSelect={handleSelectedTab}>
+              <Row>
+                <Col sm={12} md={3}>
+                  <Nav variant="pills" className="flex-column">
+                    <Nav.Item>
+                      <Nav.Link eventKey="student-list">Listado de alumnos</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey="invite">Invitar</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey="course-configuration">Configuracion</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey="course-lessons">Lecciones</Nav.Link>
+                    </Nav.Item>
+                  </Nav>
+                </Col>
+                <Col sm={12} md={9}>
+                  <Tab.Content>
+                    <Tab.Pane eventKey="student-list">
+                      <StudentsList id={id} />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="course-configuration">
+                      <CourseConfiguration idCurso={id} course={course} />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="invite">
+                      <div className="card preview-card" context="main">
+                        <div className="card-description">
+                          <div className="row">
+                            <div className="col-md-12">
 
-                                <h5 className="text-center">Usa este código QR para invitar a tus alumnos!</h5>
-                                <div className="text-center">
-                                  <QRCode
-                                    id="qrcode"
-                                    value={inviteQR}
-                                    size={290}
-                                    level={"H"}
-                                    includeMargin={true}
-                                  />
-                                </div>
-                                <h5 className="text-center">Invita con esta url:</h5>
-                                <p className="link-url" ref={textAreaRef} onClick={copyToClipboard}>{inviteCode}</p>
-                                <p className={` text-center faded-text${copySuccess ? "-visible" : ""}`}>Copiado al portapapeles!</p>
+                              <h5 className="text-center">Usa este código QR para invitar a tus alumnos!</h5>
+                              <div className="text-center">
+                                <QRCode
+                                  id="qrcode"
+                                  value={inviteQR}
+                                  size={290}
+                                  level={"H"}
+                                  includeMargin={true}
+                                />
                               </div>
+                              <h5 className="text-center">Invita con esta url:</h5>
+                              <p className="link-url" ref={textAreaRef} onClick={copyToClipboard}>{inviteCode}</p>
+                              <p className={` text-center faded-text${copySuccess ? "-visible" : ""}`}>Copiado al portapapeles!</p>
                             </div>
                           </div>
                         </div>
-                      </Tab.Pane>
-                      <Tab.Pane eventKey="course-lessons">
-                        <CourseLessons course={course}/>
-                      </Tab.Pane>
-                    </Tab.Content>
-                  </Col>
-                </Row>
-              </Tab.Container>
-            </div>
+                      </div>
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="course-lessons">
+                      <CourseLessons course={course} />
+                    </Tab.Pane>
+                  </Tab.Content>
+                </Col>
+              </Row>
+            </Tab.Container>
           </div>
         </div>
       </React.Fragment>
