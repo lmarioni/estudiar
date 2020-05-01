@@ -11,38 +11,32 @@ import { connect } from "react-redux";
 import Toasts from "../Toasts/Toasts";
 import { addToast } from "../../actions";
 
-
-// export const CourseConfiguration = ({course, idCurso}) => {
-
 const CourseConfiguration = ({ idCurso, course, actions }) => {
+  
   const { token } = useContext(Context);
-
   const [validated, setValidated] = useState(false);
   const [newTitle, setNewTitle] = useState('');
   const [toastActions, setToastActions] = useState({});
+  
+  useEffect(function () {
+    setToastActions(actions);
+  }, []);
 
-  const validate = () =>{
-    console.log({newTitle});
-    return false;
-  }
-
-  const isDisabled = () => newTitle === '' || newTitle === course.nombre;
+  const isDisabled = () => newTitle === '' || newTitle === course.nombre;
 
   const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const { addToast } = toastActions;
     const form = event.currentTarget;
-    addToast({ text: "Exito :) "});
-    if (!validate()) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
+    addToast({ text: "El título se actualizó :) " });
+    console.log({newTitle});
     setValidated(true);
   };
 
   return (
     <div>
-    <Toasts />
+      <Toasts />
       <ImageProfile idCurso={idCurso} imagenActual={course.imagen_perfil} />
       <div>
         <div className="container">
@@ -51,8 +45,8 @@ const CourseConfiguration = ({ idCurso, course, actions }) => {
               <Card.Title className="text-center" ><h2>{course.nombre}</h2> </Card.Title>
               <Form noValidate onSubmit={handleSubmit}>
                 <Form.Group controlId="formBasicCourse">
-                  <Form.Label>Título del curso</Form.Label>
-                  <Form.Control type="text" placeholder="Ingrese un título" value={newTitle} onChange={e => setNewTitle(e.target.value)}/>
+                  <Form.Label>Nuevo título para el curso</Form.Label>
+                  <Form.Control autoComplete="username" type="text" placeholder="Ingrese un título" value={newTitle} onChange={e => setNewTitle(e.target.value)} />
                   <Form.Text className="text-muted"> Recuerda que un buen título destacará tu curso de los demás. </Form.Text>
                 </Form.Group>
                 <Button variant="primary" disabled={isDisabled()} type="submit"> Guardar cambios </Button>

@@ -3,7 +3,7 @@
     border-radius: 4px;
     color: #ffffff;
     display: flex;
-    padding: 16px;
+    padding: 10px;
   }
   
   .custom-toast:not(:last-child) {
@@ -34,5 +34,5 @@
     bottom: 24px;
     position: fixed;
     right: 24px;
-    width: 240px;
+    width: 20em;
   }
