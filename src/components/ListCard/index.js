@@ -12,12 +12,18 @@ export const ListCard = ({
     description = '',
     action = ''
 }) => {
+
+    const getTitleBadge = (title) => {
+        const titleBadge = title.includes(':') ? title.split(':')[1].trim() : title;
+        return titleBadge.substring(0, 1);
+    }
+
     const metaBadge =
         icon ? (icon) :
             badgeImage ?
                 <img src={badgeImage} width='100%' className="card-icon icon icon-blog text-center" alt={`Icono de ${title}`} /> :
                 title ?
-                    <div className="card-icon icon icon-blog text-center"><span className="badge-text">{title.substring(0, 1)}</span></div> :
+                    <div className="card-icon icon icon-blog text-center"><span className="badge-text">{getTitleBadge(title)}</span></div> :
                     '';
     return (
         <div className="card preview-card fade-in" context="main">
