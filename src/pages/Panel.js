@@ -17,8 +17,8 @@ import { Loading } from '../components/Loading'
 
 import { StudentsList } from "./StudentsList";
 import CourseConfiguration from "../components/CourseConfiguration";
-import CourseQuizz from "../components/CourseQuizz";
-import '../styles/Global.scss';
+import CourseLessons from "../components/CourseLessons";
+import "../styles/Global.scss";
 
 export const Panel = ({ id }) => {
   const { token } = useContext(Context);
@@ -28,6 +28,7 @@ export const Panel = ({ id }) => {
     { key: 'student-list', label: 'Listado de alumnos' },
     { key: 'course-configuration', label: 'Configuración' },
     { key: 'course-test', label: 'Evaluación' },
+    { key: 'course-lessons', label: 'Lecciones' },
   ];
 
   const [copySuccess, setCopySuccess] = useState(false);
@@ -95,9 +96,9 @@ export const Panel = ({ id }) => {
 
     fetch("https://express-now-alpha-lac.now.sh/cursos/" + id, data)
       .then(res => res.json())
-      .then(response => {
-        setInviteCode(`http://estudiar.btcj.com.ar/i/${response.codigoInvitacion}`);
-        setCourse(response);
+      .then(courseResponse => {
+        setInviteCode(`http://estudiar.btcj.com.ar/i/${courseResponse.codigoInvitacion}`);
+        setCourse(courseResponse);
         setLoading(false);
       });
   }, []);
@@ -128,7 +129,7 @@ export const Panel = ({ id }) => {
                         <Nav.Link eventKey="course-configuration">Configuracion</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link eventKey="course-test">Evaluacion</Nav.Link>
+                        <Nav.Link eventKey="course-lessons">Lecciones</Nav.Link>
                       </Nav.Item>
                     </Nav>
                   </Col>
@@ -164,8 +165,8 @@ export const Panel = ({ id }) => {
                           </div>
                         </div>
                       </Tab.Pane>
-                      <Tab.Pane eventKey="course-test">
-                        <CourseQuizz id={id} />
+                      <Tab.Pane eventKey="course-lessons">
+                        <CourseLessons course={course}/>
                       </Tab.Pane>
                     </Tab.Content>
                   </Col>
