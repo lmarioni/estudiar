@@ -17,18 +17,17 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { addToast } from "../../actions";
 
-
 import 'react-quill/dist/quill.snow.css';
 
-const CourseLessons = ({course, actions}) => {
+const CourseLessons = ({ course, actions }) => {
 
-    //const { token } = useContext(Context);
-
+    const { token } = 'aslf6kgj1lecn4sv4laasdj21n1k2jne19famnf247oq';
     const [htmlEditorValue, setHtmlEditorValue] = useState('');
     const [invitationCode, setInvitationCode] = useState('');
     const [picture, setPicture] = useState('');
     const [profilePicture, setProfilePicture] = useState('');
     const [title, setTitle] = useState('');
+    const [courseId, setCourseId] = useState('');
     const [lesson, setLesson] = useState({});
     const [lessons, setLessons] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -40,9 +39,10 @@ const CourseLessons = ({course, actions}) => {
 
     useEffect(() => {
         if (course) {
-            const { codigoInvitacion, imagen, imagen_perfil, lecciones, nombre } = course;
+            const { codigoInvitacion, imagen, imagen_perfil, lecciones, nombre, id } = course;
             setInvitationCode(codigoInvitacion);
             setPicture(imagen);
+            setCourseId(id);
             setProfilePicture(imagen_perfil);
             setTitle(nombre);
             setLessons(lecciones);
@@ -62,7 +62,7 @@ const CourseLessons = ({course, actions}) => {
         )
     }
 
-    const isDisabledLesson = () => newLesson === '';
+    const isDisabledLesson = () => newLesson === '' || loading;
 
     const openModuleModal = (moduleLesson) => {
         setLesson(moduleLesson);
@@ -86,12 +86,26 @@ const CourseLessons = ({course, actions}) => {
     const handleSubmitLesson = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        const { addToast } = toastActions;
-        const form = event.currentTarget;
-        setShowLesson(false);
-        addToast({ text: "Se ha creado una nueva lección " });
-        console.log({ newLesson });
-        
+
+        var url = `http://express-now-alpha-lac.now.sh/cursos/${courseId}/lecciones`;
+        fetch(url, {
+            method: 'POST', 
+            body: { nombre: newLesson },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': `Bearer ${token}`,
+            }
+        }).then(res => {
+            const { addToast } = toastActions;
+            console.log(res);
+            console.log(res.data);
+            setShowLesson(false);
+            if (res.ok) {
+                addToast({ text: "Se ha creado una nueva lección " });
+            } else {
+                addToast({ color: '#F97A85', text: `Hubo un error, intentelo nuevamente.` });
+            }
+        });
     };
 
 
