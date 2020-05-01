@@ -8,7 +8,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import Toasts from "../Toasts/Toasts";
 import { addToast } from "../../actions";
 
 const CourseConfiguration = ({ idCurso, course, actions }) => {
@@ -36,7 +35,6 @@ const CourseConfiguration = ({ idCurso, course, actions }) => {
 
   return (
     <div>
-      <Toasts />
       <ImageProfile idCurso={idCurso} imagenActual={course.imagen_perfil} />
       <div>
         <div className="container">
