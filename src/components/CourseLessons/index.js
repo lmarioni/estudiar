@@ -7,10 +7,16 @@ import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { MdBuild } from "react-icons/md";
 import { ListCard } from "../ListCard";
+import ReactQuill from 'react-quill';
+import CustomToolbar, { modules, formats } from "./customToolbar";
+
+import 'react-quill/dist/quill.snow.css';
 
 const CourseLessons = (course) => {
 
     //const { token } = useContext(Context);
+
+    const [htmlEditorValue, setHtmlEditorValue] = useState('');
     const [invitationCode, setInvitationCode] = useState('');
     const [picture, setPicture] = useState('');
     const [profilePicture, setProfilePicture] = useState('');
@@ -47,17 +53,15 @@ const CourseLessons = (course) => {
 
     const openModal = (moduleLesson) => {
         setLesson(moduleLesson);
+        setHtmlEditorValue(moduleLesson.contenido);
         setShow(true);
     }
 
     const handleClose = () => {
-       
+        console.log(htmlEditorValue);
         setLesson({});
         setShow(false);
     }
-
-   
-
 
     return (
         <div>
@@ -66,7 +70,9 @@ const CourseLessons = (course) => {
                     <Modal.Title>{lesson.nombre}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    
+                    <CustomToolbar />
+                    <ReactQuill theme="snow" value={htmlEditorValue} onChange={setHtmlEditorValue} modules={modules}
+                        formats={formats} />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}> Close </Button>
