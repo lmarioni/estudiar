@@ -6,16 +6,19 @@ import { Link } from "@reach/router";
 export const ListCard = ({
     badgeImage = '',
     linkUrl = '',
+    icon = '',
     title = '',
     subtitle = '',
     description = '',
     action = ''
 }) => {
-    const metaBadge = badgeImage ?
-        <img src={badgeImage} width='100%' className="card-icon icon icon-blog text-center" alt={`Icono de ${title}`} /> :
-        title ?
-            <div className="card-icon icon icon-blog text-center"><span className="badge-text">{title.substring(0, 1)}</span></div> :
-            '';
+    const metaBadge =
+        icon ? (icon) :
+            badgeImage ?
+                <img src={badgeImage} width='100%' className="card-icon icon icon-blog text-center" alt={`Icono de ${title}`} /> :
+                title ?
+                    <div className="card-icon icon icon-blog text-center"><span className="badge-text">{title.substring(0, 1)}</span></div> :
+                    '';
     return (
         <div className="card preview-card fade-in" context="main">
             <div className="card-meta">
