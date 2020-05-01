@@ -18,7 +18,7 @@ export const Home = () => {
       })
     }
 
-    fetch("https://express-now-alpha-lac.now.sh/cursos", data)
+    fetch(`${process.env.REACT_APP_BASE_URL}/cursos/`, data)
       .then(res => res.json())
       .then(response => {
         setCourses(response)

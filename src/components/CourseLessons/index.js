@@ -86,13 +86,12 @@ const CourseLessons = ({ course, actions }) => {
     const handleSubmitLesson = (event) => {
         event.preventDefault();
         event.stopPropagation();
-
-        var url = `http://express-now-alpha-lac.now.sh/cursos/${courseId}/lecciones`;
+        var url = `${process.env.REACT_APP_BASE_URL}/cursos/${courseId}/lecciones`;
         fetch(url, {
             method: 'POST', 
             body: { nombre: newLesson },
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
             }
         }).then(res => {
