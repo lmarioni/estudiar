@@ -28,13 +28,13 @@ export const Home = () => {
 
   return (
     <div>
-      <div className="container">
-        <div className="row">
+      <div className="d-flex flex-column w-100">
+        <div className="row w-100">
           <div className="col-md-12">
             <h1 className="text-center mb-5 mt-3 main-title" >Mis cursos</h1>
           </div>
         </div>
-        <div className="row">
+        <div className="row w-100">
           <div className="col-md-12">
             <h1 className="text-center">
               {/* <Link to="/newCourse">
@@ -43,8 +43,8 @@ export const Home = () => {
             </h1>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-8 offset-md-2">
+        <div className="row w-100">
+          <div className="col-md-10 offset-md-1">
             {
               loading ?
                 <div>
