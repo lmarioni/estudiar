@@ -3,16 +3,24 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Context } from '../../Context';
 import { Skeleton } from '../Skeleton';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
 import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { MdBuild } from "react-icons/md";
 import { ListCard } from "../ListCard";
 import ReactQuill from 'react-quill';
 import CustomToolbar, { modules, formats } from "./customToolbar";
+import Form from 'react-bootstrap/Form';
+
+import PropTypes from "prop-types";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { addToast } from "../../actions";
+
 
 import 'react-quill/dist/quill.snow.css';
 
-const CourseLessons = (course) => {
+const CourseLessons = ({course, actions}) => {
 
     //const { token } = useContext(Context);
 
@@ -24,18 +32,21 @@ const CourseLessons = (course) => {
     const [lesson, setLesson] = useState({});
     const [lessons, setLessons] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [show, setShow] = useState(false);
+    const [showModule, setShowModule] = useState(false);
+    const [showLesson, setShowLesson] = useState(false);
+    const [toastActions, setToastActions] = useState({});
 
-
+    const [newLesson, setNewLesson] = useState('');
 
     useEffect(() => {
-        if (course.course) {
-            const { codigoInvitacion, imagen, imagen_perfil, lecciones, nombre } = course.course;
+        if (course) {
+            const { codigoInvitacion, imagen, imagen_perfil, lecciones, nombre } = course;
             setInvitationCode(codigoInvitacion);
             setPicture(imagen);
             setProfilePicture(imagen_perfil);
             setTitle(nombre);
             setLessons(lecciones);
+            setToastActions(actions);
             setLoading(false);
         }
 
@@ -46,26 +57,47 @@ const CourseLessons = (course) => {
         return (
             <ListGroup variant="flush">
                 {modules && modules.length ?
-                    modules.map(module => <ListGroup.Item key={`module-${module.id}`}> {module.nombre} <Button onClick={() => { openModal(module) }} className="float-right"> <MdBuild />  </Button></ListGroup.Item>) : null}
+                    modules.map(module => <ListGroup.Item key={`module-${module.id}`}> {module.nombre} <Button onClick={() => { openModuleModal(module) }} className="float-right"> <MdBuild />  </Button></ListGroup.Item>) : null}
             </ListGroup>
         )
     }
 
-    const openModal = (moduleLesson) => {
+    const isDisabledLesson = () => newLesson === '';
+
+    const openModuleModal = (moduleLesson) => {
         setLesson(moduleLesson);
         setHtmlEditorValue(moduleLesson.contenido);
-        setShow(true);
+        setShowModule(true);
+    }
+    const openLessonModal = (lessonId) => {
+        setShowLesson(true);
     }
 
-    const handleClose = () => {
-        console.log(htmlEditorValue);
+    const handleCloseModule = () => {
+        console.log('Nuevo modulo: ', htmlEditorValue);
         setLesson({});
-        setShow(false);
+        setShowModule(false);
     }
+    const handleCloseLesson = () => {
+        console.log('Nuevo modulo: ', newLesson);
+        setShowLesson(false);
+    }
+
+    const handleSubmitLesson = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const { addToast } = toastActions;
+        const form = event.currentTarget;
+        setShowLesson(false);
+        addToast({ text: "Se ha creado una nueva lección " });
+        console.log({ newLesson });
+        
+    };
+
 
     return (
         <div>
-            <Modal show={show} onHide={handleClose} size="lg" aria-labelledby="lesson-edit-modal" centered >
+            <Modal show={showModule} onHide={handleCloseModule} size="lg" aria-labelledby="module-edit-modal" centered >
                 <Modal.Header closeButton>
                     <Modal.Title>{lesson.nombre}</Modal.Title>
                 </Modal.Header>
@@ -75,8 +107,27 @@ const CourseLessons = (course) => {
                         formats={formats} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}> Close </Button>
-                    <Button variant="primary" onClick={handleClose}> Save Changes </Button>
+                    <Button variant="secondary" onClick={handleCloseModule}> Cerrar </Button>
+                    <Button variant="primary" onClick={handleCloseModule}> Guardar cambios </Button>
+                </Modal.Footer>
+            </Modal>
+
+            <Modal show={showLesson} onHide={handleCloseLesson} size="lg" aria-labelledby="lesson-edit-modal" centered >
+                <Modal.Header closeButton>
+                    <Modal.Title>Nueva lección</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form noValidate onSubmit={handleSubmitLesson}>
+                        <Form.Group controlId="formBasicCourse">
+                            <Form.Label>Nueva lección</Form.Label>
+                            <Form.Control type="text" placeholder="Ingrese un título" value={newLesson} onChange={e => setNewLesson(e.target.value)} />
+                            <Form.Text className="text-muted"> Recuerda que un buen título destacará tu curso de los demás. </Form.Text>
+                        </Form.Group>
+                        <Button variant="primary" disabled={isDisabledLesson()} type="submit"> Guardar lección </Button>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseLesson}> Cerrar </Button>
                 </Modal.Footer>
             </Modal>
 
@@ -84,7 +135,10 @@ const CourseLessons = (course) => {
                 loading ?
                     <Skeleton count="1" color="#f4f4f4" /> : (
                         <div>
-                            <h3>{title}</h3>
+                            <Row className="w-100">
+                                <h3>{title}</h3>
+                                <Button onClick={openLessonModal}> + </Button>
+                            </Row>
                             {lessons && lessons.map(courseLesson => {
                                 return (
                                     <React.Fragment key={`course-${courseLesson.id}`}>
@@ -103,4 +157,15 @@ const CourseLessons = (course) => {
         </div>
     )
 }
-export default CourseLessons;
+
+CourseLessons.propTypes = {
+    actions: PropTypes.shape({
+        addToast: PropTypes.func.isRequired
+    }).isRequired
+};
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators({ addToast }, dispatch)
+});
+
+export default connect(null, mapDispatchToProps)(CourseLessons);
