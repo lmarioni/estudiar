@@ -71,7 +71,7 @@ export const Panel = ({ id }) => {
       .then(res => res.json())
       .then(courseResponse => {
         setInviteCode(`http://estudiar.btcj.com.ar/i/${courseResponse.codigoInvitacion}`);
-        setCourse(courseResponse);
+        setCourse({...courseResponse, id});
         setLoading(false);
       });
   }, []);
