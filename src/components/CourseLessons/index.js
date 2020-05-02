@@ -10,8 +10,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { addToast } from "../../actions";
 import { FaTrash, FaPlus } from "react-icons/fa";
-
-import { ConfirmationDeleteModal, NewLessonModal, EditModuleModal } from './modals/index.js';
+import { NewLessonModal, NewModuleModal, ConfirmationDeleteModal, EditModuleModal } from './modals/index.js';
 
 const CourseLessons = ({ course, actions }) => {
 
@@ -26,14 +25,14 @@ const CourseLessons = ({ course, actions }) => {
 
     const [lesson, setLesson] = useState({});
     const [lessons, setLessons] = useState([]);
+    const [deleteLesson, setDeleteLesson] = useState({});
 
     const [loading, setLoading] = useState(true);
 
     const [showConfirmationDelete, setShowConfirmationDelete] = useState(false);
     const [showNewLesson, setShowNewLesson] = useState(false);
+    const [showNewModule, setShowNewModule] = useState(false);
     const [showEditModule, setShowEditModule] = useState(false);
-
-    const [deleteLesson, setDeleteLesson] = useState({});
 
     useEffect(() => {
         if (course) {
@@ -59,7 +58,6 @@ const CourseLessons = ({ course, actions }) => {
         )
     }
 
-
     const openLessonModal = () => {
         setShowNewLesson(true);
     }
@@ -68,27 +66,15 @@ const CourseLessons = ({ course, actions }) => {
         setShowEditModule(true);
         setLesson(moduleLesson);
     }
+
+    const openNewModule = (courseLesson) => {
+        setLesson(courseLesson);
+        setShowNewModule(true);
+    }
+
     const openDeleteConfirmationModal = (courseLesson) => {
         setDeleteLesson(courseLesson);
         setShowConfirmationDelete(true);
-    }
-
-    const addNewModule = () => {
-        console.log('add new module');
-    }
-
-    const editModalCallBackData = (data) => {
-        if (data.edit) {
-            const { addToast } = toastActions;
-            if (data.status === 'success') {
-                setLoading(true);
-                addToast({ text: data.message });
-                setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: data.message });
-            }
-        }
-        data.close ? setShowEditModule(false) : '';
     }
 
     const newLessonModalCallBackData = (data) => {
@@ -106,6 +92,44 @@ const CourseLessons = ({ course, actions }) => {
             }
         }
         data.close ? setShowNewLesson(false) : '';
+    }
+
+    const newModuleModalCallBackData = (data) => {
+        data.close ? setShowNewModule(false) : '';
+        if (data.create) {
+            const { addToast } = toastActions;
+            if (data.status === 'success') {
+                setLoading(true);
+                const newLessonArray = lessons.map(singleLesson => {
+                    if(singleLesson.id === parseInt(data.module.leccionid)){
+                        const lessonModules = singleLesson.modulos;
+                        lessonModules.push(data.module);
+                        singleLesson.modulos = lessonModules;
+                    }
+                    return singleLesson;
+                });
+                setLessons(newLessonArray);
+                addToast({ text: data.message });
+                setLoading(false);
+            } else {
+                addToast({ color: '#F97A85', text: data.message });
+            }
+        }
+
+    }
+
+    const editModalCallBackData = (data) => {
+        if (data.edit) {
+            const { addToast } = toastActions;
+            if (data.status === 'success') {
+                setLoading(true);
+                addToast({ text: data.message });
+                setLoading(false);
+            } else {
+                addToast({ color: '#F97A85', text: data.message });
+            }
+        }
+        data.close ? setShowEditModule(false) : '';
     }
 
     const deleteModalCallBackData = (data) => {
@@ -126,10 +150,9 @@ const CourseLessons = ({ course, actions }) => {
 
     return (
         <div>
-
-
             <NewLessonModal callback={newLessonModalCallBackData} showModal={showNewLesson} courseid={course.id} />
-            <EditModuleModal callback={editModalCallBackData} showModal={showEditModule} fulllesson={lesson}/>
+            <NewModuleModal callback={newModuleModalCallBackData} showModal={showNewModule} fulllesson={lesson} />
+            <EditModuleModal callback={editModalCallBackData} showModal={showEditModule} fulllesson={lesson} />
             <ConfirmationDeleteModal callback={deleteModalCallBackData} showModal={showConfirmationDelete} lessonToDelete={deleteLesson} />
             {
                 loading ?
@@ -150,7 +173,7 @@ const CourseLessons = ({ course, actions }) => {
                                             description={renderDescription(courseLesson.modulos)}
                                             action={
                                                 <div className="float-right">
-                                                    <div className="btn btn-outline-primary mr-1" onClick={() => { addNewModule(courseLesson) }}><FaPlus /></div>
+                                                    <div className="btn btn-outline-primary mr-1" onClick={() => { openNewModule(courseLesson) }}><FaPlus /></div>
                                                     <div className="btn btn-outline-secondary" onClick={() => { openDeleteConfirmationModal(courseLesson) }}><FaTrash /></div>
                                                 </div>
                                             }
