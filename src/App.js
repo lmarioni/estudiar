@@ -1,6 +1,6 @@
 import React, { useContext, Suspense } from 'react';
 import { Router, Redirect } from '@reach/router';
-
+import "bootswatch/dist/cosmo/bootstrap.min.css"; 
 import { GlobalStyle } from './styles/GlobalStyles';
 
 import  Home  from './pages/Home';
