@@ -3,7 +3,7 @@ import { Router, Redirect } from '@reach/router';
 
 import { GlobalStyle } from './styles/GlobalStyles';
 
-import { Home } from './pages/Home';
+import  Home  from './pages/Home';
 import { Invite }  from './pages/Invite';
 import { Panel } from './pages/Panel';
 import { NewCourse } from './pages/NewCourse';
@@ -15,10 +15,7 @@ import { NavBar } from './components/NavBar';
 
 import { Context } from './Context';
 
-
-
 const Course = React.lazy(() => import('./pages/Course.js'));
-
 
 function App() {
   const { isAuth } = useContext(Context)

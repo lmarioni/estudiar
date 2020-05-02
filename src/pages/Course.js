@@ -9,7 +9,7 @@ export default ({ id }) => {
   const [course, setCourse] = useState({});
   const [loading, setLoading] = useState(false);
 
-  useEffect(function() {
+  useEffect(function () {
     setLoading(true);
     const data = {
       headers: new Headers({
@@ -29,13 +29,9 @@ export default ({ id }) => {
       });
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
     <React.Fragment>
-      <Course curso={course} />
+      {loading ? <Loading /> : <Course curso={course} />}
     </React.Fragment>
   );
 };
