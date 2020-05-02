@@ -53,7 +53,12 @@ const CourseLessons = ({ course, actions }) => {
         return (
             <ListGroup variant="flush">
                 {modules && modules.length ?
-                    modules.map(module => <ListGroup.Item key={`module-${module.id}`}> {module.nombre} <Button onClick={() => { openModuleModal(module) }} className="float-right"> <MdBuild />  </Button></ListGroup.Item>) : null}
+                    modules.map(module =>
+                        <ListGroup.Item key={`module-${module.id}`} className="pr-0"> 
+                            {module.nombre}
+                            <div onClick={() => { openDeleteModuleModal(module) }} className="float-right btn btn-outline-secondary"><FaTrash /></div>
+                            <div onClick={() => { openModuleModal(module) }}  className="float-right btn btn-outline-primary mr-1" ><MdBuild /></div>
+                        </ListGroup.Item>) : null}
             </ListGroup>
         )
     }
@@ -65,6 +70,10 @@ const CourseLessons = ({ course, actions }) => {
     const openModuleModal = (moduleLesson) => {
         setShowEditModule(true);
         setLesson(moduleLesson);
+    }
+
+    const openDeleteModuleModal = (moduleLesson) => {
+        console.log('Quiere eliminar: ', moduleLesson);
     }
 
     const openNewModule = (courseLesson) => {
@@ -101,7 +110,7 @@ const CourseLessons = ({ course, actions }) => {
             if (data.status === 'success') {
                 setLoading(true);
                 const newLessonArray = lessons.map(singleLesson => {
-                    if(singleLesson.id === parseInt(data.module.leccionid)){
+                    if (singleLesson.id === parseInt(data.module.leccionid)) {
                         const lessonModules = singleLesson.modulos;
                         lessonModules.push(data.module);
                         singleLesson.modulos = lessonModules;
