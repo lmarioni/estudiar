@@ -15,7 +15,7 @@ import {
     NewModuleModal, 
     ConfirmationDeleteModal, 
     ConfirmationDeleteModuleModal,
-    EditModuleModal } from './modals/index.js';
+    EditModuleModal } from '../Modals/index.js';
 
 const CourseLessons = ({ course, actions }) => {
 

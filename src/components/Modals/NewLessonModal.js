@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState, useContext } from 'react';
-import { Context } from '../../../Context';
+import { Context } from '../../Context';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
