@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Context } from '../../../Context';
 import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import ReactQuill from 'react-quill';
@@ -14,7 +13,6 @@ const EditModuleModal = ({ fulllesson, showModal, callback }) => {
     const { token } = useContext(Context);
     const [show, setShow] = useState(true);
     const [lesson, setLesson] = useState({});
-    const [courseId, setCourseId] = useState('');
     const [disableButton, setDisableButton] = useState(false);
     const [htmlEditorValue, setHtmlEditorValue] = useState('');
 
@@ -45,7 +43,7 @@ const EditModuleModal = ({ fulllesson, showModal, callback }) => {
                 }),
                 body: JSON.stringify({ nombre: lesson }),
             };
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/cursos/${courseId}/lecciones`, requestOptions);
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/INSERTEURLAQUI`, requestOptions);
             const parsedResponse = await response.json();
             if (parsedResponse.status === 'success') {
                 callback({ close: true, create: true, status: 'success', message: parsedResponse.message, leccion: parsedResponse.leccion });
