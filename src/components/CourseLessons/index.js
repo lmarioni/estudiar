@@ -119,7 +119,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(true);
                 const newLessonArray = lessons.map(singleLesson => {
                     if (singleLesson.id === parseInt(data.module.leccionid)) {
-                        const lessonModules = singleLesson.modulos.length ? singleLesson.modulos : [];
+                        const lessonModules = singleLesson && singleLesson.modulos && singleLesson.modulos.length ? singleLesson.modulos : [];
                         lessonModules.push(data.module);
                         singleLesson.modulos = lessonModules;
                     }
