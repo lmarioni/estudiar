@@ -4,7 +4,7 @@ import './Toast.scss';
 
 class Toast extends Component {
   componentWillMount() {
-    setTimeout(() => { this.autodestroy(); }, 1500)
+    setTimeout(() => { this.autodestroy(); }, 2500)
   }
 
   autodestroy() {
