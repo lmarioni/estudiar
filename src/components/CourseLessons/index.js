@@ -1,33 +1,22 @@
-
 import React, { useEffect, useState, useContext } from 'react';
 import { Context } from '../../Context';
 import { Skeleton } from '../Skeleton';
 import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { MdBuild } from "react-icons/md";
 import { ListCard } from "../ListCard";
-import ReactQuill from 'react-quill';
-import CustomToolbar, { modules, formats } from "./customToolbar";
-import Form from 'react-bootstrap/Form';
-
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { addToast } from "../../actions";
 import { FaTrash, FaPlus } from "react-icons/fa";
 
-
-import ConfirmationDeleteModal from './modals/index.js';
-
-import 'react-quill/dist/quill.snow.css';
+import { ConfirmationDeleteModal, NewLessonModal, EditModuleModal } from './modals/index.js';
 
 const CourseLessons = ({ course, actions }) => {
 
     const { token } = useContext(Context);
-
-    const [htmlEditorValue, setHtmlEditorValue] = useState('');
+    const [toastActions, setToastActions] = useState({});
 
     const [invitationCode, setInvitationCode] = useState('');
     const [picture, setPicture] = useState('');
@@ -40,14 +29,10 @@ const CourseLessons = ({ course, actions }) => {
 
     const [loading, setLoading] = useState(true);
 
-    const [showModule, setShowModule] = useState(false);
-    const [showLesson, setShowLesson] = useState(false);
     const [showConfirmationDelete, setShowConfirmationDelete] = useState(false);
+    const [showNewLesson, setShowNewLesson] = useState(false);
+    const [showEditModule, setShowEditModule] = useState(false);
 
-    const [toastActions, setToastActions] = useState({});
-    const [disableButton, setDisableButton] = useState(false);
-
-    const [newLesson, setNewLesson] = useState('');
     const [deleteLesson, setDeleteLesson] = useState({});
 
     useEffect(() => {
@@ -74,28 +59,15 @@ const CourseLessons = ({ course, actions }) => {
         )
     }
 
-    const isDisabledLesson = () => newLesson === '' || loading || disableButton;
+
+    const openLessonModal = () => {
+        setShowNewLesson(true);
+    }
 
     const openModuleModal = (moduleLesson) => {
+        setShowEditModule(true);
         setLesson(moduleLesson);
-        setHtmlEditorValue(moduleLesson.contenido);
-        setShowModule(true);
     }
-
-    const openLessonModal = (lessonId) => {
-        setShowLesson(true);
-    }
-
-    const handleCloseModule = () => {
-        console.log('Nuevo modulo: ', htmlEditorValue);
-        setLesson({});
-        setShowModule(false);
-    }
-    const handleCloseLesson = () => {
-        setShowLesson(false);
-    }
-
-
     const openDeleteConfirmationModal = (courseLesson) => {
         setDeleteLesson(courseLesson);
         setShowConfirmationDelete(true);
@@ -103,6 +75,37 @@ const CourseLessons = ({ course, actions }) => {
 
     const addNewModule = () => {
         console.log('add new module');
+    }
+
+    const editModalCallBackData = (data) => {
+        if (data.edit) {
+            const { addToast } = toastActions;
+            if (data.status === 'success') {
+                setLoading(true);
+                addToast({ text: data.message });
+                setLoading(false);
+            } else {
+                addToast({ color: '#F97A85', text: data.message });
+            }
+        }
+        data.close ? setShowEditModule(false) : '';
+    }
+
+    const newLessonModalCallBackData = (data) => {
+        if (data.create) {
+            const { addToast } = toastActions;
+            if (data.status === 'success') {
+                setLoading(true);
+                const newLessonArray = lessons;
+                newLessonArray.push(data.leccion);
+                setLessons(newLessonArray);
+                addToast({ text: data.message });
+                setLoading(false);
+            } else {
+                addToast({ color: '#F97A85', text: data.message });
+            }
+        }
+        data.close ? setShowNewLesson(false) : '';
     }
 
     const deleteModalCallBackData = (data) => {
@@ -121,73 +124,12 @@ const CourseLessons = ({ course, actions }) => {
         data.close ? setShowConfirmationDelete(false) : '';
     }
 
-
-    const handleSubmitLesson = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setDisableButton(true);
-        async function createLesson() {
-            const requestOptions = {
-                method: 'POST',
-                headers: new Headers({
-                    authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
-                }),
-                body: JSON.stringify({ nombre: newLesson }),
-            };
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/cursos/${courseId}/lecciones`, requestOptions);
-            const parsedResponse = await response.json();
-            const { addToast } = toastActions;
-            if (parsedResponse.status === 'success') {
-                setLoading(true);
-                const newLessonArray = lessons;
-                newLessonArray.push(parsedResponse.leccion);
-                setLessons(newLessonArray);
-                addToast({ text: parsedResponse.message });
-                setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: `Hubo un error, intentelo nuevamente.` });
-            }
-            setShowLesson(false);
-            setDisableButton(false);
-        }
-        createLesson();
-    };
-
     return (
         <div>
-            <Modal show={showModule} onHide={handleCloseModule} size="lg" aria-labelledby="module-edit-modal" centered >
-                <Modal.Header closeButton>
-                    <Modal.Title>{lesson.nombre}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <CustomToolbar />
-                    <ReactQuill theme="snow" value={htmlEditorValue} onChange={setHtmlEditorValue} modules={modules}
-                        formats={formats} />
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModule}> Cerrar </Button>
-                    <Button variant="primary" onClick={handleCloseModule}> Guardar cambios </Button>
-                </Modal.Footer>
-            </Modal>
 
-            <Modal show={showLesson} onHide={handleCloseLesson} size="lg" aria-labelledby="lesson-edit-modal" centered >
-                <Modal.Header closeButton>
-                    <Modal.Title>Nueva lección</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form noValidate>
-                        <Form.Group controlId="formBasicCourse">
-                            <Form.Label>Nueva lección</Form.Label>
-                            <Form.Control type="text" placeholder="Ingrese un título" value={newLesson} onChange={e => setNewLesson(e.target.value)} />
-                            <Form.Text className="text-muted"> Recuerda que un buen título destacará tu curso de los demás. </Form.Text>
-                        </Form.Group>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="primary" disabled={isDisabledLesson()} onClick={handleSubmitLesson}> Guardar lección </Button>
-                </Modal.Footer>
-            </Modal>
 
+            <NewLessonModal callback={newLessonModalCallBackData} showModal={showNewLesson} courseid={course.id} />
+            <EditModuleModal callback={editModalCallBackData} showModal={showEditModule} fulllesson={lesson}/>
             <ConfirmationDeleteModal callback={deleteModalCallBackData} showModal={showConfirmationDelete} lessonToDelete={deleteLesson} />
             {
                 loading ?
@@ -195,7 +137,7 @@ const CourseLessons = ({ course, actions }) => {
                         <div>
                             <div className="w-100 d-flex flex-row justify-content-between">
                                 <h3>{title}</h3>
-                                <Button onClick={openLessonModal}> Nueva leccion </Button>
+                                <Button onClick={() => { openLessonModal() }}> Nueva leccion </Button>
 
                             </div>
 

@@ -35,7 +35,7 @@ const ConfirmationDeleteModal = ({ showModal, lessonToDelete, callback }) => {
             if (parsedResponse.status === 'success') {
                 callback({close: true, delete: true, status: 'success', message: parsedResponse.message});
             } else {
-                callback({close: true, delete: true, status: 'error', message: 'Hubo un error, intentelo nuevamente.'});
+                callback({close: true, delete: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.'});
             }
         }
         removeLesson();
