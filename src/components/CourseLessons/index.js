@@ -18,6 +18,9 @@ import { connect } from "react-redux";
 import { addToast } from "../../actions";
 import { FaTrash, FaPlus } from "react-icons/fa";
 
+
+import ConfirmationDeleteModal from './modals/index.js';
+
 import 'react-quill/dist/quill.snow.css';
 
 const CourseLessons = ({ course, actions }) => {
@@ -92,10 +95,6 @@ const CourseLessons = ({ course, actions }) => {
         setShowLesson(false);
     }
 
-    const handleCloseConfirmationModal = () => {
-        setDeleteLesson({});
-        setShowConfirmationDelete(false);
-    }
 
     const openDeleteConfirmationModal = (courseLesson) => {
         setDeleteLesson(courseLesson);
@@ -106,32 +105,22 @@ const CourseLessons = ({ course, actions }) => {
         console.log('add new module');
     }
 
-    const confirmDeleteLesson = () => {
-        async function removeLesson() {
-            const requestOptions = {
-                method: 'DELETE',
-                headers: new Headers({
-                    authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
-                }),
-            };
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/lecciones/${deleteLesson.id}`, requestOptions);
-            const parsedResponse = await response.json();
+    const deleteModalCallBackData = (data) => {
+        if (data.delete) {
             const { addToast } = toastActions;
-            if (parsedResponse.status === 'success') {
+            if (data.status === 'success') {
                 setLoading(true);
-
                 const newLessonArray = lessons.filter(lesson => lesson.id !== deleteLesson.id);
+                addToast({ text: data.message });
                 setLessons(newLessonArray);
                 setLoading(false);
-                addToast({ text: parsedResponse.message });
             } else {
-                addToast({ color: '#F97A85', text: `Hubo un error, intentelo nuevamente.` });
+                addToast({ color: '#F97A85', text: data.message });
             }
-            setShowConfirmationDelete(false);
-            setDeleteLesson({});
         }
-        removeLesson();
+        data.close ? setShowConfirmationDelete(false) : '';
     }
+
 
     const handleSubmitLesson = (event) => {
         event.preventDefault();
@@ -199,19 +188,7 @@ const CourseLessons = ({ course, actions }) => {
                 </Modal.Footer>
             </Modal>
 
-            <Modal show={showConfirmationDelete} onHide={handleCloseConfirmationModal} size="lg" aria-labelledby="delete-lesson-confirmation-modal" centered >
-                <Modal.Header closeButton>
-                    <Modal.Title>¿Está seguro que desea eliminar la lección?</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <div> Está a punto de eliminar la lección <p className="font-weight-bold">"{deleteLesson.nombre}"</p> </div>
-                    <div> Una vez eliminada, no podrá recuperarla. </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="primary" onClick={handleCloseConfirmationModal}> No, cerrar </Button>
-                    <Button variant="secondary" onClick={confirmDeleteLesson}> Si, eliminar </Button>
-                </Modal.Footer>
-            </Modal>
+            <ConfirmationDeleteModal callback={deleteModalCallBackData} showModal={showConfirmationDelete} lessonToDelete={deleteLesson} />
             {
                 loading ?
                     <Skeleton count="1" color="#f4f4f4" /> : (
