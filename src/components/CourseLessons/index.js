@@ -16,7 +16,7 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { addToast } from "../../actions";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaPlus } from "react-icons/fa";
 
 import 'react-quill/dist/quill.snow.css';
 
@@ -100,6 +100,10 @@ const CourseLessons = ({ course, actions }) => {
     const openDeleteConfirmationModal = (courseLesson) => {
         setDeleteLesson(courseLesson);
         setShowConfirmationDelete(true);
+    }
+
+    const addNewModule = () => {
+        console.log('add new module');
     }
 
     const confirmDeleteLesson = () => {
@@ -225,7 +229,12 @@ const CourseLessons = ({ course, actions }) => {
                                             title={courseLesson.nombre}
                                             subtitle={`${courseLesson.modulos && courseLesson.modulos.length ? courseLesson.modulos.length : 'Sin'} modulos`}
                                             description={renderDescription(courseLesson.modulos)}
-                                            action={<div className="btn btn-outline-secondary float-right" onClick={() => { openDeleteConfirmationModal(courseLesson) }}><FaTrash /></div>}
+                                            action={
+                                                <div className="float-right">
+                                                    <div className="btn btn-outline-primary mr-1" onClick={() => { addNewModule(courseLesson) }}><FaPlus /></div>
+                                                    <div className="btn btn-outline-secondary" onClick={() => { openDeleteConfirmationModal(courseLesson) }}><FaTrash /></div>
+                                                </div>
+                                            }
                                         />
                                     </React.Fragment>
                                 )
