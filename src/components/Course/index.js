@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {Helmet} from 'react-helmet'
 
 import { Menu } from "./Menu";
@@ -8,8 +8,12 @@ import './styles.css';
 
 export const Course = ({ curso }) => {
   const [moduleSelected, setSelected] = useState({});
-  console.log(curso)
-  //func: paso como param para ver que seleccionó
+
+  useEffect(function () {
+    
+  }, []);
+
+
   const cambiarModulo = (idLeccion, idModulo) => {
     //seteo cual es el modulo que eligió para mostrarlo
     curso.lecciones.map(leccion => {
