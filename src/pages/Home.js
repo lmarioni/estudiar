@@ -8,9 +8,10 @@ import { Skeleton } from '../components/Skeleton';
 import Toasts from "../components/Toasts/Toasts";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
+import { Helmet } from 'react-helmet'
 import { connect } from "react-redux";
 import { addToast } from "../actions";
-    
+
 const Home = ({ actions }) => {
   const { token } = useContext(Context);
   const [courses, setCourses] = useState([]);
@@ -60,7 +61,10 @@ const Home = ({ actions }) => {
 
   return (
     <div>
-       <Toasts />
+      <Helmet>
+        <title> Estudi.ar | BTCJ </title>
+      </Helmet>
+      <Toasts />
       <NewCourseModal callback={newModuleModalCallBackData} showModal={showNewCourseModal} />
       <div className="d-flex flex-column w-100">
         <div className="row w-100">
