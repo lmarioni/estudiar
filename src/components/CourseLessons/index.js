@@ -119,7 +119,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(true);
                 const newLessonArray = lessons.map(singleLesson => {
                     if (singleLesson.id === parseInt(data.module.leccionid)) {
-                        const lessonModules = singleLesson.modulos;
+                        const lessonModules = singleLesson.modulos.length ? singleLesson.modulos : [];
                         lessonModules.push(data.module);
                         singleLesson.modulos = lessonModules;
                     }
@@ -154,9 +154,6 @@ const CourseLessons = ({ course, actions }) => {
             const { addToast } = toastActions;
             if (data.status === 'success') {
                 setLoading(true);
-                console.log({data});
-                console.log({deleteModule});
-
                 const newLessonArray = lessons.map(singleLesson => {
                     if (singleLesson.id === parseInt(deleteModule.leccionid)) {
                         const lessonModules = singleLesson.modulos.filter(mod => mod.id !== deleteModule.id);
