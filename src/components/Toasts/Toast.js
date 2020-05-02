@@ -3,6 +3,13 @@ import React, { Component } from "react";
 import './Toast.scss';
 
 class Toast extends Component {
+  componentWillMount() {
+    setTimeout(() => { this.autodestroy(); }, 1500)
+  }
+
+  autodestroy() {
+    this.props ? this.props.onDismissClick() : '';
+  }
 
   render() {
     return (

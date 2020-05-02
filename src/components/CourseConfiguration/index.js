@@ -19,6 +19,7 @@ const CourseConfiguration = ({ idCurso, courseInfo, actions }) => {
   const [newTitle, setNewTitle] = useState('');
   const [loading, setLoading] = useState(true);
   const [toastActions, setToastActions] = useState({});
+  const [disableButton, setDisableButton] = useState(false);
 
   useEffect(function () {
     setToastActions(actions);
@@ -26,11 +27,12 @@ const CourseConfiguration = ({ idCurso, courseInfo, actions }) => {
     setLoading(false);
   }, []);
 
-  const isDisabled = () => newTitle === '' || newTitle === course.nombre;
+  const isDisabled = () => newTitle === '' || newTitle === course.nombre || disableButton;
 
   const handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
+    setDisableButton(true);
     async function changeTitle() {
       const requestOptions = {
         method: 'PUT',
@@ -54,6 +56,7 @@ const CourseConfiguration = ({ idCurso, courseInfo, actions }) => {
         addToast({ color: '#F97A85', text: `Hubo un error, intentelo nuevamente.` });
       }
       setValidated(true);
+      setDisableButton(false);
     }
     changeTitle();
   };
