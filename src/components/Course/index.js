@@ -15,7 +15,6 @@ export const Course = ({ curso }) => {
 
 
   const cambiarModulo = (idLeccion, idModulo) => {
-    //seteo cual es el modulo que eligió para mostrarlo
     curso.lecciones.map(leccion => {
       leccion.id === idLeccion &&
         leccion.modulos.map(modulo => {
