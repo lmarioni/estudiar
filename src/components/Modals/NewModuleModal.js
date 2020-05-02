@@ -1,13 +1,13 @@
 
 import React, { useEffect, useState, useContext } from 'react';
-import { Context } from '../../../Context';
+import { Context } from '../../Context';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
 import ReactQuill from 'react-quill';
-import CustomToolbar, { modules, formats } from "../customToolbar";
+import CustomToolbar, { modules, formats } from "../../utils/customToolbar";
 import 'react-quill/dist/quill.snow.css';
 
 

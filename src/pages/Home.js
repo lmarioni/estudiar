@@ -34,14 +34,8 @@ export const Home = () => {
             <h1 className="text-center mb-5 mt-3 main-title" >Mis cursos</h1>
           </div>
         </div>
-        <div className="row w-100">
-          <div className="col-md-12">
-            <h1 className="text-center">
-              {/* <Link to="/newCourse">
-                <button className="btn btn-primary"> Crear curso</button>
-              </Link> */}
-            </h1>
-          </div>
+        <div className="col-md-10 offset-md-1 d-flex flex-row justify-content-md-end pr-3">
+            <button className="btn btn-primary">Crear curso</button>
         </div>
         <div className="row w-100">
           <div className="col-md-10 offset-md-1">
