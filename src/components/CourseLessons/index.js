@@ -21,7 +21,7 @@ import 'react-quill/dist/quill.snow.css';
 
 const CourseLessons = ({ course, actions }) => {
 
-    const { token } = 'aslf6kgj1lecn4sv4laasdj21n1k2jne19famnf247oq';
+    const { token } = useContext(Context);
     const [htmlEditorValue, setHtmlEditorValue] = useState('');
     const [invitationCode, setInvitationCode] = useState('');
     const [picture, setPicture] = useState('');
@@ -79,34 +79,37 @@ const CourseLessons = ({ course, actions }) => {
         setShowModule(false);
     }
     const handleCloseLesson = () => {
-        console.log('Nuevo modulo: ', newLesson);
         setShowLesson(false);
     }
 
     const handleSubmitLesson = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        var url = `${process.env.REACT_APP_BASE_URL}/cursos/${courseId}/lecciones`;
-        fetch(url, {
-            method: 'POST', 
-            body: { nombre: newLesson },
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            }
-        }).then(res => {
+        async function createLesson() {
+            const requestOptions = {
+                method: 'POST',
+                headers: new Headers({
+                    authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
+                }),
+                body: JSON.stringify({ nombre: newLesson }),
+            };
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/cursos/${courseId}/lecciones`, requestOptions);
+            const parsedResponse = await response.json();
             const { addToast } = toastActions;
-            console.log(res);
-            console.log(res.data);
-            setShowLesson(false);
-            if (res.ok) {
-                addToast({ text: "Se ha creado una nueva lección " });
+            if (parsedResponse.status === 'success') {
+                setLoading(true);
+                const newLessonArray = lessons;
+                newLessonArray.push(parsedResponse.leccion);
+                setLessons(newLessonArray);
+                addToast({ text: parsedResponse.message });
+                setLoading(false);
             } else {
                 addToast({ color: '#F97A85', text: `Hubo un error, intentelo nuevamente.` });
             }
-        });
+            setShowLesson(false);
+        }
+        createLesson();
     };
-
 
     return (
         <div>
@@ -157,7 +160,7 @@ const CourseLessons = ({ course, actions }) => {
                                     <React.Fragment key={`course-${courseLesson.id}`}>
                                         <ListCard
                                             title={courseLesson.nombre}
-                                            subtitle={`${courseLesson.modulos.length} modulos`}
+                                            subtitle={`${courseLesson.modulos && courseLesson.modulos.length ? courseLesson.modulos.length : 'Sin'} modulos`}
                                             description={renderDescription(courseLesson.modulos)}
                                         />
                                     </React.Fragment>
