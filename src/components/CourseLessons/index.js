@@ -151,10 +151,12 @@ const CourseLessons = ({ course, actions }) => {
                 loading ?
                     <Skeleton count="1" color="#f4f4f4" /> : (
                         <div>
-                            <Row className="w-100">
-                                <h3>{title}</h3>
-                                <Button onClick={openLessonModal}> + </Button>
-                            </Row>
+                            <div className="w-100 d-flex flex-row justify-content-between">
+                            <h3>{title}</h3>
+                                <Button onClick={openLessonModal}> Nueva leccion </Button>
+
+                            </div>
+
                             {lessons && lessons.map(courseLesson => {
                                 return (
                                     <React.Fragment key={`course-${courseLesson.id}`}>
