@@ -10,7 +10,12 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { addToast } from "../../actions";
 import { FaTrash, FaPlus } from "react-icons/fa";
-import { NewLessonModal, NewModuleModal, ConfirmationDeleteModal, EditModuleModal } from './modals/index.js';
+import { 
+    NewLessonModal, 
+    NewModuleModal, 
+    ConfirmationDeleteModal, 
+    ConfirmationDeleteModuleModal,
+    EditModuleModal } from './modals/index.js';
 
 const CourseLessons = ({ course, actions }) => {
 
@@ -26,10 +31,12 @@ const CourseLessons = ({ course, actions }) => {
     const [lesson, setLesson] = useState({});
     const [lessons, setLessons] = useState([]);
     const [deleteLesson, setDeleteLesson] = useState({});
+    const [deleteModule, setDeleteModule] = useState({});
 
     const [loading, setLoading] = useState(true);
 
     const [showConfirmationDelete, setShowConfirmationDelete] = useState(false);
+    const [showConfirmationModuleDelete, setShowConfirmationModuleDelete] = useState(false);
     const [showNewLesson, setShowNewLesson] = useState(false);
     const [showNewModule, setShowNewModule] = useState(false);
     const [showEditModule, setShowEditModule] = useState(false);
@@ -54,10 +61,10 @@ const CourseLessons = ({ course, actions }) => {
             <ListGroup variant="flush">
                 {modules && modules.length ?
                     modules.map(module =>
-                        <ListGroup.Item key={`module-${module.id}`} className="pr-0"> 
+                        <ListGroup.Item key={`module-${module.id}`} className="pr-0">
                             {module.nombre}
                             <div onClick={() => { openDeleteModuleModal(module) }} className="float-right btn btn-outline-secondary"><FaTrash /></div>
-                            <div onClick={() => { openModuleModal(module) }}  className="float-right btn btn-outline-primary mr-1" ><MdBuild /></div>
+                            <div onClick={() => { openModuleModal(module) }} className="float-right btn btn-outline-primary mr-1" ><MdBuild /></div>
                         </ListGroup.Item>) : null}
             </ListGroup>
         )
@@ -73,7 +80,8 @@ const CourseLessons = ({ course, actions }) => {
     }
 
     const openDeleteModuleModal = (moduleLesson) => {
-        console.log('Quiere eliminar: ', moduleLesson);
+        setDeleteModule(moduleLesson);
+        setShowConfirmationModuleDelete(true);
     }
 
     const openNewModule = (courseLesson) => {
@@ -141,6 +149,32 @@ const CourseLessons = ({ course, actions }) => {
         data.close ? setShowEditModule(false) : '';
     }
 
+    const deleteModuleModalCallBackData = (data) => {
+        if (data.delete) {
+            const { addToast } = toastActions;
+            if (data.status === 'success') {
+                setLoading(true);
+                console.log({data});
+                console.log({deleteModule});
+
+                const newLessonArray = lessons.map(singleLesson => {
+                    if (singleLesson.id === parseInt(deleteModule.leccionid)) {
+                        const lessonModules = singleLesson.modulos.filter(mod => mod.id !== deleteModule.id);
+                        singleLesson.modulos = lessonModules;
+                    }
+                    return singleLesson;
+                });
+                setLessons(newLessonArray);
+
+                addToast({ text: data.message });
+                
+                setLoading(false);
+            } else {
+                addToast({ color: '#F97A85', text: data.message });
+            }
+        }
+        data.close ? setShowConfirmationModuleDelete(false) : '';
+    }
     const deleteModalCallBackData = (data) => {
         if (data.delete) {
             const { addToast } = toastActions;
@@ -163,6 +197,7 @@ const CourseLessons = ({ course, actions }) => {
             <NewModuleModal callback={newModuleModalCallBackData} showModal={showNewModule} fulllesson={lesson} />
             <EditModuleModal callback={editModalCallBackData} showModal={showEditModule} fulllesson={lesson} />
             <ConfirmationDeleteModal callback={deleteModalCallBackData} showModal={showConfirmationDelete} lessonToDelete={deleteLesson} />
+            <ConfirmationDeleteModuleModal callback={deleteModuleModalCallBackData} showModal={showConfirmationModuleDelete} moduleToDelete={deleteModule} />
             {
                 loading ?
                     <Skeleton count="1" color="#f4f4f4" /> : (
