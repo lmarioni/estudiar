@@ -171,7 +171,7 @@ class ImageProfile extends PureComponent {
                 </div>
                 <div className="col-md-9 text-center">
                   <h4 style={{fontWeight: 300}} className="text-center">Editar Icono</h4>
-                  <p className="text-center">Puedes elegir una imagen de icono para tu curso</p>
+                  <p className="text-center">{this.state.imagenActual ? 'Puedes elegir una imagen de icono para tu curso' : 'Parece que no subiste una imágen, podrías aprovechar para subir una ahora'}</p>
                  
                 <input type="file" id="file" onChange={this.onSelectFile} />
                 <label htmlFor="file">Subir Imagen</label>
