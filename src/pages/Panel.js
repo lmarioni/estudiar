@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import QRCode from 'qrcode.react';
+import Toasts from "../components/Toasts/Toasts";
 
 import { Loading } from '../components/Loading'
 
@@ -79,7 +80,9 @@ export const Panel = ({ id }) => {
 
   return (
     <div>
-      {loading ? <Loading /> : <React.Fragment>
+      {loading ? <Loading /> : 
+      <React.Fragment>
+        <Toasts />
         <div className="row w-100">
           <div className="col-sm-12 col-md-9 offset-md-3">
             <h1 className="text-center main-title" >{selectedTab}</h1>
