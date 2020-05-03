@@ -9,22 +9,21 @@ import CustomToolbar, { modules, formats } from "../../utils/customToolbar";
 import 'react-quill/dist/quill.snow.css';
 
 
-const EditModuleModal = ({ fulllesson, showModal, callback }) => {
+const EditModuleModal = ({ fullModule, showModal, callback }) => {
     const { token } = useContext(Context);
     const [show, setShow] = useState(true);
-    const [lesson, setLesson] = useState({});
+    const [editModule, setEditModule] = useState({});
     const [disableButton, setDisableButton] = useState(false);
     const [htmlEditorValue, setHtmlEditorValue] = useState('');
 
     useEffect(function () {
-        if(lesson !== fulllesson || showModal !== show){
-
-            setLesson(fulllesson);
-            setHtmlEditorValue(fulllesson.contenido);
+        if(editModule !== fullModule || showModal !== show){
+            setEditModule(fullModule);
+            setHtmlEditorValue(fullModule.contenido);
             setShow(showModal);
         }
         
-    }, [{ fulllesson }]);
+    }, [{ fullModule }]);
 
     const handleEditModuleModal = () => {
         setShow(false);
@@ -41,7 +40,7 @@ const EditModuleModal = ({ fulllesson, showModal, callback }) => {
                 headers: new Headers({
                     authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
                 }),
-                body: JSON.stringify({ nombre: lesson }),
+                body: JSON.stringify({ nombre: editModule }),
             };
             const response = await fetch(`${process.env.REACT_APP_BASE_URL}/INSERTEURLAQUI`, requestOptions);
             const parsedResponse = await response.json();
@@ -64,7 +63,7 @@ const EditModuleModal = ({ fulllesson, showModal, callback }) => {
                 show ? (
                     <Modal show={show} onHide={handleEditModuleModal} size="lg" aria-labelledby="module-edit-modal" centered >
                         <Modal.Header closeButton>
-                            <Modal.Title>{lesson.nombre} - Edición de módulo</Modal.Title>
+                            <Modal.Title>{editModule.nombre} - Edición de módulo</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <CustomToolbar />
