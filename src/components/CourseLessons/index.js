@@ -143,6 +143,7 @@ const CourseLessons = ({ course, actions }) => {
                 const newLessonArray = lessons.map(singleLesson => {
                     if (singleLesson.id === parseInt(data.module.leccionid)) {
                         const lessonModules = singleLesson && singleLesson.modulos && singleLesson.modulos.length ? singleLesson.modulos : [];
+                        console.log({data});
                         lessonModules.push(data.module);
                         singleLesson.modulos = lessonModules;
                     }
@@ -163,6 +164,7 @@ const CourseLessons = ({ course, actions }) => {
             const { addToast } = toastActions;
             if (data.status === 'success') {
                 setLoading(true);
+                console.log({data});
                 addToast({ text: data.message });
                 setLoading(false);
             } else {
