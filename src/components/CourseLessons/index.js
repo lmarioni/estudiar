@@ -16,7 +16,8 @@ import {
     NewModuleModal,
     ConfirmationDeleteModal,
     ConfirmationDeleteModuleModal,
-    EditModuleModal
+    EditModuleModal,
+    EditLessonModal,
 } from '../Modals/index.js';
 import EmptyBook from '../../assets/img/emptyBook.png';
 
@@ -32,13 +33,6 @@ const customCardBody = {
     backgroundImage: `url(${EmptyBook})`,
 };
 
-var customStyle = {
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right',
-    backgroundSize: 'auto',
-    minHeight: '150px',
-};
-
 const CourseLessons = ({ course, actions }) => {
 
     const { token } = useContext(Context);
@@ -51,6 +45,7 @@ const CourseLessons = ({ course, actions }) => {
     const [courseId, setCourseId] = useState('');
 
     const [lesson, setLesson] = useState({});
+    const [selectedModule, setSelectedModule] = useState({}); //Module es una palabra reservada, CUAK
     const [lessons, setLessons] = useState([]);
     const [deleteLesson, setDeleteLesson] = useState({});
     const [deleteModule, setDeleteModule] = useState({});
@@ -62,6 +57,7 @@ const CourseLessons = ({ course, actions }) => {
     const [showNewLesson, setShowNewLesson] = useState(false);
     const [showNewModule, setShowNewModule] = useState(false);
     const [showEditModule, setShowEditModule] = useState(false);
+    const [showEditLesson, setShowEditLesson] = useState(false);
 
     useEffect(() => {
         if (course) {
@@ -98,7 +94,12 @@ const CourseLessons = ({ course, actions }) => {
 
     const openModuleModal = (moduleLesson) => {
         setShowEditModule(true);
-        setLesson(moduleLesson);
+        setSelectedModule(moduleLesson);
+    }
+
+    const openLessonEditModal = (lesson) => {
+        setShowEditLesson(true);
+        setLesson(lesson);
     }
 
     const openDeleteModuleModal = (moduleLesson) => {
@@ -157,7 +158,7 @@ const CourseLessons = ({ course, actions }) => {
 
     }
 
-    const editModalCallBackData = (data) => {
+    const editModuleModalCallBackData = (data) => {
         if (data.edit) {
             const { addToast } = toastActions;
             if (data.status === 'success') {
@@ -169,6 +170,23 @@ const CourseLessons = ({ course, actions }) => {
             }
         }
         data.close ? setShowEditModule(false) : '';
+    }
+
+    const editLessonModalCallBackData = (data) => {
+        if (data.edit) {
+            const { addToast } = toastActions;
+            if (data.status === 'success') {
+                setLoading(true);
+                lessons.forEach(eachLesson => {
+                    (eachLesson.id === parseInt(data.editedLesson.id)) ? eachLesson.nombre = data.editedLesson.nombre : '';
+                });
+                addToast({ text: data.message });
+                setLoading(false);
+            } else {
+                addToast({ color: '#F97A85', text: data.message });
+            }
+        }
+        data.close ? setShowEditLesson(false) : '';
     }
 
     const deleteModuleModalCallBackData = (data) => {
@@ -226,7 +244,8 @@ const CourseLessons = ({ course, actions }) => {
         <div>
             <NewLessonModal callback={newLessonModalCallBackData} showModal={showNewLesson} courseid={course.id} />
             <NewModuleModal callback={newModuleModalCallBackData} showModal={showNewModule} fulllesson={lesson} />
-            <EditModuleModal callback={editModalCallBackData} showModal={showEditModule} fulllesson={lesson} />
+            <EditModuleModal callback={editModuleModalCallBackData} showModal={showEditModule} fullModule={selectedModule} />
+            <EditLessonModal callback={editLessonModalCallBackData} showModal={showEditLesson} lesson_id={lesson.id} />
             <ConfirmationDeleteModal callback={deleteModalCallBackData} showModal={showConfirmationDelete} lessonToDelete={deleteLesson} />
             <ConfirmationDeleteModuleModal callback={deleteModuleModalCallBackData} showModal={showConfirmationModuleDelete} moduleToDelete={deleteModule} />
             {
@@ -235,7 +254,9 @@ const CourseLessons = ({ course, actions }) => {
                         <div>
                             <div className="w-100 d-flex flex-row justify-content-between">
                                 <h3>{title}</h3>
-                                <Button onClick={() => { openLessonModal() }}> Nueva leccion </Button>
+                                <div>
+                                    <Button onClick={() => { openLessonModal() }}> Nueva lección </Button>
+                                </div>
 
                             </div>
 
@@ -250,6 +271,7 @@ const CourseLessons = ({ course, actions }) => {
                                                 action={
                                                     <div className="float-right">
                                                         <div className="btn btn-outline-primary mr-1" onClick={() => { openNewModule(courseLesson) }}><FaPlus /></div>
+                                                        <div className="btn btn-outline-secondary mr-1" onClick={() => { openLessonEditModal(courseLesson) }}><MdBuild /></div>
                                                         <div className="btn btn-outline-secondary" onClick={() => { openDeleteConfirmationModal(courseLesson) }}><FaTrash /></div>
                                                     </div>
                                                 }
