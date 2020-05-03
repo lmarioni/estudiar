@@ -64,7 +64,7 @@ const EditModuleModal = ({ fulllesson, showModal, callback }) => {
                 show ? (
                     <Modal show={show} onHide={handleEditModuleModal} size="lg" aria-labelledby="module-edit-modal" centered >
                         <Modal.Header closeButton>
-                            <Modal.Title>{lesson.nombre}</Modal.Title>
+                            <Modal.Title>{lesson.nombre} - Edición de módulo</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <CustomToolbar />
