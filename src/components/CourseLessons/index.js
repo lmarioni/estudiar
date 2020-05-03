@@ -3,19 +3,41 @@ import { Context } from '../../Context';
 import { Skeleton } from '../Skeleton';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { MdBuild } from "react-icons/md";
+import Card from 'react-bootstrap/Card';
 import { ListCard } from "../ListCard";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { addToast } from "../../actions";
+import { MdBuild } from "react-icons/md";
 import { FaTrash, FaPlus } from "react-icons/fa";
-import { 
-    NewLessonModal, 
-    NewModuleModal, 
-    ConfirmationDeleteModal, 
+import {
+    NewLessonModal,
+    NewModuleModal,
+    ConfirmationDeleteModal,
     ConfirmationDeleteModuleModal,
-    EditModuleModal } from '../Modals/index.js';
+    EditModuleModal
+} from '../Modals/index.js';
+import EmptyBook from '../../assets/img/emptyBook.png';
+
+const customCard = {
+    width: '550px',
+    minHeight: '350px',
+};
+const customCardBody = {
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'right center',
+    backgroundSize: 'auto',
+    backgroundPosition: 'right bottom',
+    backgroundImage: `url(${EmptyBook})`,
+};
+
+var customStyle = {
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'right',
+    backgroundSize: 'auto',
+    minHeight: '150px',
+};
 
 const CourseLessons = ({ course, actions }) => {
 
@@ -164,7 +186,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLessons(newLessonArray);
 
                 addToast({ text: data.message });
-                
+
                 setLoading(false);
             } else {
                 addToast({ color: '#F97A85', text: data.message });
@@ -172,6 +194,7 @@ const CourseLessons = ({ course, actions }) => {
         }
         data.close ? setShowConfirmationModuleDelete(false) : '';
     }
+
     const deleteModalCallBackData = (data) => {
         if (data.delete) {
             const { addToast } = toastActions;
@@ -186,6 +209,17 @@ const CourseLessons = ({ course, actions }) => {
             }
         }
         data.close ? setShowConfirmationDelete(false) : '';
+    }
+
+    const NoLessonsFound = () => {
+        return (
+            <Card style={customCard}>
+                <Card.Body style={customCardBody}>
+                    <h4>Parece que no tenés lecciones cargadas aún. </h4>
+                    <h5>Probá crear algunas desde el botón de Nueva Lección o haciendo click <a className="pointer text-primary" onClick={openLessonModal}>aqui</a>.</h5>
+                </Card.Body>
+            </Card>
+        )
     }
 
     return (
@@ -205,23 +239,24 @@ const CourseLessons = ({ course, actions }) => {
 
                             </div>
 
-                            {lessons && lessons.map(courseLesson => {
-                                return (
-                                    <React.Fragment key={`course-${courseLesson.id}`}>
-                                        <ListCard
-                                            title={courseLesson.nombre}
-                                            subtitle={`${courseLesson.modulos && courseLesson.modulos.length ? courseLesson.modulos.length : 'Sin'} modulos`}
-                                            description={renderDescription(courseLesson.modulos)}
-                                            action={
-                                                <div className="float-right">
-                                                    <div className="btn btn-outline-primary mr-1" onClick={() => { openNewModule(courseLesson) }}><FaPlus /></div>
-                                                    <div className="btn btn-outline-secondary" onClick={() => { openDeleteConfirmationModal(courseLesson) }}><FaTrash /></div>
-                                                </div>
-                                            }
-                                        />
-                                    </React.Fragment>
-                                )
-                            })}
+                            {lessons && lessons.length ?
+                                lessons.map(courseLesson => {
+                                    return (
+                                        <React.Fragment key={`course-${courseLesson.id}`}>
+                                            <ListCard
+                                                title={courseLesson.nombre}
+                                                subtitle={`${courseLesson.modulos && courseLesson.modulos.length ? courseLesson.modulos.length : 'Sin'} modulos`}
+                                                description={renderDescription(courseLesson.modulos)}
+                                                action={
+                                                    <div className="float-right">
+                                                        <div className="btn btn-outline-primary mr-1" onClick={() => { openNewModule(courseLesson) }}><FaPlus /></div>
+                                                        <div className="btn btn-outline-secondary" onClick={() => { openDeleteConfirmationModal(courseLesson) }}><FaTrash /></div>
+                                                    </div>
+                                                }
+                                            />
+                                        </React.Fragment>
+                                    )
+                                }) : <div className="d-flex flex-row justify-content-center"><NoLessonsFound /></div>}
                         </div>
                     )
             }
