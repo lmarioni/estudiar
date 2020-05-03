@@ -55,7 +55,7 @@ const NewLessonModal = ({ courseid, showModal, callback }) => {
                             <Modal.Title>Nueva lección</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form noValidate>
+                            <Form noValidate onSubmit={() => {handleSubmitLesson()}}>
                                 <Form.Group controlId="formNewLesson">
                                     <Form.Label>Nueva lección</Form.Label>
                                     <Form.Control type="text" placeholder="Ingrese un título" value={lesson} onChange={e => setLesson(e.target.value)} />

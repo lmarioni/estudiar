@@ -63,7 +63,7 @@ const NewCourseModal = ({ showModal, callback }) => {
                             <Modal.Title>Nuevo curso</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form noValidate>
+                            <Form noValidate onSubmit={() => {handleSubmitCourse()}}>
                                 <Form.Group controlId="newCourseTitle">
                                     <Form.Label>Título</Form.Label>
                                     <Form.Control type="text" placeholder="Ingrese un título para el curso" value={title} onChange={e => setTitle(e.target.value)} />

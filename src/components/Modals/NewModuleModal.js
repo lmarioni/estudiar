@@ -80,7 +80,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                             <Modal.Title>{lesson.nombre} - Nuevo módulo</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form noValidate>
+                            <Form noValidate onSubmit={() => {handleSubmit()}}>
                                 <Form.Group controlId="formNewModule">
                                     <Form.Control type="text" placeholder="Ingrese un título" value={moduleTitle} onChange={e => setModuleTitle(e.target.value)} />
                                 </Form.Group>
@@ -108,11 +108,3 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
     )
 }
 export default NewModuleModal;
-
-/*
-nombre: ‘Nombre del módulo’
-visible: [TRUE | FALSE], //Si se muestra o no en el curso a los alumnos
-tipo: 1, //1: Contenido, 2: Evaluación
-evalid: 3, // Si es tipo = 2 necesita tener un id de evaluación, sino 0
-contenido: 'Contenido del módulo'
- */
