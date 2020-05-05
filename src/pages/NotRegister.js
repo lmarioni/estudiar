@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/NotRegister.css';
-import { navigate } from "@reach/router";
+import { navigate, Link } from "@reach/router";
+
 import Button from "react-bootstrap/Button";
 import Cookies from 'universal-cookie';
 
@@ -35,12 +36,10 @@ export const NotRegister = () => {
                 <p>Debes ingresar al sistema para seguir</p>
                 <div className="buttons-con">
                     <div className="action-link-wrap">
-                    <form action="https://www.btcj.com.ar/sitio/login.php" method="POST">
-                        <input type="hidden" name="vuelta" value="https://estudiar.btcj.com.ar/" />
-                        <button type="submit" className="btn btn-success btn-lg">
+                   
+                        <Link to='/auth' className="btn btn-success btn-lg">
                         Ingresar
-                        </button>
-                    </form>
+                        </Link>
                     </div>
                 </div>
             </div>
