@@ -3,7 +3,7 @@ import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import NoImageIcon from '../../../assets/img/no-image-icon.png';
+import NoImageIcon from '../../../assets/img/no-image-iconOld.png';
 import "./styles.scss";
 
 
@@ -157,7 +157,7 @@ class ImageProfile extends PureComponent {
           <div className="card preview-card" context="main">
             <div className="card-description">
               <div className="row">
-                <div className="col-md-3">
+                <div className="col-md-3 text-center">
                   {this.state.imageLoading ? (
                     <img
                       style={{ border: "1px solid #e2e2e2" }}
@@ -166,7 +166,7 @@ class ImageProfile extends PureComponent {
                       alt=""
                     />
                   ) : (
-                    <img src={this.state.imagenActual ? this.state.imagenActual : NoImageIcon} width="100%" alt="" />
+                    <img src={this.state.imagenActual ? this.state.imagenActual : NoImageIcon} width="80%" alt="" />
                   )}
                 </div>
                 <div className="col-md-9 text-center">

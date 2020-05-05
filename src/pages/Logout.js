@@ -1,4 +1,5 @@
 import React, {useContext} from 'react'
+import { Link } from "@reach/router";
 
 import { Context } from '../Context';
 
@@ -14,12 +15,9 @@ export const Logout = () => {
                 <div className="card preview-card text-center" context="main">
                             <h3>:(</h3>
                             <h5 className="mt-2" style={{fontWeight: 100}}>Te vamos a extrañar...</h5>
-                            <form action="https://www.btcj.com.ar/sitio/login.php" method="POST">
-                                <input type="hidden" name="vuelta" value="https://estudiar.btcj.com.ar/" />
-                                <button type="submit" class="btn btn-primary mt-3">
+                                <Link to="/auth" class="btn btn-primary mt-3">
                                 Ingresar
-                                </button>
-                    </form>
+                                </Link>
                     </div>
                 </div>
             </div>
