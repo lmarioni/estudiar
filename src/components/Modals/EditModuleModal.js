@@ -38,7 +38,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
             setShow(showModal);
         }
 
-    }, [{ fullModule }]);
+    }, [{ fullModule, showModal }]);
 
     const handleEditModuleModal = () => {
         setShow(false);
@@ -70,7 +70,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
             const response = await fetch(`${process.env.REACT_APP_BASE_URL}/modulos/${oldModule.id}`, requestOptions);
             const parsedResponse = await response.json();
             if (parsedResponse.status === 'success') {
-                callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, modulo: parsedResponse.modulo });
+                callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, modulo: parsedResponse.content });
             } else {
                 callback({ close: true, edit: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
             }
