@@ -16,7 +16,7 @@ export const Inscripto = ({message, idCurso}) => {
                     <div className="col-md-3"></div>
                     <div className="col-md-6 text-center" style={divRegistro}>
                         <IoMdHappy size="32" />
-                        <h1> Ouch.. </h1>
+                        <h1> Excelente.. </h1>
                         <h5>Ya formas parte de este curso!!</h5>
                         <Link to={`/course/${idCurso}`}> Ingresar </Link>
                     </div>

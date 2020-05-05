@@ -8,6 +8,7 @@ import { Error } from "../components/Invite/Error";
 import { Success } from "../components/Invite/Success";
 
 import { Register } from "../components/Register";
+import { Auth } from "../components/Auth";
 
 
 import { Loading } from "../components/Loading";
@@ -85,7 +86,7 @@ export const Invite = ({ code }) => {
 
 switch(template.template){
             case 'sinPantalla': return( <Loading />)
-            case 'deslogueado': return( <Register />)
+            case 'deslogueado': return( <Auth idCurso={idCurso} />)
             case 'exito': return( <Success idCurso={idCurso} message={template.message} /> );
             case 'inscripto': return( <Inscripto idCurso={idCurso} /> );
             case 'error': return( <Error message={template.message} />)
