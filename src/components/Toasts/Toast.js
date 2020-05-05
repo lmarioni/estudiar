@@ -8,7 +8,7 @@ class Toast extends Component {
   }
 
   autodestroy() {
-    this.props ? this.props.onDismissClick() : '';
+    this.props && this.props.onDismissClick();
   }
 
   render() {

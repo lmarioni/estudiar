@@ -33,4 +33,8 @@ html{
   background: #F4F7F9;
 }
 
+.quill {
+  height: 200px;
+}
+
 `

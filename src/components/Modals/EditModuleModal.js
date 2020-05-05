@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 
 import React, { useEffect, useState, useContext } from 'react';
 import { Context } from '../../Context';
@@ -32,7 +33,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
             setContentType(fullModule.tipo);
             setContent(fullModule.contenido);
             setModuleVisible(fullModule.visible);
-            fullModule.tipo === 3 ? setUrlVideo(fullModule.urlVideo) : '';
+            fullModule.tipo === 3 && setUrlVideo(fullModule.urlVideo);
             setHtmlEditorValue(fullModule.contenido);
             setShow(showModal);
         }
@@ -45,8 +46,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
     }
 
     const handleSubmit = () => {
-        event.preventDefault();
-        event.stopPropagation();
+      
         async function submitModule() {
             const payload = {};
             moduleTitle !== oldModule.nombre ? payload.nombre = moduleTitle : '';
@@ -96,6 +96,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                     <Form.Control type="text" placeholder="Ingrese una descripción para el modulo" value={moduleDescription} onChange={e => setModuleDescription(e.target.value)} />
                                 </Form.Group>
                                 <Form.Check
+                                    // eslint-disable-next-line no-restricted-globals
                                     onChange={e => setModuleVisible(event.target.checked)}
                                     type="switch"
                                     id="custom-switch"

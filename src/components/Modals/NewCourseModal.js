@@ -24,8 +24,7 @@ const NewCourseModal = ({ showModal, callback }) => {
     }
 
     const handleSubmitCourse = () => {
-        event.preventDefault();
-        event.stopPropagation();
+
         async function submitCourse() {
             setDisableButton(true);
             const requestOptions = {

@@ -23,8 +23,6 @@ const NewLessonModal = ({ courseid, showModal, callback }) => {
     }
 
     const handleSubmitLesson = () => {
-        event.preventDefault();
-        event.stopPropagation();
         async function submitLesson() {
             setDisableButton(true);
             const requestOptions = {
