@@ -46,7 +46,11 @@ export const Login = ({idCurso = ''}) => {
                 if(response.status === 'success'){
                    activateAuth(response.token)
                 // renderRedirect()
-                window.location.href = `https://estudiar.btcj.com.ar/`;
+                if(idCurso != ''){
+                    window.location.href = `https://estudiar.btcj.com.ar/${idCurso}`;
+                }else{
+                    window.location.href = `https://estudiar.btcj.com.ar/`;
+                }
 
                 }else{
                     setLoading(false)
