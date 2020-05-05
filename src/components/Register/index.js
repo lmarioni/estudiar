@@ -39,7 +39,7 @@ export const Register = ({idCurso = ''}) => {
         if(inputs.pwdconfirm !== inputs.pwd){
             setError('Las contraseñas deben coincidir');
         }else{
-            var url = 'https://express-now.lucasmarioni.now.sh/usuarios';
+            var url = `${process.env.REACT_APP_BASE_URL}/usuarios`;
             var data = {...inputs, 'idcurso': idCurso };
             fetch(url, {
             method: 'POST', // or 'PUT'
@@ -95,11 +95,11 @@ if(result.status){
 
 
     return(
-        <div className="container">
-            <div className="row">
-              <div className="col-md-3"></div>
-              <div className="col-md-6 mt-5" style={divRegistro}>
-                <h1 className="text-center">Registro {idCurso}</h1>
+        <React.Fragment>
+
+
+             
+                <h1 className="text-center">Registro </h1>
 
                 <p className="text-center"> {idCurso ? "Primero, algunos datos tuyos.." : "Bienvenido"} </p>
 
@@ -130,8 +130,7 @@ if(result.status){
                       }
                       <button type="submit" disabled={ loading ? 'disabled' : '' } class="btn btn-primary mb-4 btn-block btn-lg"> { !loading ? "Siguiente" : <AiOutlineLoading3Quarters size='25' animation="spin" className='spin' /> } </button>
                   </form>
-              </div>
-            </div>
-        </div>
+        </React.Fragment>
+          
     )
 }
