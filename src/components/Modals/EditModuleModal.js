@@ -29,16 +29,16 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
         if (oldModule !== fullModule || showModal !== show) {
             setOldModule(fullModule);
             setModuleTitle(fullModule.nombre);
-            setModuleDescription(fullModule.description ? fullModule.description : '');
+            setModuleDescription(fullModule.descripcion ? fullModule.descripcion : '');
             setContentType(fullModule.tipo);
             setContent(fullModule.contenido);
             setModuleVisible(fullModule.visible);
-            fullModule.tipo === 3 && setUrlVideo(fullModule.urlVideo);
+            fullModule.tipo === 1 && setUrlVideo(fullModule.urlVideo);
             setHtmlEditorValue(fullModule.contenido);
             setShow(showModal);
         }
 
-    }, [{ fullModule }]);
+    }, [{ fullModule, showModal }]);
 
     const handleEditModuleModal = () => {
         setShow(false);
@@ -70,7 +70,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
             const response = await fetch(`${process.env.REACT_APP_BASE_URL}/modulos/${oldModule.id}`, requestOptions);
             const parsedResponse = await response.json();
             if (parsedResponse.status === 'success') {
-                callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, modulo: parsedResponse.modulo });
+                callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, modulo: parsedResponse.content });
             } else {
                 callback({ close: true, edit: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
             }
