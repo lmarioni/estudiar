@@ -131,11 +131,11 @@ const CourseLessons = ({ course, actions }) => {
                 addToast({ color: '#F97A85', text: data.message });
             }
         }
-        data.close ? setShowNewLesson(false) : '';
+        data.close && setShowNewLesson(false);
     }
 
     const newModuleModalCallBackData = (data) => {
-        data.close ? setShowNewModule(false) : '';
+        data.close && setShowNewModule(false);
         if (data.create) {
             const { addToast } = toastActions;
             if (data.status === 'success') {
@@ -171,7 +171,7 @@ const CourseLessons = ({ course, actions }) => {
                 addToast({ color: '#F97A85', text: data.message });
             }
         }
-        data.close ? setShowEditModule(false) : '';
+        data.close && setShowEditModule(false);
     }
 
     const editLessonModalCallBackData = (data) => {
@@ -180,7 +180,11 @@ const CourseLessons = ({ course, actions }) => {
             if (data.status === 'success') {
                 setLoading(true);
                 lessons.forEach(eachLesson => {
-                    (eachLesson.id === parseInt(data.editedLesson.id)) ? eachLesson.nombre = data.editedLesson.nombre : '';
+                    if(eachLesson.id === parseInt(data.editedLesson.id)){
+                        eachLesson.nombre = data.editedLesson.nombre
+                    }else{
+                        eachLesson.nombre = ''
+                    }
                 });
                 addToast({ text: data.message });
                 setLoading(false);
@@ -188,7 +192,7 @@ const CourseLessons = ({ course, actions }) => {
                 addToast({ color: '#F97A85', text: data.message });
             }
         }
-        data.close ? setShowEditLesson(false) : '';
+        data.close && setShowEditLesson(false);
     }
 
     const deleteModuleModalCallBackData = (data) => {
@@ -212,7 +216,7 @@ const CourseLessons = ({ course, actions }) => {
                 addToast({ color: '#F97A85', text: data.message });
             }
         }
-        data.close ? setShowConfirmationModuleDelete(false) : '';
+        data.close && setShowConfirmationModuleDelete(false);
     }
 
     const deleteModalCallBackData = (data) => {
@@ -228,7 +232,7 @@ const CourseLessons = ({ course, actions }) => {
                 addToast({ color: '#F97A85', text: data.message });
             }
         }
-        data.close ? setShowConfirmationDelete(false) : '';
+        data.close && setShowConfirmationDelete(false);
     }
 
     const NoLessonsFound = () => {

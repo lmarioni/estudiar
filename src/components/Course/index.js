@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
+import ReactPlayer from 'react-player'
 import {Helmet} from 'react-helmet'
 
 import { Menu } from "./Menu";
@@ -61,12 +62,30 @@ export const Course = ({ curso }) => {
                   {" "}
                   {moduleSelected.nombre}
                 </h2>
+                
                 <div
                   className="contenido-modulo"
                   dangerouslySetInnerHTML={{ __html: moduleSelected.contenido }}
                 >
                   
                 </div>
+
+              {
+                moduleSelected.tipo === 1 && <>
+                <div className="text-center">
+                  <div className='player-wrapper'>
+                    <ReactPlayer
+                      className='react-player'
+                      url={moduleSelected.urlVideo}
+                      width='100%'
+                      height='100%'
+                      controls
+                    />
+                  </div>
+                </div>
+                </>
+              }
+
               </React.Fragment>
             ) : <div className="text-center mt-5">
 

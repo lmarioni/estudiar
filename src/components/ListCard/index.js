@@ -32,13 +32,15 @@ export const ListCard = ({
                 <div className="card-data">
                     <h4 className="card-title">
                         <Link className="preview-card-wrapper" to={linkUrl}> {title}  </Link>
+                    {action} 
                     </h4>
                     {<p className="tag-list">{subtitle}</p>}
                 </div>
             </div>
+            <hr/>
             <div className="card-description">
                 <div> {description} </div>
-                <div> {action} </div>
+                
             </div>
         </div>
     )

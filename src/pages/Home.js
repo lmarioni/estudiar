@@ -54,7 +54,7 @@ const Home = ({ actions }) => {
         addToast({ color: '#F97A85', text: data.message });
       }
     }
-    data.close ? setShowNewCourseModal(false) : '';
+    data.close && setShowNewCourseModal(false);
   }
 
 
