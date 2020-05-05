@@ -143,7 +143,6 @@ const CourseLessons = ({ course, actions }) => {
                 const newLessonArray = lessons.map(singleLesson => {
                     if (singleLesson.id === parseInt(data.module.leccionid)) {
                         const lessonModules = singleLesson && singleLesson.modulos && singleLesson.modulos.length ? singleLesson.modulos : [];
-                        console.log({data});
                         lessonModules.push(data.module);
                         singleLesson.modulos = lessonModules;
                     }
@@ -164,7 +163,16 @@ const CourseLessons = ({ course, actions }) => {
             const { addToast } = toastActions;
             if (data.status === 'success') {
                 setLoading(true);
-                console.log({data});
+                const newLessonArray = lessons.map(eachLesson => {
+                    eachLesson.modulos = eachLesson.modulos.map(eachModule => {
+                        if (eachModule.id === data.modulo.id) {
+                            eachModule = data.modulo
+                        }
+                        return eachModule;
+                    });
+                    return eachLesson;
+                });
+                setLessons(newLessonArray);
                 addToast({ text: data.message });
                 setLoading(false);
             } else {
@@ -180,9 +188,9 @@ const CourseLessons = ({ course, actions }) => {
             if (data.status === 'success') {
                 setLoading(true);
                 lessons.forEach(eachLesson => {
-                    if(eachLesson.id === parseInt(data.editedLesson.id)){
+                    if (eachLesson.id === parseInt(data.editedLesson.id)) {
                         eachLesson.nombre = data.editedLesson.nombre
-                    }else{
+                    } else {
                         eachLesson.nombre = ''
                     }
                 });
