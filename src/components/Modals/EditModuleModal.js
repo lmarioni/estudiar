@@ -29,11 +29,11 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
         if (oldModule !== fullModule || showModal !== show) {
             setOldModule(fullModule);
             setModuleTitle(fullModule.nombre);
-            setModuleDescription(fullModule.description ? fullModule.description : '');
+            setModuleDescription(fullModule.descripcion ? fullModule.descripcion : '');
             setContentType(fullModule.tipo);
             setContent(fullModule.contenido);
             setModuleVisible(fullModule.visible);
-            fullModule.tipo === 3 && setUrlVideo(fullModule.urlVideo);
+            fullModule.tipo === 1 && setUrlVideo(fullModule.urlVideo);
             setHtmlEditorValue(fullModule.contenido);
             setShow(showModal);
         }
