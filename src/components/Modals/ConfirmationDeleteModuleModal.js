@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Context } from '../../Context';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const ConfirmationDeleteModuleModal = ({ showModal, moduleToDelete, callback }) => {
     const { token } = useContext(Context);
@@ -23,8 +24,8 @@ const ConfirmationDeleteModuleModal = ({ showModal, moduleToDelete, callback }) 
         callback({close: true, delete: false, status: 'success', message: ''});
     }
 
-    const confirmDeleteModule = () => {
-        async function removeModule() {
+    const confirmDeleteModule = async () => {
+
             setDisableButton(true);
             const requestOptions = {
                 method: 'DELETE',
@@ -39,8 +40,6 @@ const ConfirmationDeleteModuleModal = ({ showModal, moduleToDelete, callback }) 
             } else {
                 callback({close: true, delete: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.'});
             }
-        }
-        removeModule();
         setDisableButton(false);
     }
 
@@ -58,7 +57,7 @@ const ConfirmationDeleteModuleModal = ({ showModal, moduleToDelete, callback }) 
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="primary" onClick={handleCloseConfirmationModal}> No, cerrar </Button>
-                            <Button variant="secondary" disabled={disableButton} onClick={confirmDeleteModule}> Si, eliminar </Button>
+                            <Button variant="secondary" disabled={disableButton} onClick={confirmDeleteModule}> { !disableButton ? "Si, eliminar" : <AiOutlineLoading3Quarters style={{width: 70}} size='25' className='spin' /> } </Button>
                         </Modal.Footer>
                     </Modal>
                 ) : null

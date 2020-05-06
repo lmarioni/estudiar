@@ -8,6 +8,8 @@ import Alert from "react-bootstrap/Alert";
 import { MdDelete } from "react-icons/md";
 import { MdRemoveRedEye } from "react-icons/md";
 
+import { FiMail, FiUser, FiTrash2 } from "react-icons/fi";
+
 export const StudentsList = ({ id }) => {
   const { token } = useContext(Context);
   const [students, setStudents] = useState([{}]);
@@ -77,6 +79,27 @@ export const StudentsList = ({ id }) => {
   const renderTableData = () => {
     return students.map((student, key) => {
       const { id_usuario, nombre_usuario, apellido_usuario, email_usuario } = student;
+      return(
+        <React.Fragment>
+
+        <div className="row">
+          <div className="col-md-11">
+          <p> <FiUser size="20" className="mr-2" style={{color: '#017BFF'}} />{nombre_usuario} {apellido_usuario} </p>
+          <p> <FiMail size="20" className="mr-2"  style={{color: '#017BFF'}}  /> {email_usuario}</p>
+
+          </div>
+          <div className="col-md-1 text-center">
+          <div className="pointer" onClick={() => deleteStudentModal(student)} > <FiTrash2 size="20" className="text-danger" /> </div>
+          </div>
+      
+
+        </div>
+            <hr/>
+        </React.Fragment>
+
+      )
+      
+
       return (
         <tr key={key}>
           <td>{nombre_usuario}</td>
@@ -100,7 +123,7 @@ export const StudentsList = ({ id }) => {
         <Modal.Header closeButton>
           <Modal.Title>Está seguro?</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Está seguro que quiere echar del curso a {getStudentName()} ?</Modal.Body>
+        <Modal.Body>Está seguro que quiere eliminar del curso a {getStudentName()} ?</Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>
             No, volver.
@@ -118,22 +141,15 @@ export const StudentsList = ({ id }) => {
             <div className="container">
               <div className="row">
                 <div className="col-sm-12">
-                  <Table responsive striped bordered hover size="sm">
-                    <thead>
-                      <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Email</th>
-                        <th>Opciones</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {students && students.length ?
+                  <div className="card">
+                    <div className="card-body">
+                    {students && students.length ?
                         renderTableData()
-                        : <tr key="0">No hay alumnos cargados</tr>
+                        : <p className="text-center" key="0">No hay alumnos cargados</p>
                       }
-                    </tbody>
-                  </Table>
+                    </div>
+                  </div>
+                      
                 </div>
               </div>
             </div>
