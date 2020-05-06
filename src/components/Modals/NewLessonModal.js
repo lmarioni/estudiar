@@ -4,6 +4,7 @@ import { Context } from '../../Context';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const NewLessonModal = ({ courseid, showModal, callback }) => {
     const { token } = useContext(Context);
@@ -22,9 +23,10 @@ const NewLessonModal = ({ courseid, showModal, callback }) => {
         callback({ close: true, create: false, status: 'success', message: '', newLesson: {} });
     }
 
-    const handleSubmitLesson = () => {
-        async function submitLesson() {
-            setDisableButton(true);
+    const handleSubmitLesson = async () => {
+        // setLoading(true)
+        setDisableButton(true);
+
             const requestOptions = {
                 method: 'POST',
                 headers: new Headers({
@@ -39,8 +41,8 @@ const NewLessonModal = ({ courseid, showModal, callback }) => {
             } else {
                 callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
             }
-        }
-        submitLesson();
+        
+        // submitLesson();
         setDisableButton(false);
     }
 
@@ -52,18 +54,21 @@ const NewLessonModal = ({ courseid, showModal, callback }) => {
                         <Modal.Header closeButton>
                             <Modal.Title>Nueva lección</Modal.Title>
                         </Modal.Header>
+                        <Form noValidate>
+
                         <Modal.Body>
-                            <Form noValidate onSubmit={() => {handleSubmitLesson()}}>
                                 <Form.Group controlId="formNewLesson">
                                     <Form.Label>Nueva lección</Form.Label>
                                     <Form.Control type="text" placeholder="Ingrese un título" value={lesson} onChange={e => setLesson(e.target.value)} />
                                     <Form.Text className="text-muted"> Recuerda que un buen título destacará tu curso de los demás. </Form.Text>
                                 </Form.Group>
-                            </Form>
+                           
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="primary" disabled={lesson === '' || disableButton} onClick={handleSubmitLesson}> Guardar lección </Button>
+                        <Button variant="primary" disabled={lesson === '' || disableButton} onClick={() => handleSubmitLesson()}> { !disableButton ? "Guardar lección" : <AiOutlineLoading3Quarters style={{width: 100}} size='25' className='spin' /> } </Button>
+                       
                         </Modal.Footer>
+                        </Form>
                     </Modal>
                 ) : null
             }

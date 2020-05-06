@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form';
 import ReactQuill from 'react-quill';
 import CustomToolbar, { modules, formats } from "../../utils/customToolbar";
 import 'react-quill/dist/quill.snow.css';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 
 
@@ -45,9 +46,8 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
         callback({ close: true, edit: false, status: 'success', message: '' });
     }
 
-    const handleSubmit = () => {
-      
-        async function submitModule() {
+    const handleSubmit = async () => {
+        setDisableButton(true)
             const payload = {};
             moduleTitle !== oldModule.nombre ? payload.nombre = moduleTitle : '';
             moduleDescription !== oldModule.descripcion ? payload.descripcion = moduleDescription : '';
@@ -60,6 +60,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                     break;
                 case 4: content !== oldModule.contenido ? payload.contenido = htmlEditorValue : ''; break;
             }
+
             const requestOptions = {
                 method: 'PUT',
                 headers: new Headers({
@@ -74,8 +75,8 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
             } else {
                 callback({ close: true, edit: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
             }
-        }
-        submitModule();
+        
+
         setDisableButton(false);
     }
 
@@ -88,7 +89,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                             <Modal.Title>{oldModule.nombre} - Edición de módulo</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form noValidate onSubmit={() => { handleSubmit() }}>
+                            <Form noValidate >
                                 <Form.Group controlId="moduleTitle">
                                     <Form.Control type="text" placeholder="Ingrese un título" value={moduleTitle} onChange={e => setModuleTitle(e.target.value)} />
                                 </Form.Group>
@@ -131,7 +132,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleEditModuleModal}> Cerrar </Button>
-                            <Button variant="primary" disabled={disableButton} onClick={() => { handleSubmit() }}> Guardar cambios </Button>
+                                <Button variant="primary" disabled={disableButton} onClick={() => { handleSubmit() }}> { !disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{width: 100}} size='25' className='spin' />  } </Button>
                         </Modal.Footer>
                     </Modal>
 

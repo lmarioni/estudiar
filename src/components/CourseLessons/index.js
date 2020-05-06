@@ -276,7 +276,7 @@ const CourseLessons = ({ course, actions }) => {
                                 </div>
 
                             </div>
-
+                        <hr/>
                             {lessons && lessons.length ?
                                 lessons.map(courseLesson => {
                                     return (

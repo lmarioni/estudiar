@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import ReactQuill from 'react-quill';
 import CustomToolbar, { modules, formats } from "../../utils/customToolbar";
 import 'react-quill/dist/quill.snow.css';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 
 const NewModuleModal = ({ fulllesson, showModal, callback }) => {
@@ -39,9 +40,8 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
         callback({ close: true, create: false, status: 'success', message: '' });
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
    
-        async function submitModule() {
             setDisableButton(true);
             const payload = {};
             payload.nombre = moduleTitle;
@@ -71,8 +71,8 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
             } else {
                 callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
             }
-        }
-        submitModule();
+        
+       // submitModule();
         setDisableButton(false);
 
 
@@ -133,7 +133,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleNewModuleModal}> Cerrar </Button>
-                            <Button variant="primary" disabled={disableButton} onClick={() => { handleSubmit() }}> Guardar cambios </Button>
+                            <Button variant="primary" disabled={disableButton} onClick={() => { handleSubmit() }}> { !disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{width: 100}} size='25' className='spin' /> }</Button>
                         </Modal.Footer>
                     </Modal>
 
