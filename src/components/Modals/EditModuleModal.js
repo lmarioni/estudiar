@@ -105,7 +105,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                     checked={moduleVisible}
                                     label={moduleVisible ? 'Visible para los alumnos' : 'No visible para los alumnos'}
                                 />
-                                <Form.Group controlId="contentType">
+                                <Form.Group controlId="contentType" style={{display:'none'}}>
                                     <Form.Label>Elija un tipo de contenido</Form.Label>
                                     <Form.Control as="select" value={contentType} onChange={e => setContentType(e.target.value)}>
                                         <option value="1">Video con texto sin formato</option>
