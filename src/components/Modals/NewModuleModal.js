@@ -87,7 +87,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                             <Modal.Title>{lesson.nombre} - Nuevo módulo</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form noValidate onSubmit={() => { handleSubmit() }}>
+                            <Form noValidate >
                                 <Form.Group controlId="moduleTitle">
                                     <Form.Control type="text" placeholder="Ingrese un título" value={moduleTitle} onChange={e => setModuleTitle(e.target.value)} />
                                 </Form.Group>
@@ -98,18 +98,15 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                     // eslint-disable-next-line no-restricted-globals
                                     onChange={e => setModuleVisible(event.target.checked)}
                                     type="switch"
-                                    value={moduleVisible}
                                     id="custom-switch"
+                                    checked={moduleVisible}
                                     label={moduleVisible ? 'Visible para los alumnos' : 'No visible para los alumnos'}
                                 />
-                                <Form.Group controlId="contentType ">
+                                <Form.Group controlId="contentType" style={{display:'none'}}>
                                     <Form.Label>Elija un tipo de contenido</Form.Label>
                                     <Form.Control as="select" value={contentType} onChange={e => setContentType(e.target.value)}>
-                                        <option value="1">Video (Youtube, vimeo, etc..)</option>
-                                        <option value="4">Texto</option>
-                                        <option value="3" disabled>Evaluación (proximamente)</option>
-                                        <option value="3" disabled>PDF / Word (proximamente)</option>
-                                        <option value="3" disabled>Audio (proximamente)</option>
+                                        <option value="1">Video con texto sin formato</option>
+                                        <option value="4">Texto con formato</option>
                                     </Form.Control>
                                 </Form.Group>
                                 {contentType == 1 ? (
@@ -127,7 +124,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                 }
 
                                 {contentType == 4 ? (<div><CustomToolbar />
-                                    <ReactQuill theme="snow" height='200' value={htmlEditorValue} onChange={setHtmlEditorValue} modules={modules}
+                                    <ReactQuill theme="snow" value={htmlEditorValue} onChange={setHtmlEditorValue} modules={modules}
                                         formats={formats} /></div>) : null}
                             </Form>
                         </Modal.Body>
