@@ -22,7 +22,7 @@ export const Panel = ({ id }) => {
     { key: 'student-list', label: 'Listado de alumnos' },
     { key: 'course-configuration', label: 'Configuración' },
     { key: 'course-test', label: 'Evaluación' },
-    { key: 'course-lessons', label: 'Lecciones' },
+    { key: 'course-lessons', label: 'Unidades' },
   ];
 
   const [copySuccess, setCopySuccess] = useState(false);
@@ -105,6 +105,7 @@ export const Panel = ({ id }) => {
             <Tab.Container defaultActiveKey="student-list" onSelect={handleSelectedTab}>
               <Row>
                 <Col sm={12} md={3}>
+                  <h4 className="ml-3" style={{fontWeight: 500}}> {course.nombre} </h4>
                   <Nav variant="pills" className="flex-column">
                     <Nav.Item>
                       <Nav.Link eventKey="student-list">Listado de alumnos</Nav.Link>
@@ -116,7 +117,7 @@ export const Panel = ({ id }) => {
                       <Nav.Link eventKey="course-configuration">Configuracion</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="course-lessons">Lecciones</Nav.Link>
+                      <Nav.Link eventKey="course-lessons">Unidades</Nav.Link>
                     </Nav.Item>
                   </Nav>
                 </Col>

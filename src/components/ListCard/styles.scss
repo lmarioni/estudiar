@@ -33,7 +33,10 @@
     color: #212121;
     font-size: 1.2em;
 }
-
+.preview-card .card-title a, 
+.preview-card .card-title a:hover {
+    color: #ffffff;
+}
 .card {
     position: relative;
     margin: 1.75rem 0.875rem 1rem;

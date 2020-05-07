@@ -17,7 +17,7 @@ export const ListOfCourses = ({ courses = [] }) => {
               title={course.nombre}
               subtitle={course.profesores[0].nombre + " " + course.profesores[0].apellido}
               description={course.descripcion}
-              action={course.creador ? <Link to={`/panel/${course.idcurso}`} className="btn btn-outline-secondary float-right" > <MdBuild />  </Link> : ''}
+              action={course.creador ? <Link to={`/panel/${course.idcurso}`} className="btn btn-outline-secondary float-right" > Editar </Link> : ''}
             />
           </React.Fragment>
         );

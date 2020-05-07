@@ -21,18 +21,6 @@ import {
 } from '../Modals/index.js';
 import EmptyBook from '../../assets/img/emptyBook.png';
 
-const customCard = {
-    width: '550px',
-    minHeight: '350px',
-};
-const customCardBody = {
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'right center',
-    backgroundSize: 'auto',
-    backgroundPosition: 'right bottom',
-    backgroundImage: `url(${EmptyBook})`,
-};
-
 const CourseLessons = ({ course, actions }) => {
 
     const { token } = useContext(Context);
@@ -247,12 +235,17 @@ const CourseLessons = ({ course, actions }) => {
 
     const NoLessonsFound = () => {
         return (
-            <Card style={customCard}>
-                <Card.Body style={customCardBody}>
-                    <h4>Parece que no tenés lecciones cargadas aún. </h4>
-                    <h5>Probá crear algunas desde el botón de Nueva Lección o haciendo click <a className="pointer text-primary" onClick={openLessonModal}>aqui</a>.</h5>
-                </Card.Body>
-            </Card>
+            <div className="row">
+                <div className="col-md-2"></div>
+                <div className="col-md-8">
+                    <div className="card">
+                        <div className="card-body text-center">
+                        <h4>No tienes unidades cargadas aún. </h4>
+                        <p>Crea una nueva lección o haciendo click <a className="pointer text-primary" onClick={openLessonModal}>aqui</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     }
 
@@ -269,9 +262,9 @@ const CourseLessons = ({ course, actions }) => {
                     <Skeleton count="1" color="#f4f4f4" /> : (
                         <div>
                             <div className="w-100 d-flex flex-row justify-content-between">
-                                <h3>{title} 2</h3>
+                                <h3>{title}</h3>
                                 <div>
-                                    <Button onClick={() => { openLessonModal() }}> Nueva lección </Button>
+                                    <Button onClick={() => { openLessonModal() }}> Nueva Unidad </Button>
                                 </div>
 
                             </div>
@@ -294,7 +287,7 @@ const CourseLessons = ({ course, actions }) => {
                                             />
                                         </React.Fragment>
                                     )
-                                }) : <div className="d-flex flex-row justify-content-center"><NoLessonsFound /></div>}
+                                }) : <NoLessonsFound />}
                         </div>
                     )
             }
