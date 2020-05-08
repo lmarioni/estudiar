@@ -48,7 +48,7 @@ const Home = ({ actions }) => {
     if (data.create) {
       const { addToast } = toastActions;
       if (data.status === 'success') {
-        fetchCourses();
+        window.location = `/panel/${data.course.id}`;
         addToast({ text: data.message });
       } else {
         addToast({ color: '#F97A85', text: data.message });
