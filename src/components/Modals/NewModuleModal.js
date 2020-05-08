@@ -3,14 +3,19 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Context } from '../../Context';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
 import ReactQuill from 'react-quill';
 import CustomToolbar, { modules, formats } from "../../utils/customToolbar";
 import 'react-quill/dist/quill.snow.css';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import ReactPlayer from 'react-player';
+import styled from 'styled-components';
 
+export const PlayerWrapper = styled.div`
+    max-height: 20vh;
+    max-height: 20vh;
+`
 
 const NewModuleModal = ({ fulllesson, showModal, callback }) => {
     const { token } = useContext(Context);
@@ -109,7 +114,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                         <option value="4">Texto con formato</option>
                                     </Form.Control>
                                 </Form.Group>
-                                {contentType == 1 ? (
+                                {contentType == 1 && (
                                     <div>
                                         <Form.Group controlId="simpleContent">
                                             <Form.Label>Contenido módulo</Form.Label>
@@ -119,13 +124,22 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                             <Form.Label>URL del video</Form.Label>
                                             <Form.Control type="text" placeholder="Ingrese la url del video" value={urlVideo} onChange={e => setUrlVideo(e.target.value)} />
                                         </Form.Group>
+                                        {urlVideo &&
+                                            <PlayerWrapper>
+                                                <ReactPlayer
+                                                    url={urlVideo}
+                                                    className="react-player"
+                                                    width="100%"
+                                                    height="100%"
+                                                />
+                                            </PlayerWrapper>
+                                        }
                                     </div>
-                                ) : null
-                                }
+                                )}
 
-                                {contentType == 4 ? (<div><CustomToolbar />
+                                {contentType == 4 && (<div><CustomToolbar />
                                     <ReactQuill theme="snow" value={htmlEditorValue} onChange={setHtmlEditorValue} modules={modules}
-                                        formats={formats} /></div>) : null}
+                                        formats={formats} /></div>)}
                             </Form>
                         </Modal.Body>
                         <Modal.Footer>
