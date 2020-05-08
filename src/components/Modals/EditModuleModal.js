@@ -48,35 +48,35 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
 
     const handleSubmit = async () => {
         setDisableButton(true)
-            const payload = {};
-            moduleTitle !== oldModule.nombre ? payload.nombre = moduleTitle : '';
-            moduleDescription !== oldModule.descripcion ? payload.descripcion = moduleDescription : '';
-            moduleVisible !== oldModule.visible ? payload.visible = moduleVisible : '';
-            parseInt(contentType) !== oldModule.tipo ? payload.tipo = parseInt(contentType) : '';
-            switch (parseInt(contentType)) {
-                case 1:
-                    content !== oldModule.contenido ? payload.contenido = content : '';
-                    urlVideo !== oldModule.urlVideo ? payload.urlVideo = urlVideo : '';
-                    break;
-                    case 4:
-                        htmlEditorValue !== oldModule.contenido ? payload.contenido = htmlEditorValue : ''; break;
-            }
+        const payload = {};
+        moduleTitle !== oldModule.nombre ? payload.nombre = moduleTitle : '';
+        moduleDescription !== oldModule.descripcion ? payload.descripcion = moduleDescription : '';
+        moduleVisible !== oldModule.visible ? payload.visible = moduleVisible : '';
+        parseInt(contentType) !== oldModule.tipo ? payload.tipo = parseInt(contentType) : '';
+        switch (parseInt(contentType)) {
+            case 1:
+                content !== oldModule.contenido ? payload.contenido = content : '';
+                urlVideo !== oldModule.urlVideo ? payload.urlVideo = urlVideo : '';
+                break;
+            case 4:
+                htmlEditorValue !== oldModule.contenido ? payload.contenido = htmlEditorValue : ''; break;
+        }
 
-            const requestOptions = {
-                method: 'PUT',
-                headers: new Headers({
-                    authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
-                }),
-                body: JSON.stringify(payload),
-            };
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/modulos/${oldModule.id}`, requestOptions);
-            const parsedResponse = await response.json();
-            if (parsedResponse.status === 'success') {
-                callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, modulo: parsedResponse.content });
-            } else {
-                callback({ close: true, edit: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
-            }
-        
+        const requestOptions = {
+            method: 'PUT',
+            headers: new Headers({
+                authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify(payload),
+        };
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/modulos/${oldModule.id}`, requestOptions);
+        const parsedResponse = await response.json();
+        if (parsedResponse.status === 'success') {
+            callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, modulo: parsedResponse.content });
+        } else {
+            callback({ close: true, edit: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
+        }
+
 
         setDisableButton(false);
     }
@@ -105,7 +105,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                     checked={moduleVisible}
                                     label={moduleVisible ? 'Visible para los alumnos' : 'No visible para los alumnos'}
                                 />
-                                <Form.Group controlId="contentType" style={{display:'none'}}>
+                                <Form.Group controlId="contentType" style={{ display: 'none' }}>
                                     <Form.Label>Elija un tipo de contenido</Form.Label>
                                     <Form.Control as="select" value={contentType} onChange={e => setContentType(e.target.value)}>
                                         <option value="1">Video con texto sin formato</option>
@@ -134,7 +134,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleEditModuleModal}> Cerrar </Button>
-                                <Button variant="primary" disabled={disableButton} onClick={() => { handleSubmit() }}> { !disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{width: 100}} size='25' className='spin' />  } </Button>
+                            <Button variant="primary" disabled={disableButton} onClick={() => { handleSubmit() }}> {!disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{ width: 100 }} size='25' className='spin' />} </Button>
                         </Modal.Footer>
                     </Modal>
 
