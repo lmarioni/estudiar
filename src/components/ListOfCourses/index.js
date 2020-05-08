@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles.scss";
-import { MdBuild } from "react-icons/md";
 import { ListCard } from "../ListCard";
 import { Link } from "@reach/router";
 

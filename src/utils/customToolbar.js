@@ -29,9 +29,9 @@ function redoChange() {
   this.quill.history.redo();
 }
 
-const Size = Quill.import("formats/size");
-Size.whitelist = ["extra-small", "small", "medium", "large"];
-Quill.register(Size, true);
+var fontSizeStyle = Quill.import('attributors/style/size');
+fontSizeStyle.whitelist = ['9px', '11px', '16px', '20px', '24px', '48px'];
+Quill.register(fontSizeStyle, true);
 
 const Font = Quill.import("formats/font");
 Font.whitelist = [
@@ -92,17 +92,19 @@ export const QuillToolbar = () => (
         <option value="helvetica">Helvetica</option>
         <option value="lucida">Lucida</option>
       </select>
-      <select className="ql-size" defaultValue="medium">
-        <option value="extra-small">Size 1</option>
-        <option value="small">Size 2</option>
-        <option value="medium">Size 3</option>
-        <option value="large">Size 4</option>
+      <select className="ql-size" defaultValue="11px">
+        <option value="9px">9px</option>
+        <option value="11px">11px</option>
+        <option value="16px">16px</option>
+        <option value="20px">20px</option>
+        <option value="24px">24px</option>
+        <option value="48px">48px</option>
       </select>
-      <select className="ql-header" defaultValue="3">
-        <option value="1">Heading</option>
-        <option value="2">Subheading</option>
+      {/* <select className="ql-header" defaultValue="3">
+        <option value="1">Título</option>
+        <option value="2">Subtítulo</option>
         <option value="3">Normal</option>
-      </select>
+      </select> */}
     </span>
     <span className="ql-formats">
       <button className="ql-bold" />
@@ -113,14 +115,14 @@ export const QuillToolbar = () => (
     <span className="ql-formats">
       <button className="ql-list" value="ordered" />
       <button className="ql-list" value="bullet" />
-      <button className="ql-indent" value="-1" />
-      <button className="ql-indent" value="+1" />
+      {/* <button className="ql-indent" value="-1" />
+      <button className="ql-indent" value="+1" /> */}
     </span>
     <span className="ql-formats">
       <button className="ql-script" value="super" />
       <button className="ql-script" value="sub" />
       <button className="ql-blockquote" />
-      <button className="ql-direction" />
+      {/* <button className="ql-direction" /> */}
     </span>
     <span className="ql-formats">
       <select className="ql-align" />
@@ -128,23 +130,23 @@ export const QuillToolbar = () => (
       <select className="ql-background" />
     </span>
     <span className="ql-formats">
-      <button className="ql-link" />
       <button className="ql-image" />
-      <button className="ql-video" />
+      {/* `<button className="ql-link" />
+      <button className="ql-video" />` */}
     </span>
-    <span className="ql-formats">
+    {/* <span className="ql-formats">
       <button className="ql-formula" />
       <button className="ql-code-block" />
       <button className="ql-clean" />
-    </span>
-    <span className="ql-formats">
+    </span> */}
+    {/* <span className="ql-formats">
       <button className="ql-undo">
         <CustomUndo />
       </button>
       <button className="ql-redo">
         <CustomRedo />
       </button>
-    </span>
+    </span> */}
   </div>
 );
 
