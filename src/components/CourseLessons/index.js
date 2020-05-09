@@ -227,7 +227,7 @@ const CourseLessons = ({ course, actions }) => {
                     <div className="card">
                         <div className="card-body text-center">
                             <h4>No tienes unidades cargadas aún. </h4>
-                            <p>Crea una nueva lección o haciendo click <a className="pointer text-primary" onClick={openLessonModal}>aqui</a>.</p>
+                            <p>Crea una nueva unidad o haciendo click <a className="pointer text-primary" onClick={openLessonModal}>aqui</a>.</p>
                         </div>
                     </div>
                 </div>
@@ -282,7 +282,7 @@ const CourseLessons = ({ course, actions }) => {
                                                         <div className="btn btn-outline-primary mr-1" onClick={() => { openNewModule(courseLesson) }}><FaPlus /></div>
                                                         <div className="btn btn-outline-secondary mr-1" onClick={() => { openLessonEditModal(courseLesson) }}><MdBuild /></div>
                                                         {
-                                                            courseLesson.modulos.length ?
+                                                            courseLesson && courseLesson.modulos && courseLesson.modulos.length ?
                                                                 (<OverlayTrigger
                                                                     key="top"
                                                                     placement="top"
