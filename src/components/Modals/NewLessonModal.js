@@ -40,6 +40,7 @@ const NewLessonModal = ({ courseid, showModal, callback }) => {
         } else {
             callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
         }
+        setLesson('');
         setDisableButton(false);
     }
 
