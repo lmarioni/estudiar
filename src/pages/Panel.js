@@ -67,7 +67,7 @@ export const Panel = ({ id }) => {
       })
     };
 
-    fetch(`${process.env.REACT_APP_BASE_URL}/cursos/` + id, data)
+    fetch(`${process.env.REACT_APP_BASE_URL}/cursos/${id}?novisible=true`, data)
       .then(res => res.json())
       .then(courseResponse => {
         setInviteCode(`http://estudiar.btcj.com.ar/i/${courseResponse.codigoInvitacion}`);
