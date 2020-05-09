@@ -6,7 +6,6 @@ import Modal from "react-bootstrap/Modal";
 import NoImageIcon from '../../../assets/img/no-image-iconOld.png';
 import "./styles.scss";
 
-
 class ImageProfile extends PureComponent {
   constructor(props) {
     super(props);
@@ -122,8 +121,7 @@ class ImageProfile extends PureComponent {
     this.setState({
       imagenActual: blobFile
     });
-
-    fetch("https://btcj.com.ar/api/imagen.php", {
+    fetch(`${process.env.REACT_APP_BTCJ_URL}/imagen.php`, {
       method: "POST",
       body: fd
     })
