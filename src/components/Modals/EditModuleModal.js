@@ -107,7 +107,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
         setDisableButton(false);
     }
 
-    const handleUpdateFiles = (fileItems) => { setFiles(fileItems[0].file); }
+    const handleUpdateFiles = (fileItems) => { setFiles(fileItems.file); }
 
     return (
         <div>
