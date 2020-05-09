@@ -110,8 +110,8 @@ const CourseLessons = ({ course, actions }) => {
 
     const newModuleModalCallBackData = (data) => {
         data.close && setShowNewModule(false);
+        const { addToast } = toastActions;
         if (data.create) {
-            const { addToast } = toastActions;
             if (data.status === 'success') {
                 setLoading(true);
                 const newLessonArray = lessons.map(singleLesson => {
@@ -126,8 +126,10 @@ const CourseLessons = ({ course, actions }) => {
                 addToast({ text: data.message });
                 setLoading(false);
             } else {
-                addToast({ color: '#F97A85', text: data.message });
+                addToast({ color: 'red', text: data.message });
             }
+        } else {
+            addToast({ color: 'red', text: data.message });
         }
 
     }
@@ -154,6 +156,8 @@ const CourseLessons = ({ course, actions }) => {
             } else {
                 addToast({ color: '#F97A85', text: data.message });
             }
+        } else {
+            addToast({ color: 'red', text: data.message });
         }
         data.close && setShowEditModule(false);
     }
@@ -175,6 +179,8 @@ const CourseLessons = ({ course, actions }) => {
             } else {
                 addToast({ color: '#F97A85', text: data.message });
             }
+        } else {
+            addToast({ color: 'red', text: data.message });
         }
         data.close && setShowEditLesson(false);
     }
@@ -199,6 +205,8 @@ const CourseLessons = ({ course, actions }) => {
             } else {
                 addToast({ color: '#F97A85', text: data.message });
             }
+        } else {
+            addToast({ color: 'red', text: data.message });
         }
         data.close && setShowConfirmationModuleDelete(false);
     }
@@ -215,6 +223,8 @@ const CourseLessons = ({ course, actions }) => {
             } else {
                 addToast({ color: '#F97A85', text: data.message });
             }
+        } else {
+            addToast({ color: 'red', text: data.message });
         }
         data.close && setShowConfirmationDelete(false);
     }
