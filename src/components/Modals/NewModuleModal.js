@@ -171,7 +171,6 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                             <Form.Control type="text" placeholder="Ingrese el contenido" value={content} onChange={e => setContent(e.target.value)} />
                                         </Form.Group>
                                         <FilePond
-                                            files={files}
                                             labelIdle='Arrastre y suelte aqui sus archivos o haga click <span class="filepond--label-action"> aquí </span> para buscarlos'
                                             onupdatefiles={handleUpdateFiles}>
                                         </FilePond>

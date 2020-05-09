@@ -94,17 +94,17 @@ const CourseLessons = ({ course, actions }) => {
 
     const newLessonModalCallBackData = (data) => {
         const { addToast } = toastActions;
-        if (data.create) {
-            if (data.status === 'success') {
+        if (data.status === 'success') {
+            if (data.create) {
                 setLoading(true);
                 const newLessonArray = lessons;
                 newLessonArray.push(data.leccion);
                 setLessons(newLessonArray);
                 addToast({ text: data.message });
                 setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: data.message });
             }
+        } else {
+            addToast({ color: 'red', text: data.message });
         }
         data.close && setShowNewLesson(false);
     }
@@ -112,8 +112,8 @@ const CourseLessons = ({ course, actions }) => {
     const newModuleModalCallBackData = (data) => {
         data.close && setShowNewModule(false);
         const { addToast } = toastActions;
-        if (data.create) {
-            if (data.status === 'success') {
+        if (data.status === 'success') {
+            if (data.create) {
                 setLoading(true);
                 const newLessonArray = lessons.map(singleLesson => {
                     if (singleLesson.id === parseInt(data.module.leccionid)) {
@@ -126,19 +126,16 @@ const CourseLessons = ({ course, actions }) => {
                 setLessons(newLessonArray);
                 addToast({ text: data.message });
                 setLoading(false);
-            } else {
-                addToast({ color: 'red', text: data.message });
             }
         } else {
             addToast({ color: 'red', text: data.message });
         }
-
     }
 
     const editModuleModalCallBackData = (data) => {
         const { addToast } = toastActions;
-        if (data.edit) {
-            if (data.status === 'success') {
+        if (data.status === 'success') {
+            if (data.edit) {
                 setLoading(true);
                 let lessonsAux = lessons.slice()
                 for (var i = 0; i < lessonsAux.length; i++) {
@@ -151,11 +148,8 @@ const CourseLessons = ({ course, actions }) => {
                     }
                 }
                 setLessons(lessonsAux)
-
                 addToast({ text: data.message });
                 setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: data.message });
             }
         } else {
             addToast({ color: 'red', text: data.message });
@@ -165,8 +159,8 @@ const CourseLessons = ({ course, actions }) => {
 
     const editLessonModalCallBackData = (data) => {
         const { addToast } = toastActions;
-        if (data.edit) {
-            if (data.status === 'success') {
+        if (data.status === 'success') {
+            if (data.edit) {
                 setLoading(true);
                 lessons.forEach(eachLesson => {
                     if (eachLesson.id === parseInt(data.editedLesson.id)) {
@@ -177,8 +171,6 @@ const CourseLessons = ({ course, actions }) => {
                 });
                 addToast({ text: data.message });
                 setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: data.message });
             }
         } else {
             addToast({ color: 'red', text: data.message });
@@ -188,8 +180,8 @@ const CourseLessons = ({ course, actions }) => {
 
     const deleteModuleModalCallBackData = (data) => {
         const { addToast } = toastActions;
-        if (data.delete) {
-            if (data.status === 'success') {
+        if (data.status === 'success') {
+            if (data.delete) {
                 setLoading(true);
                 const newLessonArray = lessons.map(singleLesson => {
                     if (singleLesson.id === parseInt(deleteModule.leccionid)) {
@@ -199,12 +191,8 @@ const CourseLessons = ({ course, actions }) => {
                     return singleLesson;
                 });
                 setLessons(newLessonArray);
-
                 addToast({ text: data.message });
-
                 setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: data.message });
             }
         } else {
             addToast({ color: 'red', text: data.message });
@@ -214,15 +202,13 @@ const CourseLessons = ({ course, actions }) => {
 
     const deleteModalCallBackData = (data) => {
         const { addToast } = toastActions;
-        if (data.delete) {
-            if (data.status === 'success') {
+        if (data.status === 'success') {
+            if (data.delete) {
                 setLoading(true);
                 const newLessonArray = lessons.filter(lesson => lesson.id !== deleteLesson.id);
                 addToast({ text: data.message });
                 setLessons(newLessonArray);
                 setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: data.message });
             }
         } else {
             addToast({ color: 'red', text: data.message });

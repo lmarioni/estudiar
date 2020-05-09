@@ -37,7 +37,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
     const [moduleVisible, setModuleVisible] = useState(true);
     const [urlVideo, setUrlVideo] = useState('');
     const [htmlEditorValue, setHtmlEditorValue] = useState('');
-    const [files, setFiles] = useState([]);
+    const [files, setFiles] = useState([{}]);
 
     useEffect(function () {
         if (oldModule !== fullModule || showModal !== show) {
@@ -67,6 +67,9 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
         moduleDescription !== oldModule.descripcion ? payload.descripcion = moduleDescription : '';
         moduleVisible !== oldModule.visible ? payload.visible = moduleVisible : '';
         parseInt(contentType) !== oldModule.tipo ? payload.tipo = parseInt(contentType) : '';
+
+        let actionUrl = `${process.env.REACT_APP_BASE_URL}/modulos/${oldModule.id}`;
+
         switch (parseInt(contentType)) {
             case 1:
                 content !== oldModule.contenido ? payload.contenido = content : '';
@@ -75,6 +78,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
             case 3:
                 content !== oldModule.contenido ? payload.contenido = content : '';
                 files !== oldModule.documento ? payload.documento = files : null;
+                actionUrl = `${process.env.REACT_APP_BTCJ_URL}/contenido.php`;
                 break;
             case 4:
                 htmlEditorValue !== oldModule.contenido ? payload.contenido = htmlEditorValue : ''; break;
@@ -87,7 +91,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
             }),
             body: JSON.stringify(payload),
         };
-        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/modulos/${oldModule.id}`, requestOptions);
+        const response = await fetch(actionUrl, requestOptions);
         const parsedResponse = await response.json();
         if (parsedResponse.status === 'success') {
             callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, modulo: parsedResponse.content });
@@ -173,7 +177,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
 
                                         <p> Documento actual: <a target="_blank" href={oldModule.urlDocumento}> Ver <FiExternalLink /> </a> </p>
                                         <FilePond
-                                            files={files}
+                                            files={files ? files : null}
                                             labelIdle='Arrastre y suelte aqui sus archivos o haga click <span class="filepond--label-action"> aquí </span> para buscarlos'
                                             onupdatefiles={handleUpdateFiles}>
                                         </FilePond>
