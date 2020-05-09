@@ -103,7 +103,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color: 'red', text: data.message });
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowNewLesson(false);
     }
@@ -127,7 +127,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color: 'red', text: data.message });
+            addToast({ color:"#F97A85", text: data.message });
         }
     }
 
@@ -151,7 +151,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color: 'red', text: data.message });
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowEditModule(false);
     }
@@ -172,7 +172,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color: 'red', text: data.message });
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowEditLesson(false);
     }
@@ -194,7 +194,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color: 'red', text: data.message });
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowConfirmationModuleDelete(false);
     }
@@ -210,7 +210,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color: 'red', text: data.message });
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowConfirmationDelete(false);
     }
