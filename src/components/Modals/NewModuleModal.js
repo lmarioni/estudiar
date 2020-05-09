@@ -60,6 +60,9 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
         payload.descripcion = moduleDescription;
         payload.visible = moduleVisible;
         payload.tipo = parseInt(contentType);
+
+        let actionUrl = `${process.env.REACT_APP_BASE_URL}/lecciones/${lesson.id}/modulos`;
+
         switch (parseInt(contentType)) {
             case 1:
                 payload.contenido = content;
@@ -68,6 +71,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
             case 3:
                 payload.contenido = content;
                 payload.documento = files;
+                actionUrl = `${process.env.REACT_APP_BTCJ_URL}/contenido.php`;
                 break;
             case 4:
                 payload.contenido = htmlEditorValue;
@@ -80,7 +84,8 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
             }),
             body: JSON.stringify(payload),
         };
-        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/lecciones/${lesson.id}/modulos`, requestOptions);
+        const response = await fetch(actionUrl, requestOptions);
+
         const parsedResponse = await response.json();
         if (parsedResponse.status === 'success') {
             let merged = {...parsedResponse.content, ...parsedResponse.modulo}
