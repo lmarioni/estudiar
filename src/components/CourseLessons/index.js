@@ -92,8 +92,8 @@ const CourseLessons = ({ course, actions }) => {
     }
 
     const newLessonModalCallBackData = (data) => {
+        const { addToast } = toastActions;
         if (data.create) {
-            const { addToast } = toastActions;
             if (data.status === 'success') {
                 setLoading(true);
                 const newLessonArray = lessons;
@@ -135,8 +135,8 @@ const CourseLessons = ({ course, actions }) => {
     }
 
     const editModuleModalCallBackData = (data) => {
+        const { addToast } = toastActions;
         if (data.edit) {
-            const { addToast } = toastActions;
             if (data.status === 'success') {
                 setLoading(true);
                 let lessonsAux = lessons.slice()
@@ -163,8 +163,8 @@ const CourseLessons = ({ course, actions }) => {
     }
 
     const editLessonModalCallBackData = (data) => {
+        const { addToast } = toastActions;
         if (data.edit) {
-            const { addToast } = toastActions;
             if (data.status === 'success') {
                 setLoading(true);
                 lessons.forEach(eachLesson => {
@@ -186,8 +186,8 @@ const CourseLessons = ({ course, actions }) => {
     }
 
     const deleteModuleModalCallBackData = (data) => {
+        const { addToast } = toastActions;
         if (data.delete) {
-            const { addToast } = toastActions;
             if (data.status === 'success') {
                 setLoading(true);
                 const newLessonArray = lessons.map(singleLesson => {
@@ -212,8 +212,8 @@ const CourseLessons = ({ course, actions }) => {
     }
 
     const deleteModalCallBackData = (data) => {
+        const { addToast } = toastActions;
         if (data.delete) {
-            const { addToast } = toastActions;
             if (data.status === 'success') {
                 setLoading(true);
                 const newLessonArray = lessons.filter(lesson => lesson.id !== deleteLesson.id);
