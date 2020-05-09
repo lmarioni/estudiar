@@ -5,9 +5,6 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Alert from "react-bootstrap/Alert";
-import { MdDelete } from "react-icons/md";
-import { MdRemoveRedEye } from "react-icons/md";
-
 import { FiMail, FiUser, FiTrash2 } from "react-icons/fi";
 
 export const StudentsList = ({ id }) => {
@@ -79,39 +76,19 @@ export const StudentsList = ({ id }) => {
   const renderTableData = () => {
     return students.map((student, key) => {
       const { id_usuario, nombre_usuario, apellido_usuario, email_usuario } = student;
-      return(
-        <React.Fragment>
-
-        <div className="row">
-          <div className="col-md-11">
-          <p> <FiUser size="20" className="mr-2" style={{color: '#017BFF'}} />{nombre_usuario} {apellido_usuario} </p>
-          <p> <FiMail size="20" className="mr-2"  style={{color: '#017BFF'}}  /> {email_usuario}</p>
-
-          </div>
-          <div className="col-md-1 text-center">
-          <div className="pointer" onClick={() => deleteStudentModal(student)} > <FiTrash2 size="20" className="text-danger" /> </div>
-          </div>
-      
-
-        </div>
-            <hr/>
-        </React.Fragment>
-
-      )
-      
-
       return (
-        <tr key={key}>
-          <td>{nombre_usuario}</td>
-          <td>{apellido_usuario}</td>
-          <td>{email_usuario}</td>
-          <td>
-          <div className="action-container">
-            <div className="pointer"> <MdRemoveRedEye /> </div>
-            <div className="pointer" onClick={() => deleteStudentModal(student)} > <MdDelete /> </div>
+        <React.Fragment key>
+          <div className="row">
+            <div className="col-md-11">
+              <p> <FiUser size="20" className="mr-2" style={{ color: '#017BFF' }} />{nombre_usuario} {apellido_usuario} </p>
+              <p> <FiMail size="20" className="mr-2" style={{ color: '#017BFF' }} /> {email_usuario}</p>
+            </div>
+            <div className="col-md-1 text-center">
+              <div className="pointer" onClick={() => deleteStudentModal(student)} > <FiTrash2 size="20" className="text-danger" /> </div>
+            </div>
           </div>
-          </td>
-        </tr>
+          <hr />
+        </React.Fragment>
       )
     })
   }
@@ -143,13 +120,13 @@ export const StudentsList = ({ id }) => {
                 <div className="col-sm-12">
                   <div className="card">
                     <div className="card-body">
-                    {students && students.length ?
+                      {students && students.length ?
                         renderTableData()
                         : <p className="text-center" key="0">No hay alumnos cargados</p>
                       }
                     </div>
                   </div>
-                      
+
                 </div>
               </div>
             </div>
