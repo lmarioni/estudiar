@@ -46,7 +46,6 @@ const CourseConfiguration = ({ idCurso, courseInfo, actions }) => {
       const { addToast } = toastActions;
       if (parsedResponse.status === 'success') {
         setLoading(true);
-        console.log(parsedResponse.curso);
         const oldCourse = course;
         oldCourse.nombre = parsedResponse.curso.nombre;
         setCourse(oldCourse);

@@ -27,26 +27,24 @@ const EditLessonModal = ({ lesson_id, showModal, callback }) => {
         callback({ close: true, edit: false, status: 'success', message: '' });
     }
 
-    const handleSubmit = () => {
-
-        async function submitLesson() {
-            setDisableButton(true);
-            const requestOptions = {
-                method: 'PUT',
-                headers: new Headers({
-                    authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
-                }),
-                body: JSON.stringify({ nombre: lesson }),
-            };
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/lecciones/${lessonId}`, requestOptions);
-            const parsedResponse = await response.json();
-            if (parsedResponse.status === 'success') {
-                callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, editedLesson: { id: lessonId, nombre: lesson } });
-            } else {
-                callback({ close: true, edit: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
-            }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setDisableButton(true);
+        const requestOptions = {
+            method: 'PUT',
+            headers: new Headers({
+                authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify({ nombre: lesson }),
+        };
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/lecciones/${lessonId}`, requestOptions);
+        const parsedResponse = await response.json();
+        if (parsedResponse.status === 'success') {
+            callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, editedLesson: { id: lessonId, nombre: lesson } });
+        } else {
+            callback({ close: true, edit: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
         }
-        submitLesson();
+        setLesson('');
         setDisableButton(false);
     }
 
@@ -56,12 +54,12 @@ const EditLessonModal = ({ lesson_id, showModal, callback }) => {
                 show ? (
                     <Modal show={show} onHide={handleEditLessonModal} size="lg" aria-labelledby="module-edit-modal" centered >
                         <Modal.Header closeButton>
-                            <Modal.Title>Edición de lección</Modal.Title>
+                            <Modal.Title>Edición de unidad</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form noValidate onSubmit={() => {handleSubmit()}}>
+                            <Form noValidate onSubmit={handleSubmit}>
                                 <Form.Group controlId="formNewLesson">
-                                    <Form.Label>Nuevo nombre de lección</Form.Label>
+                                    <Form.Label>Nuevo nombre de unidad</Form.Label>
                                     <Form.Control type="text" placeholder="Ingrese un nuevo título" value={lesson} onChange={e => setLesson(e.target.value)} />
                                     <Form.Text className="text-muted"> Recuerda que un buen título destacará tu curso de los demás. </Form.Text>
                                 </Form.Group>
@@ -69,7 +67,7 @@ const EditLessonModal = ({ lesson_id, showModal, callback }) => {
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleEditLessonModal}> Cerrar </Button>
-                            <Button variant="primary" disabled={lesson === '' || disableButton} onClick={() => { handleSubmit() }}> Guardar cambios </Button>
+                            <Button variant="primary" disabled={lesson === '' || disableButton} onClick={handleSubmit}> Actualizar unidad </Button>
                         </Modal.Footer>
                     </Modal>
 

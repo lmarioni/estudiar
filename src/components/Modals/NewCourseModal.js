@@ -23,30 +23,27 @@ const NewCourseModal = ({ showModal, callback }) => {
         callback({ close: true, create: false, status: 'success', message: '', newCourse: {} });
     }
 
-    const handleSubmitCourse = () => {
-
-        async function submitCourse() {
-            setDisableButton(true);
-            const requestOptions = {
-                method: 'POST',
-                headers: new Headers({
-                    authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
-                }),
-                body: JSON.stringify({
-                    nombre: title,
-                    descripcion: description,
-                    codigoInvitacion: invitationCode ? invitationCode : '',
-                }),
-            };
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/cursos`, requestOptions);
-            const parsedResponse = await response.json();
-            if (parsedResponse.status === 'success') {
-                callback({ close: true, create: true, status: 'success', message: parsedResponse.message, course: parsedResponse.curso });
-            } else {
-                callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
-            }
+    const handleSubmitCourse = async (e) => {
+        e.preventDefault();
+        setDisableButton(true);
+        const requestOptions = {
+            method: 'POST',
+            headers: new Headers({
+                authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify({
+                nombre: title,
+                descripcion: description,
+                codigoInvitacion: invitationCode ? invitationCode : '',
+            }),
+        };
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/cursos`, requestOptions);
+        const parsedResponse = await response.json();
+        if (parsedResponse.status === 'success') {
+            callback({ close: true, create: true, status: 'success', message: parsedResponse.message, course: parsedResponse.curso });
+        } else {
+            callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
         }
-        submitCourse();
         setTitle('');
         setDescription('');
         setInvitationCode('');
@@ -62,7 +59,7 @@ const NewCourseModal = ({ showModal, callback }) => {
                             <Modal.Title>Nuevo curso</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form noValidate onSubmit={() => {handleSubmitCourse()}}>
+                            <Form noValidate onSubmit={handleSubmitCourse}>
                                 <Form.Group controlId="newCourseTitle">
                                     <Form.Label>Título</Form.Label>
                                     <Form.Control type="text" placeholder="Ingrese un título para el curso" value={title} onChange={e => setTitle(e.target.value)} />
