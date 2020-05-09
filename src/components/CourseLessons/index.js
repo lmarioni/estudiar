@@ -292,7 +292,7 @@ const CourseLessons = ({ course, actions }) => {
                                                                     <div className="btn btn-outline-secondary"><FaTrash /></div>
                                                                 </OverlayTrigger>)
                                                                 :
-                                                                (<div className="btn btn-outline-secondary" onClick={() => { !courseLesson.modulos.length ? openDeleteConfirmationModal(courseLesson) : '' }}><FaTrash /></div>)
+                                                                <div className="btn btn-outline-secondary" onClick={() => { !courseLesson.modulos.length && openDeleteConfirmationModal(courseLesson) }}><FaTrash /></div>
                                                         }
 
                                                     </div>

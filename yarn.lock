@@ -4996,6 +4996,16 @@ filenamify@^1.0.0:
     strip-outer "^1.0.0"
     trim-repeated "^1.0.0"
 
+filepond-plugin-image-preview@^4.6.2:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.6.2.tgz#452c31419d3f41c6476a34762ef5ff2e4170307a"
+  integrity sha512-4Tc9cWVM+3iEFDeol+moz/FuWzBxlUbA89snmEyPtFqp6CWf8uyVK0L+vIOf9+bT3DgCEmfDwvQBbjsyu8J7Tg==
+
+filepond@^4.13.5:
+  version "4.13.5"
+  resolved "https://registry.yarnpkg.com/filepond/-/filepond-4.13.5.tgz#43b7b20fff2ccbb65611ff6fefe992225c549a97"
+  integrity sha512-WZi8kMGZNh6hH6qsUdvCQcQOF5uPaTV1PdPC4PiAZauRyepDxtAnkK4OHRW+UXIkA2CW2IdHFrqlKvDR4Dk24A==
+
 filesize@6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-6.0.1.tgz#f850b509909c7c86f7e450ea19006c31c2ed3d2f"
@@ -9518,6 +9528,11 @@ react-fast-compare@^3.0.1:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.0.2.tgz#8b0bfa93a049ec1eef9d54ab5e5c6036c317144d"
   integrity sha512-1fBw8Efm6fb1blbRorZcO3OqzWgxYWxXzlaNeqEVXcrDdyFzeqygrPVU6qrPuqnqYMpUJVkQBdDgDJQTmCXp+Q==
+
+react-filepond@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/react-filepond/-/react-filepond-7.0.1.tgz#caf96526287140884a31a1476b8328d9d6ecdee2"
+  integrity sha512-PitNM44JP0K5hXnkSYV3HRlkObsWbhqaJRWizMrdHpS3pPz9/iyiOGmRpc+4T4ST3vblmiUTLRYq/+1bDcSqQw==
 
 react-helmet@^5.2.1:
   version "5.2.1"
