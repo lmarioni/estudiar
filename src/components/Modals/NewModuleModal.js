@@ -88,6 +88,15 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
             callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
         }
 
+        setModuleTitle('');
+        setModuleDescription('');
+        setContentType(1);
+        setContent('');
+        setModuleVisible(true);
+        setUrlVideo('');
+        setHtmlEditorValue('');
+        setFiles([]);
+
         setDisableButton(false);
     }
 
