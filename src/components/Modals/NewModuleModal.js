@@ -62,6 +62,8 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
         payload.tipo = parseInt(contentType);
 
         let actionUrl = `${process.env.REACT_APP_BASE_URL}/lecciones/${lesson.id}/modulos`;
+        let contentTypeHeader = 'application/json';
+        const formData = new FormData();
 
         switch (parseInt(contentType)) {
             case 1:
@@ -69,21 +71,30 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                 payload.urlVideo = urlVideo;
                 break;
             case 3:
-                payload.contenido = content;
-                payload.documento = files;
+                const newFile = new File([files], files.name, {
+                    type: files.type
+                  });
+                formData.append('nombre',payload.nombre);
+                formData.append('descripcion',payload.descripcion);
+                formData.append('visible',payload.visible);
+                formData.append('tipo',payload.tipo);
+                formData.append('contenido',content);
+                formData.append('documento',newFile);
                 actionUrl = `${process.env.REACT_APP_BTCJ_URL}/contenido.php`;
                 break;
             case 4:
                 payload.contenido = htmlEditorValue;
                 break;
         }
+
         const requestOptions = {
             method: 'POST',
             headers: new Headers({
-                authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
+                authorization: `Bearer ${token}`,
             }),
-            body: JSON.stringify(payload),
+            body: (parseInt(contentType) === 3) ? formData : JSON.stringify(payload),
         };
+
         const response = await fetch(actionUrl, requestOptions);
 
         const parsedResponse = await response.json();
@@ -105,7 +116,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
         setDisableButton(false);
     }
 
-    const handleUpdateFiles = (fileItems) => { setFiles(fileItems.file); }
+    const handleUpdateFiles = (fileItems) => { fileItems.length ? setFiles(fileItems[0].file) : ''; }
 
     return (
         <div>

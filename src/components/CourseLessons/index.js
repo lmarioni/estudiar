@@ -99,7 +99,7 @@ const CourseLessons = ({ course, actions }) => {
                 const newLessonArray = lessons;
                 newLessonArray.push(data.leccion);
                 setLessons(newLessonArray);
-                addToast({ text: data.message });
+                addToast({ text: (data.message ? data.message : 'Exito') });
                 setLoading(false);
             }
         } else {
@@ -123,7 +123,7 @@ const CourseLessons = ({ course, actions }) => {
                     return singleLesson;
                 });
                 setLessons(newLessonArray);
-                addToast({ text: data.message });
+                addToast({ text: (data.message ? data.message : 'Exito') });
                 setLoading(false);
             }
         } else {
@@ -147,7 +147,7 @@ const CourseLessons = ({ course, actions }) => {
                     }
                 }
                 setLessons(lessonsAux)
-                addToast({ text: data.message });
+                addToast({ text: (data.message ? data.message : 'Exito') });
                 setLoading(false);
             }
         } else {
@@ -168,7 +168,7 @@ const CourseLessons = ({ course, actions }) => {
                         eachLesson.nombre = ''
                     }
                 });
-                addToast({ text: data.message });
+                addToast({ text: (data.message ? data.message : 'Exito') });
                 setLoading(false);
             }
         } else {
@@ -190,7 +190,7 @@ const CourseLessons = ({ course, actions }) => {
                     return singleLesson;
                 });
                 setLessons(newLessonArray);
-                addToast({ text: data.message });
+                addToast({ text: (data.message ? data.message : 'Exito') });
                 setLoading(false);
             }
         } else {
@@ -205,7 +205,7 @@ const CourseLessons = ({ course, actions }) => {
             if (data.delete) {
                 setLoading(true);
                 const newLessonArray = lessons.filter(lesson => lesson.id !== deleteLesson.id);
-                addToast({ text: data.message });
+                addToast({ text: (data.message ? data.message : 'Exito') });
                 setLessons(newLessonArray);
                 setLoading(false);
             }
