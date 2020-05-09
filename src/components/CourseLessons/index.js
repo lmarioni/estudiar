@@ -3,7 +3,8 @@ import { Context } from '../../Context';
 import { Skeleton } from '../Skeleton';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Card from 'react-bootstrap/Card';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import { ListCard } from "../ListCard";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
@@ -60,21 +61,6 @@ const CourseLessons = ({ course, actions }) => {
             setLoading(false);
         }
     }, []);
-
-
-    const renderDescription = (modules) => {
-        return (
-            <ListGroup variant="flush">
-                {modules && modules.length ?
-                    modules.map(module =>
-                        <ListGroup.Item key={`module-${module.id}`} className="pr-0">
-                            {module.nombre}
-                            <div onClick={() => { openDeleteModuleModal(module) }} className="float-right btn btn-outline-secondary"><FaTrash /></div>
-                            <div onClick={() => { openModuleModal(module) }} className="float-right btn btn-outline-primary mr-1" ><MdBuild /></div>
-                        </ListGroup.Item>) : null}
-            </ListGroup>
-        )
-    }
 
     const openLessonModal = () => {
         setShowNewLesson(true);
@@ -152,10 +138,10 @@ const CourseLessons = ({ course, actions }) => {
             if (data.status === 'success') {
                 setLoading(true);
                 let lessonsAux = lessons.slice()
-                for(var i = 0; i < lessonsAux.length; i++ ){
-                    if(lessonsAux[i].modulos.length > 0){
-                        for(var j = 0; j < lessonsAux[i].modulos.length; j++ ){
-                            if(lessonsAux[i].modulos[j].id === data.modulo.id){
+                for (var i = 0; i < lessonsAux.length; i++) {
+                    if (lessonsAux[i].modulos.length > 0) {
+                        for (var j = 0; j < lessonsAux[i].modulos.length; j++) {
+                            if (lessonsAux[i].modulos[j].id === data.modulo.id) {
                                 lessonsAux[i].modulos[j] = data.modulo
                             }
                         }
@@ -240,12 +226,26 @@ const CourseLessons = ({ course, actions }) => {
                 <div className="col-md-8">
                     <div className="card">
                         <div className="card-body text-center">
-                        <h4>No tienes unidades cargadas aún. </h4>
-                        <p>Crea una nueva lección o haciendo click <a className="pointer text-primary" onClick={openLessonModal}>aqui</a>.</p>
+                            <h4>No tienes unidades cargadas aún. </h4>
+                            <p>Crea una nueva lección o haciendo click <a className="pointer text-primary" onClick={openLessonModal}>aqui</a>.</p>
                         </div>
                     </div>
                 </div>
             </div>
+        )
+    }
+
+    const renderDescription = (modules) => {
+        return (
+            <ListGroup variant="flush">
+                {modules && modules.length ?
+                    modules.map(module =>
+                        <ListGroup.Item key={`module-${module.id}`} className="pr-0">
+                            {module.nombre}
+                            <div onClick={() => { openDeleteModuleModal(module) }} className="float-right btn btn-outline-secondary"><FaTrash /></div>
+                            <div onClick={() => { openModuleModal(module) }} className="float-right btn btn-outline-primary mr-1" ><MdBuild /></div>
+                        </ListGroup.Item>) : null}
+            </ListGroup>
         )
     }
 
@@ -268,7 +268,7 @@ const CourseLessons = ({ course, actions }) => {
                                 </div>
 
                             </div>
-                        <hr/>
+                            <hr />
                             {lessons && lessons.length ?
                                 lessons.map(courseLesson => {
                                     return (
@@ -281,7 +281,20 @@ const CourseLessons = ({ course, actions }) => {
                                                     <div className="float-right">
                                                         <div className="btn btn-outline-primary mr-1" onClick={() => { openNewModule(courseLesson) }}><FaPlus /></div>
                                                         <div className="btn btn-outline-secondary mr-1" onClick={() => { openLessonEditModal(courseLesson) }}><MdBuild /></div>
-                                                        <div className="btn btn-outline-secondary" onClick={() => { openDeleteConfirmationModal(courseLesson) }}><FaTrash /></div>
+                                                        {
+                                                            courseLesson.modulos.length ?
+                                                                (<OverlayTrigger
+                                                                    key="top"
+                                                                    placement="top"
+                                                                    overlay={
+                                                                        <Tooltip id={`tooltip-delete`}> Parece que la unidad que quiere eliminar tiene módulos asociados, eliminelos antes de eliminar la unidad. </Tooltip>
+                                                                    }>
+                                                                    <div className="btn btn-outline-secondary"><FaTrash /></div>
+                                                                </OverlayTrigger>)
+                                                                :
+                                                                (<div className="btn btn-outline-secondary" onClick={() => { !courseLesson.modulos.length ? openDeleteConfirmationModal(courseLesson) : '' }}><FaTrash /></div>)
+                                                        }
+
                                                     </div>
                                                 }
                                             />
