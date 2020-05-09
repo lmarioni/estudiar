@@ -11,6 +11,12 @@ import 'react-quill/dist/quill.snow.css';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
+import { FilePond, registerPlugin } from 'react-filepond';
+import 'filepond/dist/filepond.min.css';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+
+registerPlugin(FilePondPluginImagePreview);
 
 export const PlayerWrapper = styled.div`
     max-height: 20vh;
@@ -30,6 +36,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
     const [moduleVisible, setModuleVisible] = useState(true);
     const [urlVideo, setUrlVideo] = useState('');
     const [htmlEditorValue, setHtmlEditorValue] = useState('');
+    const [files, setFiles] = useState([]);
 
     useEffect(function () {
         if (oldModule !== fullModule || showModal !== show) {
@@ -51,7 +58,8 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
         callback({ close: true, edit: false, status: 'success', message: '' });
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         setDisableButton(true)
         const payload = {};
         moduleTitle !== oldModule.nombre ? payload.nombre = moduleTitle : '';
@@ -62,6 +70,10 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
             case 1:
                 content !== oldModule.contenido ? payload.contenido = content : '';
                 urlVideo !== oldModule.urlVideo ? payload.urlVideo = urlVideo : '';
+                break;
+            case 3:
+                content !== oldModule.contenido ? payload.contenido = content : '';
+                files !== oldModule.documento ? payload.documento = files : null;
                 break;
             case 4:
                 htmlEditorValue !== oldModule.contenido ? payload.contenido = htmlEditorValue : ''; break;
@@ -82,9 +94,10 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
             callback({ close: true, edit: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
         }
 
-
         setDisableButton(false);
     }
+
+    const handleUpdateFiles = (fileItems) => { setFiles(fileItems[0].file); }
 
     return (
         <div>
@@ -95,7 +108,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                             <Modal.Title>{oldModule.nombre} - Edición de módulo</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form noValidate >
+                            <Form noValidate onSubmit={handleSubmit}>
                                 <Form.Group controlId="moduleTitle">
                                     <Form.Control type="text" placeholder="Ingrese un título" value={moduleTitle} onChange={e => setModuleTitle(e.target.value)} />
                                 </Form.Group>
@@ -105,15 +118,16 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                 <Form.Check
                                     // eslint-disable-next-line no-restricted-globals
                                     onChange={e => setModuleVisible(event.target.checked)}
-                                    type="switch"
-                                    id="custom-switch"
+                                    type="checkbox"
+                                    id="custom-checkbox"
                                     checked={moduleVisible}
-                                    label={moduleVisible ? 'Visible para los alumnos' : 'No visible para los alumnos'}
+                                    label={moduleVisible ? 'Módulo visible para los alumnos' : 'Módulo no visible para los alumnos'}
                                 />
-                                <Form.Group controlId="contentType" style={{ display: 'none' }}>
+                                <Form.Group controlId="contentType">
                                     <Form.Label>Elija un tipo de contenido</Form.Label>
                                     <Form.Control as="select" value={contentType} onChange={e => setContentType(e.target.value)}>
                                         <option value="1">Video con texto sin formato</option>
+                                        <option value="3">Documento</option>
                                         <option value="4">Texto con formato</option>
                                     </Form.Control>
                                 </Form.Group>
@@ -139,15 +153,27 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                         }
                                     </div>
                                 )}
+                                {contentType == 3 && (
+                                    <div>
+                                        <Form.Group controlId="simpleContent">
+                                            <Form.Label>Contenido módulo</Form.Label>
+                                            <Form.Control type="text" placeholder="Ingrese el contenido" value={content} onChange={e => setContent(e.target.value)} />
+                                        </Form.Group>
+                                        <FilePond
+                                            files={files}
+                                            labelIdle='Arrastre y suelte aqui sus archivos o haga click <span class="filepond--label-action"> aquí </span> para buscarlos'
+                                            onupdatefiles={handleUpdateFiles}>
+                                        </FilePond>
+                                    </div>
+                                )}
                                 {contentType == 4 && (<div><CustomToolbar />
                                     <ReactQuill theme="snow" value={htmlEditorValue} onChange={setHtmlEditorValue} modules={modules}
                                         formats={formats} /></div>)}
                             </Form>
-
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleEditModuleModal}> Cerrar </Button>
-                            <Button variant="primary" disabled={disableButton} onClick={() => { handleSubmit() }}> {!disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{ width: 100 }} size='25' className='spin' />} </Button>
+                            <Button variant="primary" disabled={disableButton} onClick={handleSubmit}> {!disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{ width: 100 }} size='25' className='spin' />} </Button>
                         </Modal.Footer>
                     </Modal>
 
