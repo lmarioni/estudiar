@@ -23,26 +23,23 @@ const NewLessonModal = ({ courseid, showModal, callback }) => {
         callback({ close: true, create: false, status: 'success', message: '', newLesson: {} });
     }
 
-    const handleSubmitLesson = async () => {
-        // setLoading(true)
+    const handleSubmitLesson = async (e) => {
+        e.preventDefault();
         setDisableButton(true);
-
-            const requestOptions = {
-                method: 'POST',
-                headers: new Headers({
-                    authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
-                }),
-                body: JSON.stringify({ nombre: lesson }),
-            };
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/cursos/${courseId}/lecciones`, requestOptions);
-            const parsedResponse = await response.json();
-            if (parsedResponse.status === 'success') {
-                callback({ close: true, create: true, status: 'success', message: parsedResponse.message, leccion: parsedResponse.leccion });
-            } else {
-                callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
-            }
-        
-        // submitLesson();
+        const requestOptions = {
+            method: 'POST',
+            headers: new Headers({
+                authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify({ nombre: lesson }),
+        };
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/cursos/${courseId}/lecciones`, requestOptions);
+        const parsedResponse = await response.json();
+        if (parsedResponse.status === 'success') {
+            callback({ close: true, create: true, status: 'success', message: parsedResponse.message, leccion: parsedResponse.leccion });
+        } else {
+            callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
+        }
         setDisableButton(false);
     }
 
@@ -52,23 +49,21 @@ const NewLessonModal = ({ courseid, showModal, callback }) => {
                 show ? (
                     <Modal show={show} onHide={handleLessonModal} size="lg" aria-labelledby="lesson-new-modal" centered >
                         <Modal.Header closeButton>
-                            <Modal.Title>Nueva lección</Modal.Title>
+                            <Modal.Title>Nueva unidad</Modal.Title>
                         </Modal.Header>
-                        <Form noValidate>
-
                         <Modal.Body>
+                            <Form noValidate onSubmit={handleSubmitLesson}>
                                 <Form.Group controlId="formNewLesson">
-                                    <Form.Label>Nueva lección</Form.Label>
+                                    <Form.Label>Nueva unidad</Form.Label>
                                     <Form.Control type="text" placeholder="Ingrese un título" value={lesson} onChange={e => setLesson(e.target.value)} />
                                     <Form.Text className="text-muted"> Recuerda que un buen título destacará tu curso de los demás. </Form.Text>
                                 </Form.Group>
-                           
+                            </Form>
                         </Modal.Body>
                         <Modal.Footer>
-                        <Button variant="primary" disabled={lesson === '' || disableButton} onClick={() => handleSubmitLesson()}> { !disableButton ? "Guardar lección" : <AiOutlineLoading3Quarters style={{width: 100}} size='25' className='spin' /> } </Button>
-                       
+                            <Button variant="primary" disabled={lesson === '' || disableButton} onClick={handleSubmitLesson}> {!disableButton ? "Guardar unidad" : <AiOutlineLoading3Quarters style={{ width: 100 }} size='25' className='spin' />} </Button>
+
                         </Modal.Footer>
-                        </Form>
                     </Modal>
                 ) : null
             }
