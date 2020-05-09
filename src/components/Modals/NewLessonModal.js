@@ -49,7 +49,7 @@ const NewLessonModal = ({ courseid, showModal, callback }) => {
                 show ? (
                     <Modal show={show} onHide={handleLessonModal} size="lg" aria-labelledby="lesson-new-modal" centered >
                         <Modal.Header closeButton>
-                            <Modal.Title>Nueva unidad</Modal.Title>
+                            <Modal.Title>Crear unidad</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <Form noValidate onSubmit={handleSubmitLesson}>

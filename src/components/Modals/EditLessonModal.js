@@ -54,12 +54,12 @@ const EditLessonModal = ({ lesson_id, showModal, callback }) => {
                 show ? (
                     <Modal show={show} onHide={handleEditLessonModal} size="lg" aria-labelledby="module-edit-modal" centered >
                         <Modal.Header closeButton>
-                            <Modal.Title>Edición de lección</Modal.Title>
+                            <Modal.Title>Edición de unidad</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <Form noValidate onSubmit={handleSubmit}>
                                 <Form.Group controlId="formNewLesson">
-                                    <Form.Label>Nuevo nombre de lección</Form.Label>
+                                    <Form.Label>Nuevo nombre de unidad</Form.Label>
                                     <Form.Control type="text" placeholder="Ingrese un nuevo título" value={lesson} onChange={e => setLesson(e.target.value)} />
                                     <Form.Text className="text-muted"> Recuerda que un buen título destacará tu curso de los demás. </Form.Text>
                                 </Form.Group>
@@ -67,7 +67,7 @@ const EditLessonModal = ({ lesson_id, showModal, callback }) => {
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleEditLessonModal}> Cerrar </Button>
-                            <Button variant="primary" disabled={lesson === '' || disableButton} onClick={handleSubmit}> Guardar cambios </Button>
+                            <Button variant="primary" disabled={lesson === '' || disableButton} onClick={handleSubmit}> Actualizar unidad </Button>
                         </Modal.Footer>
                     </Modal>
 
