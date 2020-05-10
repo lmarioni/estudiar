@@ -112,7 +112,8 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
 
         const parsedResponse = await response.json();
         if (parsedResponse.status === 'success') {
-            callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, modulo: {...parsedResponse.modulo}  });        
+            
+            callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, modulo: {...parsedResponse.modulo, ...parsedResponse.content}  });        
         } else {
             callback({ close: true, edit: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
         }
