@@ -30,7 +30,7 @@ export const Course = ({ curso }) => {
         <title> {curso.nombre ? curso.nombre : 'Cargando...'} | Estudi.ar </title>
       </Helmet>
       <div className="fluid-container">
-        <div className="row">
+        <div className="row w-100">
           {curso.lecciones && (
             <React.Fragment>
               <Menu
