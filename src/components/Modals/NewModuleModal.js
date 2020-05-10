@@ -62,7 +62,10 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
         payload.tipo = parseInt(contentType);
 
         let actionUrl = `${process.env.REACT_APP_BASE_URL}/lecciones/${lesson.id}/modulos`;
-        let contentTypeHeader = 'application/json';
+        let headers = new Headers({
+            authorization: `Bearer ${token}`,
+            'Accept': 'application/json', 'Content-Type': 'application/json'
+        });
         const formData = new FormData();
 
         switch (parseInt(contentType)) {
@@ -73,14 +76,15 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
             case 3:
                 const newFile = new File([files], files.name, {
                     type: files.type
-                  });
-                formData.append('nombre',payload.nombre);
-                formData.append('idleccion',lesson.id);
-                formData.append('descripcion',payload.descripcion);
-                formData.append('visible',payload.visible);
-                formData.append('tipo',payload.tipo);
-                formData.append('contenido',content);
-                formData.append('documento',newFile);
+                });
+                formData.append('nombre', payload.nombre);
+                formData.append('idleccion', lesson.id);
+                formData.append('descripcion', payload.descripcion);
+                formData.append('visible', payload.visible);
+                formData.append('tipo', payload.tipo);
+                formData.append('contenido', content);
+                formData.append('documento', newFile);
+                headers = new Headers({ authorization: `Bearer ${token}` });
                 actionUrl = `${process.env.REACT_APP_BTCJ_URL}/contenido.php`;
                 break;
             case 4:
@@ -90,9 +94,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
 
         const requestOptions = {
             method: 'POST',
-            headers: new Headers({
-                authorization: `Bearer ${token}`,
-            }),
+            headers,
             body: (parseInt(contentType) === 3) ? formData : JSON.stringify(payload),
         };
 

@@ -69,7 +69,10 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
         parseInt(contentType) !== oldModule.tipo ? payload.tipo = parseInt(contentType) : '';
 
         let actionUrl = `${process.env.REACT_APP_BASE_URL}/modulos/${oldModule.id}`;
-        let contentTypeHeader = 'application/json';
+        let headers = new Headers({
+            authorization: `Bearer ${token}`,
+            'Accept': 'application/json', 'Content-Type': 'application/json'
+        });
         const formData = new FormData();
 
         switch (parseInt(contentType)) {
@@ -82,14 +85,14 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                 files !== oldModule.documento ? payload.documento = files : null;
                 const newFile = new File([files], files.name, {
                     type: files.type
-                  });
+                });
                 formData.append('nombre',payload.nombre);
                 formData.append('descripcion',payload.descripcion);
                 formData.append('visible',payload.visible);
                 formData.append('tipo',payload.tipo);
                 formData.append('contenido',content);
                 formData.append('documento',newFile);
-                actionUrl = `${process.env.REACT_APP_BTCJ_URL}/contenido.php`;
+                headers = new Headers({ authorization: `Bearer ${token}` });
                 actionUrl = `${process.env.REACT_APP_BTCJ_URL}/contenido.php`;
                 break;
             case 4:
@@ -98,9 +101,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
 
         const requestOptions = {
             method: 'PUT',
-            headers: new Headers({
-                authorization: `Bearer ${token}`,
-            }),
+            headers,
             body: JSON.stringify(payload),
         };
 
