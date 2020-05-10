@@ -50,6 +50,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
             fullModule.tipo === 1 && setUrlVideo(fullModule.urlVideo);
             setHtmlEditorValue(fullModule.contenido);
             setShow(showModal);
+            console.log({ fullModule });
         }
 
     }, [{ fullModule, showModal }]);
@@ -73,6 +74,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
             authorization: `Bearer ${token}`,
             'Accept': 'application/json', 'Content-Type': 'application/json'
         });
+        let method = 'PUT';
         const formData = new FormData();
 
         switch (parseInt(contentType)) {
@@ -82,34 +84,35 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                 break;
             case 3:
                 content !== oldModule.contenido ? payload.contenido = content : '';
-                files !== oldModule.documento ? payload.documento = files : null;
                 const newFile = new File([files], files.name, {
                     type: files.type
                 });
-                formData.append('nombre',payload.nombre);
-                formData.append('descripcion',payload.descripcion);
-                formData.append('visible',payload.visible);
-                formData.append('tipo',payload.tipo);
-                formData.append('contenido',content);
-                formData.append('documento',newFile);
+                payload.nombre ? formData.append('nombre', payload.nombre) : '';
+                payload.descripcion ? formData.append('descripcion', payload.descripcion) : '';
+                payload.visible ? formData.append('visible', payload.visible) : '';
+                payload.tipo ? formData.append('tipo', payload.tipo) : '';
+                formData.append('idmodulo', oldModule.id);
+                formData.append('contenido', content);
+                formData.append('documento', newFile);
                 headers = new Headers({ authorization: `Bearer ${token}` });
-                actionUrl = `${process.env.REACT_APP_BTCJ_URL}/contenido.php`;
+                method = 'POST';
+                actionUrl = `${process.env.REACT_APP_BTCJ_URL}/contenido-editar.php`;
                 break;
             case 4:
                 htmlEditorValue !== oldModule.contenido ? payload.contenido = htmlEditorValue : ''; break;
         }
 
         const requestOptions = {
-            method: 'PUT',
+            method,
             headers,
-            body: JSON.stringify(payload),
+            body: (parseInt(contentType) === 3) ? formData : JSON.stringify(payload),
         };
 
         const response = await fetch(actionUrl, requestOptions);
 
         const parsedResponse = await response.json();
         if (parsedResponse.status === 'success') {
-            callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, modulo: parsedResponse.content });
+            callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, modulo: {...parsedResponse.modulo}  });        
         } else {
             callback({ close: true, edit: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
         }
@@ -126,7 +129,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
         setDisableButton(false);
     }
 
-    const handleUpdateFiles = (fileItems) => { fileItems.length ? setFiles(fileItems[0].file) : ''; }
+    const handleUpdateFiles = (fileItems) => { fileItems.length && setFiles(fileItems[0].file) }
 
     return (
         <div>
@@ -153,7 +156,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                     label={moduleVisible ? 'Módulo visible para los alumnos' : 'Módulo no visible para los alumnos'}
                                 />
                                 <p></p>
-                                <Form.Group controlId="contentType" style={{display: 'none'}}>
+                                <Form.Group controlId="contentType" style={{ display: 'none' }}>
                                     <Form.Label>Elija un tipo de contenido</Form.Label>
                                     <Form.Control as="select" value={contentType} onChange={e => setContentType(e.target.value)}>
                                         <option value="1">Video con texto sin formato</option>
@@ -189,7 +192,6 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                             <Form.Label>Contenido módulo</Form.Label>
                                             <Form.Control type="text" placeholder="Ingrese el contenido" value={content} onChange={e => setContent(e.target.value)} />
                                         </Form.Group>
-
                                         <p> Documento actual: <a target="_blank" href={oldModule.urlDocumento}> Ver <FiExternalLink /> </a> </p>
                                         <FilePond
                                             labelIdle='Arrastre y suelte aqui sus archivos o haga click <span class="filepond--label-action"> aquí </span> para buscarlos'
