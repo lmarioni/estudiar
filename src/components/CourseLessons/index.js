@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import { addToast } from "../../actions";
 import { MdBuild } from "react-icons/md";
 import { FaTrash, FaPlus } from "react-icons/fa";
+
 import {
     NewLessonModal,
     NewModuleModal,
@@ -264,6 +265,7 @@ const CourseLessons = ({ course, actions }) => {
                             <div className="w-100 d-flex flex-row justify-content-between">
                                 <h3>{title}</h3>
                                 <div>
+                                    <a target="_blank" className="btn btn-outline-primary mr-4" href={`/course/${course.id}`} > Previsualizar </a>
                                     <Button onClick={() => { openLessonModal() }}> Nueva Unidad </Button>
                                 </div>
 

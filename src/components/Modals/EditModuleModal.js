@@ -9,6 +9,7 @@ import ReactQuill from 'react-quill';
 import CustomToolbar, { modules, formats } from "../../utils/customToolbar";
 import 'react-quill/dist/quill.snow.css';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { FiExternalLink } from "react-icons/fi";
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 import { FilePond, registerPlugin } from 'react-filepond';
@@ -31,7 +32,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
 
     const [moduleTitle, setModuleTitle] = useState('');
     const [moduleDescription, setModuleDescription] = useState('');
-    const [contentType, setContentType] = useState(1);
+    const [contentType, setContentType] = useState(fullModule.tipo);
     const [content, setContent] = useState('');
     const [moduleVisible, setModuleVisible] = useState(true);
     const [urlVideo, setUrlVideo] = useState('');
@@ -132,7 +133,8 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                     checked={moduleVisible}
                                     label={moduleVisible ? 'Módulo visible para los alumnos' : 'Módulo no visible para los alumnos'}
                                 />
-                                <Form.Group controlId="contentType">
+                                <p></p>
+                                <Form.Group controlId="contentType" style={{display: 'none'}}>
                                     <Form.Label>Elija un tipo de contenido</Form.Label>
                                     <Form.Control as="select" value={contentType} onChange={e => setContentType(e.target.value)}>
                                         <option value="1">Video con texto sin formato</option>
@@ -155,7 +157,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                                 <ReactPlayer
                                                     url={urlVideo}
                                                     className="react-player"
-                                                    width="100%"
+                                                    width="300"
                                                     height="100%"
                                                 />
                                             </PlayerWrapper>
@@ -168,6 +170,8 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                             <Form.Label>Contenido módulo</Form.Label>
                                             <Form.Control type="text" placeholder="Ingrese el contenido" value={content} onChange={e => setContent(e.target.value)} />
                                         </Form.Group>
+
+                                        <p> Documento actual: <a target="_blank" href={oldModule.urlDocumento}> Ver <FiExternalLink /> </a> </p>
                                         <FilePond
                                             files={files}
                                             labelIdle='Arrastre y suelte aqui sus archivos o haga click <span class="filepond--label-action"> aquí </span> para buscarlos'
