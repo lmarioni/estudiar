@@ -77,7 +77,7 @@ export const StudentsList = ({ id }) => {
     return students.map((student, key) => {
       const { id_usuario, nombre_usuario, apellido_usuario, email_usuario } = student;
       return (
-        <React.Fragment key>
+        <React.Fragment key={key}>
           <div className="row">
             <div className="col-md-11">
               <p> <FiUser size="20" className="mr-2" style={{ color: '#017BFF' }} />{nombre_usuario} {apellido_usuario} </p>
