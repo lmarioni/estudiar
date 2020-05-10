@@ -31,7 +31,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
 
     const [moduleTitle, setModuleTitle] = useState('');
     const [moduleDescription, setModuleDescription] = useState('');
-    const [contentType, setContentType] = useState(1);
+    const [contentType, setContentType] = useState(0);
     const [content, setContent] = useState('');
     const [moduleVisible, setModuleVisible] = useState(true);
     const [urlVideo, setUrlVideo] = useState('');
@@ -83,7 +83,8 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
         const response = await fetch(`${process.env.REACT_APP_BASE_URL}/lecciones/${lesson.id}/modulos`, requestOptions);
         const parsedResponse = await response.json();
         if (parsedResponse.status === 'success') {
-            callback({ close: true, create: true, status: 'success', message: parsedResponse.message, module: parsedResponse.modulo });
+            let merged = {...parsedResponse.content, ...parsedResponse.modulo}
+            callback({ close: true, create: true, status: 'success', message: parsedResponse.message, module: merged });
         } else {
             callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
         }
@@ -129,9 +130,11 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                 <Form.Group controlId="contentType">
                                     <Form.Label>Elija un tipo de contenido</Form.Label>
                                     <Form.Control as="select" value={contentType} onChange={e => setContentType(e.target.value)}>
-                                        <option value="1">Video con texto sin formato</option>
-                                        <option value="3">Documento</option>
-                                        <option value="4">Texto con formato</option>
+                                        <option value="0">Seleccione un tipo de modulo</option>
+                                        <option value="1">Video (Youtube, Vimeo, etc..)</option>
+                                        <option value="3">Documento (PPT, word, etc..)</option>
+                                        <option value="4">Texto</option>
+                                        <option value="na" disabled> Evaluación (proximamente..) </option>
                                     </Form.Control>
                                 </Form.Group>
                                 {contentType == 1 && (
@@ -149,7 +152,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                                 <ReactPlayer
                                                     url={urlVideo}
                                                     className="react-player"
-                                                    width="100%"
+                                                    width="300"
                                                     height="100%"
                                                 />
                                             </PlayerWrapper>
@@ -176,7 +179,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleNewModuleModal}> Cerrar </Button>
-                            <Button variant="primary" disabled={disableButton} onClick={handleSubmit}> {!disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{ width: 100 }} size='25' className='spin' />}</Button>
+                            <Button variant="primary" disabled={contentType == 0 ? true : false }  onClick={handleSubmit}> {!disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{ width: 100 }} size='25' className='spin' />}</Button>
                         </Modal.Footer>
                     </Modal>
 

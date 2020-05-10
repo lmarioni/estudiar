@@ -86,6 +86,13 @@ export const Course = ({ curso }) => {
                 </>
               }
 
+              {
+                moduleSelected.tipo === 3 && <>
+                <p className="text-center"> Si no puedes ver el documento <a target="_blank" href={moduleSelected.urlDocumento}> haz click aqui </a> </p>
+                <iframe  width="100%" height="700" frameborder="1" src={`https://docs.google.com/gview?url=${moduleSelected.urlDocumento}&embedded=true`}></iframe>
+                </>
+              }
+
               </React.Fragment>
             ) : <div className="text-center mt-5">
 
