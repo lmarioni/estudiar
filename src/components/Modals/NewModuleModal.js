@@ -31,7 +31,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
 
     const [moduleTitle, setModuleTitle] = useState('');
     const [moduleDescription, setModuleDescription] = useState('');
-    const [contentType, setContentType] = useState(1);
+    const [contentType, setContentType] = useState(0);
     const [content, setContent] = useState('');
     const [moduleVisible, setModuleVisible] = useState(true);
     const [urlVideo, setUrlVideo] = useState('');
@@ -149,9 +149,11 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                 <Form.Group controlId="contentType">
                                     <Form.Label>Elija un tipo de contenido</Form.Label>
                                     <Form.Control as="select" value={contentType} onChange={e => setContentType(e.target.value)}>
-                                        <option value="1">Video con texto sin formato</option>
-                                        <option value="3">Documento</option>
-                                        <option value="4">Texto con formato</option>
+                                        <option value="0">Seleccionar tipo de contenido</option>
+                                        <option value="1">Video (Youtube, Vimeo, etc..)</option>
+                                        <option value="3">Documento (PPT, word, excel, etc...)</option>
+                                        <option value="4">Texto</option>
+                                        <option value="5" disabled>Evaluación (proximamente)</option>
                                     </Form.Control>
                                 </Form.Group>
                                 {contentType == 1 && (

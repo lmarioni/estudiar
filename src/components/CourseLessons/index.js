@@ -68,6 +68,7 @@ const CourseLessons = ({ course, actions }) => {
     }
 
     const openModuleModal = (moduleLesson) => {
+        console.log(moduleLesson)
         setShowEditModule(true);
         setSelectedModule(moduleLesson);
     }
@@ -141,7 +142,8 @@ const CourseLessons = ({ course, actions }) => {
                 for (var i = 0; i < lessonsAux.length; i++) {
                     if (lessonsAux[i].modulos.length > 0) {
                         for (var j = 0; j < lessonsAux[i].modulos.length; j++) {
-                            if (lessonsAux[i].modulos[j].id === data.modulo.id) {
+                            if (lessonsAux[i].modulos[j].id == data.modulo.id) {
+                                console.log('data.modulo', data.modulo)
                                 lessonsAux[i].modulos[j] = data.modulo
                             }
                         }

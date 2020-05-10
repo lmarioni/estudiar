@@ -28,12 +28,12 @@ function App() {
         <Router>
           <NotFound default />
           <NotRegister path="/not-register" />
+          <Ingreso path="/auth" /> 
           { !isAuth && <Invite path='/i/:code' /> }
           { !isAuth && <Redirect noThrow from='/' to='/not-register' /> }
           { !isAuth && <Redirect noThrow from='/course/:id' to='/not-register/:id' /> }
           { !isAuth && <Redirect noThrow from='/panel/:id' to='/not-register/:id' /> }
           { !isAuth && <Redirect noThrow from='/newCourse' to='/not-register' /> }
-          { !isAuth && <Ingreso path="/auth" /> }
           { !isAuth && <NotRegister default path="/not-register" /> }
           <Invite path='/i/:code' />
           <Logout path='/logout' />
