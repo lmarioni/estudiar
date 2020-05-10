@@ -75,6 +75,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                     type: files.type
                   });
                 formData.append('nombre',payload.nombre);
+                formData.append('idleccion',lesson.id);
                 formData.append('descripcion',payload.descripcion);
                 formData.append('visible',payload.visible);
                 formData.append('tipo',payload.tipo);
@@ -117,7 +118,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
         setDisableButton(false);
     }
 
-    const handleUpdateFiles = (fileItems) => { fileItems.length ? setFiles(fileItems[0].file) : ''; }
+    const handleUpdateFiles = (fileItems) => { fileItems.length && setFiles(fileItems[0].file) }
 
     return (
         <div>
