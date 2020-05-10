@@ -102,7 +102,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
 
         const parsedResponse = await response.json();
         if (parsedResponse.status === 'success') {
-            callback({ close: true, create: true, status: 'success', message: parsedResponse.message, module: parsedResponse.modulo });
+            callback({ close: true, create: true, status: 'success', message: parsedResponse.message, module: {...parsedResponse.modulo, idDoc: parsedResponse.content.id, urlDocumento: parsedResponse.content.urlDocumento} });
         } else {
             callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
         }
