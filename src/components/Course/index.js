@@ -11,10 +11,11 @@ import Button from 'react-bootstrap/Button';
 
 export const Course = ({ curso }) => {
   const [moduleSelected, setSelected] = useState({});
+  /* TODO: Darle inteligencia para que esto sirva */
+  const [disabledPrev, setDisabledPrev] = useState(false);
+  const [disabledNext, setDisabledNext] = useState(false);
 
-  useEffect(function () {
-
-  }, []);
+  useEffect(function () { }, []);
 
 
   const hasNextLesson = () => {
@@ -57,13 +58,13 @@ export const Course = ({ curso }) => {
 
   const goPrevModule = () => {
     const selectedLessonIndex = curso.lecciones.findIndex(e => e.id == moduleSelected.leccionid);
-    if(hasPrevModule()){
+    if (hasPrevModule()) {
       const selectedLesson = curso.lecciones.find(e => e.id == moduleSelected.leccionid);
       const moduleIndex = selectedLesson.modulos.findIndex(e => e.id === moduleSelected.id);
-      cambiarModulo(curso.lecciones[selectedLessonIndex].id, curso.lecciones[selectedLessonIndex].modulos[moduleIndex-1].id);
-    } else{
-      if(hasPrevLesson()){
-        cambiarModulo(curso.lecciones[selectedLessonIndex-1].id, curso.lecciones[selectedLessonIndex-1].modulos[0].id);
+      cambiarModulo(curso.lecciones[selectedLessonIndex].id, curso.lecciones[selectedLessonIndex].modulos[moduleIndex - 1].id);
+    } else {
+      if (hasPrevLesson()) {
+        cambiarModulo(curso.lecciones[selectedLessonIndex - 1].id, curso.lecciones[selectedLessonIndex - 1].modulos[curso.lecciones[selectedLessonIndex - 1].modulos.length-1].id);
       }
     }
   }
@@ -86,7 +87,6 @@ export const Course = ({ curso }) => {
         cambiarModulo(curso.lecciones[selectedLessonIndex + 1].id, curso.lecciones[selectedLessonIndex + 1].modulos[0].id);
       }
     }
-
   }
 
   const cambiarModulo = (idLeccion, idModulo) => {
@@ -159,10 +159,10 @@ export const Course = ({ curso }) => {
               <div className="row m-none w-100 d-flex flex-row justify-content-center">
                 <Nav className="justify-content-center">
                   <Nav.Item>
-                    <Button onClick={goPrevModule}>Anterior</Button>
+                    <Button disabled={disabledPrev} onClick={goPrevModule}>Anterior</Button>
                   </Nav.Item>
                   <Nav.Item>
-                    <Button onClick={goNextModule}>Siguiente</Button>
+                    <Button disabled={disabledNext} onClick={goNextModule}>Siguiente</Button>
                   </Nav.Item>
                 </Nav>
               </div>
