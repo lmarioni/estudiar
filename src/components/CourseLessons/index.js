@@ -93,27 +93,27 @@ const CourseLessons = ({ course, actions }) => {
     }
 
     const newLessonModalCallBackData = (data) => {
-        if (data.create) {
-            const { addToast } = toastActions;
-            if (data.status === 'success') {
+        const { addToast } = toastActions;
+        if (data.status === 'success') {
+            if (data.create) {
                 setLoading(true);
                 const newLessonArray = lessons;
                 newLessonArray.push(data.leccion);
                 setLessons(newLessonArray);
-                addToast({ text: data.message });
+                addToast({ text: (data.message ? data.message : 'Exito') });
                 setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: data.message });
             }
+        } else {
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowNewLesson(false);
     }
 
     const newModuleModalCallBackData = (data) => {
         data.close && setShowNewModule(false);
-        if (data.create) {
-            const { addToast } = toastActions;
-            if (data.status === 'success') {
+        const { addToast } = toastActions;
+        if (data.status === 'success') {
+            if (data.create) {
                 setLoading(true);
                 const newLessonArray = lessons.map(singleLesson => {
                     if (singleLesson.id === parseInt(data.module.leccionid)) {
@@ -124,19 +124,18 @@ const CourseLessons = ({ course, actions }) => {
                     return singleLesson;
                 });
                 setLessons(newLessonArray);
-                addToast({ text: data.message });
+                addToast({ text: (data.message ? data.message : 'Exito') });
                 setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: data.message });
             }
+        } else {
+            addToast({ color:"#F97A85", text: data.message });
         }
-
     }
 
     const editModuleModalCallBackData = (data) => {
-        if (data.edit) {
-            const { addToast } = toastActions;
-            if (data.status === 'success') {
+        const { addToast } = toastActions;
+        if (data.status === 'success') {
+            if (data.edit) {
                 setLoading(true);
                 let lessonsAux = lessons.slice()
                 for (var i = 0; i < lessonsAux.length; i++) {
@@ -149,20 +148,19 @@ const CourseLessons = ({ course, actions }) => {
                     }
                 }
                 setLessons(lessonsAux)
-
-                addToast({ text: data.message });
+                addToast({ text: (data.message ? data.message : 'Exito') });
                 setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: data.message });
             }
+        } else {
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowEditModule(false);
     }
 
     const editLessonModalCallBackData = (data) => {
-        if (data.edit) {
-            const { addToast } = toastActions;
-            if (data.status === 'success') {
+        const { addToast } = toastActions;
+        if (data.status === 'success') {
+            if (data.edit) {
                 setLoading(true);
                 lessons.forEach(eachLesson => {
                     if (eachLesson.id === parseInt(data.editedLesson.id)) {
@@ -171,19 +169,19 @@ const CourseLessons = ({ course, actions }) => {
                         eachLesson.nombre = ''
                     }
                 });
-                addToast({ text: data.message });
+                addToast({ text: (data.message ? data.message : 'Exito') });
                 setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: data.message });
             }
+        } else {
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowEditLesson(false);
     }
 
     const deleteModuleModalCallBackData = (data) => {
-        if (data.delete) {
-            const { addToast } = toastActions;
-            if (data.status === 'success') {
+        const { addToast } = toastActions;
+        if (data.status === 'success') {
+            if (data.delete) {
                 setLoading(true);
                 const newLessonArray = lessons.map(singleLesson => {
                     if (singleLesson.id === parseInt(deleteModule.leccionid)) {
@@ -193,29 +191,27 @@ const CourseLessons = ({ course, actions }) => {
                     return singleLesson;
                 });
                 setLessons(newLessonArray);
-
-                addToast({ text: data.message });
-
+                addToast({ text: (data.message ? data.message : 'Exito') });
                 setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: data.message });
             }
+        } else {
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowConfirmationModuleDelete(false);
     }
 
     const deleteModalCallBackData = (data) => {
-        if (data.delete) {
-            const { addToast } = toastActions;
-            if (data.status === 'success') {
+        const { addToast } = toastActions;
+        if (data.status === 'success') {
+            if (data.delete) {
                 setLoading(true);
                 const newLessonArray = lessons.filter(lesson => lesson.id !== deleteLesson.id);
-                addToast({ text: data.message });
+                addToast({ text: (data.message ? data.message : 'Exito') });
                 setLessons(newLessonArray);
                 setLoading(false);
-            } else {
-                addToast({ color: '#F97A85', text: data.message });
             }
+        } else {
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowConfirmationDelete(false);
     }
@@ -228,7 +224,7 @@ const CourseLessons = ({ course, actions }) => {
                     <div className="card">
                         <div className="card-body text-center">
                             <h4>No tienes unidades cargadas aún. </h4>
-                            <p>Crea una nueva lección o haciendo click <a className="pointer text-primary" onClick={openLessonModal}>aqui</a>.</p>
+                            <p>Crea una nueva unidad o haciendo click <a className="pointer text-primary" onClick={openLessonModal}>aqui</a>.</p>
                         </div>
                     </div>
                 </div>
@@ -284,7 +280,7 @@ const CourseLessons = ({ course, actions }) => {
                                                         <div className="btn btn-outline-primary mr-1" onClick={() => { openNewModule(courseLesson) }}><FaPlus /></div>
                                                         <div className="btn btn-outline-secondary mr-1" onClick={() => { openLessonEditModal(courseLesson) }}><MdBuild /></div>
                                                         {
-                                                            courseLesson.modulos.length ?
+                                                            courseLesson && courseLesson.modulos && courseLesson.modulos.length ?
                                                                 (<OverlayTrigger
                                                                     key="top"
                                                                     placement="top"

@@ -1,2 +1,3 @@
-API_URL="tuDire"
-REACT_APP2_BASE_URL="https://express-now-alpha-lac.now.sh"
+REACT_APP_BASE_URL="tuURL"
+REACT_APP_BTCJ_URL="urldeBTCJ"
+REACT_APP_OLD_URL="urlProdOLocal"

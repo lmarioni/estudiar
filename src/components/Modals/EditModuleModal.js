@@ -67,6 +67,11 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
         moduleDescription !== oldModule.descripcion ? payload.descripcion = moduleDescription : '';
         moduleVisible !== oldModule.visible ? payload.visible = moduleVisible : '';
         parseInt(contentType) !== oldModule.tipo ? payload.tipo = parseInt(contentType) : '';
+
+        let actionUrl = `${process.env.REACT_APP_BASE_URL}/modulos/${oldModule.id}`;
+        let contentTypeHeader = 'application/json';
+        const formData = new FormData();
+
         switch (parseInt(contentType)) {
             case 1:
                 content !== oldModule.contenido ? payload.contenido = content : '';
@@ -75,6 +80,17 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
             case 3:
                 content !== oldModule.contenido ? payload.contenido = content : '';
                 files !== oldModule.documento ? payload.documento = files : null;
+                const newFile = new File([files], files.name, {
+                    type: files.type
+                  });
+                formData.append('nombre',payload.nombre);
+                formData.append('descripcion',payload.descripcion);
+                formData.append('visible',payload.visible);
+                formData.append('tipo',payload.tipo);
+                formData.append('contenido',content);
+                formData.append('documento',newFile);
+                actionUrl = `${process.env.REACT_APP_BTCJ_URL}/contenido.php`;
+                actionUrl = `${process.env.REACT_APP_BTCJ_URL}/contenido.php`;
                 break;
             case 4:
                 htmlEditorValue !== oldModule.contenido ? payload.contenido = htmlEditorValue : ''; break;
@@ -83,11 +99,13 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
         const requestOptions = {
             method: 'PUT',
             headers: new Headers({
-                authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
+                authorization: `Bearer ${token}`,
             }),
             body: JSON.stringify(payload),
         };
-        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/modulos/${oldModule.id}`, requestOptions);
+
+        const response = await fetch(actionUrl, requestOptions);
+
         const parsedResponse = await response.json();
         if (parsedResponse.status === 'success') {
             callback({ close: true, edit: true, status: 'success', message: parsedResponse.message, modulo: parsedResponse.content });
@@ -107,7 +125,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
         setDisableButton(false);
     }
 
-    const handleUpdateFiles = (fileItems) => { setFiles(fileItems[0].file); }
+    const handleUpdateFiles = (fileItems) => { fileItems.length ? setFiles(fileItems[0].file) : ''; }
 
     return (
         <div>
@@ -173,7 +191,6 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
 
                                         <p> Documento actual: <a target="_blank" href={oldModule.urlDocumento}> Ver <FiExternalLink /> </a> </p>
                                         <FilePond
-                                            files={files}
                                             labelIdle='Arrastre y suelte aqui sus archivos o haga click <span class="filepond--label-action"> aquí </span> para buscarlos'
                                             onupdatefiles={handleUpdateFiles}>
                                         </FilePond>
