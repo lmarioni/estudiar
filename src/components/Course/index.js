@@ -121,7 +121,7 @@ export const Course = ({ curso }) => {
                     moduleSelected.tipo === 1 && <>
                       <div className="text-center">
                         <div className='player-wrapper'>
-                          <ReactPlayer className='react-player' url={moduleSelected.urlVideo} width='100%' height='100%' controls />
+                          <ReactPlayer className='react-player-course' url={moduleSelected.urlVideo} width='100%' height='100%' controls />
                         </div>
                       </div>
                     </>
