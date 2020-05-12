@@ -11,7 +11,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { addToast } from "../../actions";
 import { MdBuild } from "react-icons/md";
-import { FaTrash, FaPlus } from "react-icons/fa";
+import { FaTrash, FaPlus, FaVideo, FaPaperclip, FaPenFancy, FaRegStickyNote } from "react-icons/fa";
 
 import {
     NewLessonModal,
@@ -21,7 +21,6 @@ import {
     EditModuleModal,
     EditLessonModal,
 } from '../Modals/index.js';
-import EmptyBook from '../../assets/img/emptyBook.png';
 
 const CourseLessons = ({ course, actions }) => {
 
@@ -35,7 +34,7 @@ const CourseLessons = ({ course, actions }) => {
     const [courseId, setCourseId] = useState('');
 
     const [lesson, setLesson] = useState({});
-    const [selectedModule, setSelectedModule] = useState({}); //Module es una palabra reservada, CUAK
+    const [selectedModule, setSelectedModule] = useState({});
     const [lessons, setLessons] = useState([]);
     const [deleteLesson, setDeleteLesson] = useState({});
     const [deleteModule, setDeleteModule] = useState({});
@@ -105,7 +104,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color:"#F97A85", text: data.message });
+            addToast({ color: "#F97A85", text: data.message });
         }
         data.close && setShowNewLesson(false);
     }
@@ -129,7 +128,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color:"#F97A85", text: data.message });
+            addToast({ color: "#F97A85", text: data.message });
         }
     }
 
@@ -154,7 +153,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color:"#F97A85", text: data.message });
+            addToast({ color: "#F97A85", text: data.message });
         }
         data.close && setShowEditModule(false);
     }
@@ -175,7 +174,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color:"#F97A85", text: data.message });
+            addToast({ color: "#F97A85", text: data.message });
         }
         data.close && setShowEditLesson(false);
     }
@@ -197,7 +196,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color:"#F97A85", text: data.message });
+            addToast({ color: "#F97A85", text: data.message });
         }
         data.close && setShowConfirmationModuleDelete(false);
     }
@@ -213,7 +212,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color:"#F97A85", text: data.message });
+            addToast({ color: "#F97A85", text: data.message });
         }
         data.close && setShowConfirmationDelete(false);
     }
@@ -234,12 +233,28 @@ const CourseLessons = ({ course, actions }) => {
         )
     }
 
+    const renderTypeIcon = (mod) => {
+        console.log('Mira: ', mod);
+
+        const renderedIcon = [
+        ];
+        return renderedIcon[mod.tipo];
+    }
+
     const renderDescription = (modules) => {
         return (
             <ListGroup variant="flush">
                 {modules && modules.length ?
                     modules.map(module =>
                         <ListGroup.Item key={`module-${module.id}`} className="pr-0">
+                            {
+                                module.tipo == 1 ?
+                                    <FaVideo size="20" className="mr-2" /> : module.tipo == 2 ?
+                                        <FaRegStickyNote size="20" className="mr-2" /> : module.tipo == 3 ?
+                                            <FaPaperclip size="20" className="mr-2" /> : module.tipo == 4 ?
+                                                <FaPenFancy size="20" className="mr-2" /> : null
+
+                            } {''}
                             {module.nombre}
                             <div onClick={() => { openDeleteModuleModal(module) }} className="float-right btn btn-outline-secondary"><FaTrash /></div>
                             <div onClick={() => { openModuleModal(module) }} className="float-right btn btn-outline-primary mr-1" ><MdBuild /></div>
