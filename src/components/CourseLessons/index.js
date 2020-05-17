@@ -159,20 +159,23 @@ const CourseLessons = ({ course, actions }) => {
     }
 
     const editModuleModalCallBackData = (data) => {
+        console.log('editModuleModalCallBackData', data)
         if (data.edit) {
             const { addToast } = toastActions;
             if (data.status === 'success') {
                 setLoading(true);
-                const newLessonArray = lessons.map(eachLesson => {
-                    eachLesson.modulos = eachLesson.modulos.map(eachModule => {
-                        if (eachModule.id === data.modulo.id) {
-                            eachModule = data.modulo
+                let lessonsAux = lessons.slice()
+                for(var i = 0; i < lessonsAux.length; i++ ){
+                    if(lessonsAux[i].modulos.length > 0){
+                        for(var j = 0; j < lessonsAux[i].modulos.length; j++ ){
+                            if(lessonsAux[i].modulos[j].id === data.modulo.id){
+                                lessonsAux[i].modulos[j] = data.modulo
+                            }
                         }
-                        return eachModule;
-                    });
-                    return eachLesson;
-                });
-                setLessons(newLessonArray);
+                    }
+                }
+                setLessons(lessonsAux)
+
                 addToast({ text: data.message });
                 setLoading(false);
             } else {
@@ -267,7 +270,7 @@ const CourseLessons = ({ course, actions }) => {
                     <Skeleton count="1" color="#f4f4f4" /> : (
                         <div>
                             <div className="w-100 d-flex flex-row justify-content-between">
-                                <h3>{title}</h3>
+                                <h3>{title} 2</h3>
                                 <div>
                                     <Button onClick={() => { openLessonModal() }}> Nueva lección </Button>
                                 </div>
