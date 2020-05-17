@@ -21,6 +21,7 @@ import {
     EditModuleModal,
     EditLessonModal,
 } from '../Modals/index.js';
+import EmptyBook from '../../assets/img/emptyBook.png';
 
 const CourseLessons = ({ course, actions }) => {
 
@@ -34,7 +35,7 @@ const CourseLessons = ({ course, actions }) => {
     const [courseId, setCourseId] = useState('');
 
     const [lesson, setLesson] = useState({});
-    const [selectedModule, setSelectedModule] = useState({});
+    const [selectedModule, setSelectedModule] = useState({}); //Module es una palabra reservada, CUAK
     const [lessons, setLessons] = useState([]);
     const [deleteLesson, setDeleteLesson] = useState({});
     const [deleteModule, setDeleteModule] = useState({});
@@ -104,7 +105,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color: "#F97A85", text: data.message });
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowNewLesson(false);
     }
@@ -128,7 +129,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color: "#F97A85", text: data.message });
+            addToast({ color:"#F97A85", text: data.message });
         }
     }
 
@@ -153,7 +154,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color: "#F97A85", text: data.message });
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowEditModule(false);
     }
@@ -174,7 +175,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color: "#F97A85", text: data.message });
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowEditLesson(false);
     }
@@ -196,7 +197,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color: "#F97A85", text: data.message });
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowConfirmationModuleDelete(false);
     }
@@ -212,7 +213,7 @@ const CourseLessons = ({ course, actions }) => {
                 setLoading(false);
             }
         } else {
-            addToast({ color: "#F97A85", text: data.message });
+            addToast({ color:"#F97A85", text: data.message });
         }
         data.close && setShowConfirmationDelete(false);
     }

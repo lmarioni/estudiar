@@ -27,24 +27,10 @@ export const Panel = ({ id }) => {
 
   const [copySuccess, setCopySuccess] = useState(false);
   const textAreaRef = useRef(null);
-  const [inviteCode, setInviteCode] = useState('');
-  const [inviteQR, setInviteQR] = useState('');
-
-
-  const data = { headers: new Headers({ Authorization: "Bearer " + token }) };
-
-  const fetchCode = async () => {
-    const response = await fetch(`https://express-now-alpha-lac.now.sh/cursos/${id}`, data);
-    const json = await response.json();
-    setInviteCode(json.codigoInvitacion);
-    setInviteQR(`https://estudiar.btcj.com.ar/i/${json.codigoInvitacion}`);
-    
-  }
-
-  useEffect(function () {
-    fetchCode();
-  }, []);
-
+  const [inviteCode, setInviteCode] = useState('Cargando...');
+  const [inviteQR, setInviteQR] = useState(`https://estudiar.btcj.com.ar/i/${inviteCode}`);
+  const [loading, setLoading] = useState(true)
+  const [course, setCourse] = useState({})
 
   const [selectedTab, setSelectedTab] = useState('Listado de alumnos');
 

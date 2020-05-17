@@ -5,6 +5,8 @@ import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
 import { Menu } from "./Menu";
 import { MenuMobile } from "./MenuMobile";
 import './styles.css';
+
+import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 
 export const Course = ({ curso }) => {
@@ -62,7 +64,7 @@ export const Course = ({ curso }) => {
       cambiarModulo(curso.lecciones[selectedLessonIndex].id, curso.lecciones[selectedLessonIndex].modulos[moduleIndex - 1].id);
     } else {
       if (hasPrevLesson()) {
-        cambiarModulo(curso.lecciones[selectedLessonIndex - 1].id, curso.lecciones[selectedLessonIndex - 1].modulos[curso.lecciones[selectedLessonIndex - 1].modulos.length - 1].id);
+        cambiarModulo(curso.lecciones[selectedLessonIndex - 1].id, curso.lecciones[selectedLessonIndex - 1].modulos[curso.lecciones[selectedLessonIndex - 1].modulos.length-1].id);
       }
     }
   }
@@ -111,14 +113,10 @@ export const Course = ({ curso }) => {
             <div className="offset-md-2">
               {moduleSelected.id ? (
                 <React.Fragment>
-                  <div className="d-flex flex-row justify-content-between align-items-center">
-                    <Button disabled={disabledPrev} onClick={goPrevModule}><BsChevronLeft /></Button>
-                    <h2 className="text-center mt-4" style={{ fontSize: "3rem", marginBottom: "3rem" }} >  {" "} {moduleSelected.nombre} </h2>
-                    <Button disabled={disabledNext} onClick={goNextModule}><BsChevronRight /></Button>
-                  </div>
+                  <h2 className="text-center" style={{ fontSize: "3rem", marginBottom: "3rem" }} >  {" "} {moduleSelected.nombre} </h2>
                   <div className="contenido-modulo" dangerouslySetInnerHTML={{ __html: moduleSelected.contenido }} >
                   </div>
-                  <hr />
+
                   {
                     moduleSelected.tipo === 1 && <>
                       <div className="text-center">
@@ -137,7 +135,9 @@ export const Course = ({ curso }) => {
                   }
 
                 </React.Fragment>
-              ) : <div className="text-center mt-4">
+              ) : <div className="text-center mt-5">
+
+                  {/* <img src={curso.imagen} alt=""/> */}
                   <h2>Bienvenido!!</h2>
                   <p>Selecciona un modulo para comenzar</p>
 
@@ -152,6 +152,23 @@ export const Course = ({ curso }) => {
               }
             </div>
           </div>
+        </div>
+        <div className="row m-none w-100">
+          <div className="col-sm-12 col-md-8 offset-md-3">
+            <div className="offset-md-2 p-3">
+              <div className="row m-none w-100 d-flex flex-row justify-content-center">
+                <Nav className="justify-content-center">
+                  <Nav.Item>
+                    <Button disabled={disabledPrev} onClick={goPrevModule}>Anterior</Button>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Button disabled={disabledNext} onClick={goNextModule}>Siguiente</Button>
+                  </Nav.Item>
+                </Nav>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </React.Fragment>
