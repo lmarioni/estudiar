@@ -41,38 +41,38 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
     }
 
     const handleSubmit = async () => {
-   
-            setDisableButton(true);
-            const payload = {};
-            payload.nombre = moduleTitle;
-            payload.descripcion = moduleDescription;
-            payload.visible = moduleVisible;
-            payload.tipo = parseInt(contentType);
-            switch (parseInt(contentType)) {
-                case 1:
-                    payload.contenido = content;
-                    payload.urlVideo = urlVideo;
-                    break;
-                case 4:
-                    payload.contenido = htmlEditorValue;
-                    break;
-            }
-            const requestOptions = {
-                method: 'POST',
-                headers: new Headers({
-                    authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
-                }),
-                body: JSON.stringify(payload),
-            };
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/lecciones/${lesson.id}/modulos`, requestOptions);
-            const parsedResponse = await response.json();
-            if (parsedResponse.status === 'success') {
-                callback({ close: true, create: true, status: 'success', message: parsedResponse.message, module: parsedResponse.modulo });
-            } else {
-                callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
-            }
-        
-       // submitModule();
+
+        setDisableButton(true);
+        const payload = {};
+        payload.nombre = moduleTitle;
+        payload.descripcion = moduleDescription;
+        payload.visible = moduleVisible;
+        payload.tipo = parseInt(contentType);
+        switch (parseInt(contentType)) {
+            case 1:
+                payload.contenido = content;
+                payload.urlVideo = urlVideo;
+                break;
+            case 4:
+                payload.contenido = htmlEditorValue;
+                break;
+        }
+        const requestOptions = {
+            method: 'POST',
+            headers: new Headers({
+                authorization: `Bearer ${token}`, 'Accept': 'application/json', 'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify(payload),
+        };
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/lecciones/${lesson.id}/modulos`, requestOptions);
+        const parsedResponse = await response.json();
+        if (parsedResponse.status === 'success') {
+            callback({ close: true, create: true, status: 'success', message: parsedResponse.message, module: parsedResponse.modulo });
+        } else {
+            callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
+        }
+
+        // submitModule();
         setDisableButton(false);
 
 
@@ -102,7 +102,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                     checked={moduleVisible}
                                     label={moduleVisible ? 'Visible para los alumnos' : 'No visible para los alumnos'}
                                 />
-                                <Form.Group controlId="contentType" style={{display:'none'}}>
+                                <Form.Group controlId="contentType" style={{ display: 'none' }}>
                                     <Form.Label>Elija un tipo de contenido</Form.Label>
                                     <Form.Control as="select" value={contentType} onChange={e => setContentType(e.target.value)}>
                                         <option value="1">Video con texto sin formato</option>
@@ -130,7 +130,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleNewModuleModal}> Cerrar </Button>
-                            <Button variant="primary" disabled={disableButton} onClick={() => { handleSubmit() }}> { !disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{width: 100}} size='25' className='spin' /> }</Button>
+                            <Button variant="primary" disabled={disableButton} onClick={() => { handleSubmit() }}> {!disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{ width: 100 }} size='25' className='spin' />}</Button>
                         </Modal.Footer>
                     </Modal>
 
