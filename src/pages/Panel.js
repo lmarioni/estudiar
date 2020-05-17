@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import React, { useState, useRef, useEffect, useContext } from "react";
 // import { Context } from "../Context";
 
+=======
+import React, { useEffect, useState, useContext, useRef } from "react";
+import { Context } from "../Context";
+>>>>>>> Acomodado el invite, cambiado el codigo del toast
 import Tab from "react-bootstrap/Tab";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -25,10 +30,31 @@ export const Panel = ({ id }) => {
 
   const [copySuccess, setCopySuccess] = useState(false);
   const textAreaRef = useRef(null);
+<<<<<<< HEAD
   const [inviteCode, setInviteCode] = useState('Cargando...');
   const [inviteQR, setInviteQR] = useState(`https://estudiar.btcj.com.ar/i/${inviteCode}`);
   const [loading, setLoading] = useState(true)
   const [course, setCourse] = useState({})
+=======
+  const [inviteCode, setInviteCode] = useState('');
+  const [inviteQR, setInviteQR] = useState('');
+
+
+  const data = { headers: new Headers({ Authorization: "Bearer " + token }) };
+
+  const fetchCode = async () => {
+    const response = await fetch(`https://express-now-alpha-lac.now.sh/cursos/${id}`, data);
+    const json = await response.json();
+    setInviteCode(json.codigoInvitacion);
+    setInviteQR(`https://estudiar.btcj.com.ar/i/${json.codigoInvitacion}`);
+    
+  }
+
+  useEffect(function () {
+    fetchCode();
+  }, []);
+
+>>>>>>> Acomodado el invite, cambiado el codigo del toast
 
   const [selectedTab, setSelectedTab] = useState('Listado de alumnos');
 

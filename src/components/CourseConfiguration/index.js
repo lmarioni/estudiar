@@ -45,18 +45,18 @@ const CourseConfiguration = ({ id, actions }) => {
     return <Loading />
   }
 
-  const validate = () =>{
-    console.log({newTitle});
+  const validate = () => {
+    console.log({ newTitle });
     return false;
   }
 
-  const isDisabled = () => newTitle === '' || newTitle === course.nombre;
+  const isDisabled = () => newTitle === '' || newTitle === course.nombre;
 
   const handleSubmit = (event) => {
     const { addToast } = toastActions;
     const form = event.currentTarget;
-    addToast({ text: "Toast prueba!" });
-    console.log({form});
+    addToast({ text: "Exito :) " });
+    console.log({ form });
     if (!validate()) {
       event.preventDefault();
       event.stopPropagation();
@@ -67,7 +67,7 @@ const CourseConfiguration = ({ id, actions }) => {
 
   return (
     <div>
-    <Toasts />
+      <Toasts />
       <ImageProfile idCurso={id} imagenActual={course.imagen_perfil} />
       <div>
         <div className="container">
@@ -77,7 +77,7 @@ const CourseConfiguration = ({ id, actions }) => {
               <Form noValidate onSubmit={handleSubmit}>
                 <Form.Group controlId="formBasicCourse">
                   <Form.Label>Título del curso</Form.Label>
-                  <Form.Control type="text" placeholder="Ingrese un título" value={newTitle} onChange={e => setNewTitle(e.target.value)}/>
+                  <Form.Control type="text" placeholder="Ingrese un título" value={newTitle} onChange={e => setNewTitle(e.target.value)} />
                   <Form.Text className="text-muted"> Recuerda que un buen título destacará tu curso de los demás. </Form.Text>
                 </Form.Group>
                 <Button variant="primary" disabled={isDisabled()} type="submit"> Guardar cambios </Button>
