@@ -125,7 +125,7 @@ export const Panel = ({ id }) => {
                       <StudentsList id={id} />
                     </Tab.Pane>
                     <Tab.Pane eventKey="course-configuration">
-                      <CourseConfiguration idCurso={id} course={course} />
+                      <CourseConfiguration idCurso={id} courseInfo={course} />
                     </Tab.Pane>
                     <Tab.Pane eventKey="invite">
                       <div className="card preview-card" context="main">
