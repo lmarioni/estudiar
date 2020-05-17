@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles.scss";
-import { MdBuild } from "react-icons/md";
 import { ListCard } from "../ListCard";
 import { Link } from "@reach/router";
 
@@ -17,7 +16,7 @@ export const ListOfCourses = ({ courses = [] }) => {
               title={course.nombre}
               subtitle={course.profesores[0].nombre + " " + course.profesores[0].apellido}
               description={course.descripcion}
-              action={course.creador ? <Link to={`/panel/${course.idcurso}`} className="btn btn-outline-secondary btn-editar-curso float-right" > Editar </Link> : ''}
+              action={course.creador ? <Link to={`/panel/${course.idcurso}`} className="btn btn-outline-secondary float-right" > Editar curso</Link> : ''}
             />
           </React.Fragment>
         );
