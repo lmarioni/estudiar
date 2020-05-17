@@ -9,7 +9,7 @@ import './Toast.scss';
 const Toasts = ({ actions, toasts }) => {
   const { removeToast } = actions;
   return (
-    <ul className="custom-toasts">
+    <ul className="custom-toasts zindex-sticky">
       {toasts.map(toast => {
         const { id } = toast;
         return (
