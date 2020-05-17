@@ -159,7 +159,6 @@ const CourseLessons = ({ course, actions }) => {
     }
 
     const editModuleModalCallBackData = (data) => {
-        console.log('editModuleModalCallBackData', data)
         if (data.edit) {
             const { addToast } = toastActions;
             if (data.status === 'success') {

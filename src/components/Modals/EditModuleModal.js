@@ -46,8 +46,9 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
         callback({ close: true, edit: false, status: 'success', message: '' });
     }
 
-    const handleSubmit = async () => {
-        setDisableButton(true)
+    const handleSubmit = () => {
+
+        async function submitModule() {
             const payload = {};
             moduleTitle !== oldModule.nombre ? payload.nombre = moduleTitle : '';
             moduleDescription !== oldModule.descripcion ? payload.descripcion = moduleDescription : '';
@@ -58,7 +59,8 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                     content !== oldModule.contenido ? payload.contenido = content : '';
                     urlVideo !== oldModule.urlVideo ? payload.urlVideo = urlVideo : '';
                     break;
-                case 4: content !== oldModule.contenido ? payload.contenido = htmlEditorValue : ''; break;
+                    case 4:
+                        htmlEditorValue !== oldModule.contenido ? payload.contenido = htmlEditorValue : ''; break;
             }
 
             const requestOptions = {
@@ -101,6 +103,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                     onChange={e => setModuleVisible(event.target.checked)}
                                     type="switch"
                                     id="custom-switch"
+                                    checked={moduleVisible}
                                     label={moduleVisible ? 'Visible para los alumnos' : 'No visible para los alumnos'}
                                 />
                                 <Form.Group controlId="contentType">
@@ -123,7 +126,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                     </div>
                                 ) : null
                                 }
-                                
+
                                 {contentType == 4 ? (<div><CustomToolbar />
                                     <ReactQuill theme="snow" value={htmlEditorValue} onChange={setHtmlEditorValue} modules={modules}
                                         formats={formats} /></div>) : null}
