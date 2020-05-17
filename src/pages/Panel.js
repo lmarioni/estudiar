@@ -1,17 +1,11 @@
-<<<<<<< HEAD
-import React, { useState, useRef, useEffect, useContext } from "react";
-// import { Context } from "../Context";
-
-=======
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { Context } from "../Context";
->>>>>>> Acomodado el invite, cambiado el codigo del toast
 import Tab from "react-bootstrap/Tab";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import QRCode from 'qrcode.react';
-import { Context } from "../Context";
+import Toasts from "../components/Toasts/Toasts";
 
 import { Loading } from '../components/Loading'
 
@@ -33,12 +27,6 @@ export const Panel = ({ id }) => {
 
   const [copySuccess, setCopySuccess] = useState(false);
   const textAreaRef = useRef(null);
-<<<<<<< HEAD
-  const [inviteCode, setInviteCode] = useState('Cargando...');
-  const [inviteQR, setInviteQR] = useState(`https://estudiar.btcj.com.ar/i/${inviteCode}`);
-  const [loading, setLoading] = useState(true)
-  const [course, setCourse] = useState({})
-=======
   const [inviteCode, setInviteCode] = useState('');
   const [inviteQR, setInviteQR] = useState('');
 
@@ -57,7 +45,6 @@ export const Panel = ({ id }) => {
     fetchCode();
   }, []);
 
->>>>>>> Acomodado el invite, cambiado el codigo del toast
 
   const [selectedTab, setSelectedTab] = useState('Listado de alumnos');
 
@@ -108,6 +95,7 @@ export const Panel = ({ id }) => {
   return (
     <div>
       {loading ? <Loading /> : <React.Fragment>
+        <Toasts />
         <div className="row w-100">
           <div className="col-sm-12 col-md-9 offset-md-3">
             <h1 className="text-center main-title" >{selectedTab}</h1>
