@@ -67,8 +67,9 @@ const CourseConfiguration = ({ id, actions }) => {
 
   return (
     <div>
-      <Toasts />
-      <ImageProfile idCurso={id} imagenActual={course.imagen_perfil} />
+    <Toasts />
+
+      <ImageProfile idCurso={idCurso} imagenActual={course.imagen_perfil} />
       <div>
         <div className="container">
           <Card >
