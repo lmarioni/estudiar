@@ -41,7 +41,7 @@ const Menu = ({ lecciones, close, onModuleChange }) => (
 export const MenuMobile = ({lecciones, onModuleChange}) => {
 
     return (
-        <div  className="menu-mobile">
+        <div className="zindex-sticky menu-mobile">
            <Popup
             modal
             overlayStyle={{ background: "rgba(255,255,255,0.98" }}
