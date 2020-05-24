@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from '@reach/router';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import './styles.css';
+import './styles.scss';
 
 export const NavBar = () => {
 
     return (
-        <Navbar collapseOnSelect expand="lg" className="mainNavbar">
+        <Navbar collapseOnSelect expand="lg" className="mainNavbar" sticky="top">
             <Navbar.Brand>
                 <Link to="/" className="navbar-brand" > Estudi.ar </Link>
             </Navbar.Brand>
