@@ -1,0 +1,66 @@
+/* Style the buttons that are used to open and close the accordion panel */
+.estudiar-accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    border: none;
+    outline: none;
+    transition: background-color 0.06s ease;
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    &:hover,
+    .active {
+        background-color: #ccc;
+    }
+    &:focus{
+        outline: none;
+    }
+
+    /* Style the accordion section */
+    &__section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Style the accordion content title */
+    &__title {
+        font-weight: 600;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    /* Style the accordion chevron icon */
+    &__icon {
+        margin-left: auto;
+        transition: transform 0.4s ease;
+    }
+
+    /* Style to rotate icon when state is active */
+    .rotate {
+        transform: rotate(90deg);
+    }
+
+    /* Style the accordion content panel. Note: hidden by default */
+    &__content {
+        background-color: white;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        &:focus {
+            border: none;
+        }
+    }
+
+    /* Style the accordion content text */
+    &__text {
+        
+        font-weight: 400;
+        font-size: 14px;
+        padding: 18px;
+        &:hover{
+            background-color: #ccc;
+        }
+    }
+}
