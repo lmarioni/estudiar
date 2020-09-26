@@ -40,7 +40,7 @@ export default ({ id }) => {
             .then(response => {
                 setCourse(response);
                 if (response && response.lecciones && response.lecciones[0] && response.lecciones[0].modulos) {
-                    setModuleSelected(response.lecciones[0].modulos[0])
+                    setModuleSelected({...response.lecciones[0].modulos[0], ...{leccionid: response.lecciones[0].id}});
                 }
                 setLoading(false);
             });
@@ -50,9 +50,8 @@ export default ({ id }) => {
     const changeModule = (lectionId, moduleId) => {
         const lectionIndex = course.lecciones.findIndex(lecture => lecture.id === lectionId);
         const selectedModule = course.lecciones[lectionIndex].modulos.find(mod => mod.id === moduleId);
-        setModuleSelected(selectedModule);
+        setModuleSelected({...selectedModule, ...{leccionid: course.lecciones[lectionIndex].id}});
     };
-
 
     const hasNextLesson = () => {
         let hasNext = false;
@@ -76,8 +75,13 @@ export default ({ id }) => {
             }
         } else {
             const selectedLesson = course.lecciones.find(e => e.id == moduleSelected.leccionid);
-            const moduleIndex = selectedLesson.modulos.findIndex(e => e.id === moduleSelected.id);
-            hasNext = selectedLesson.modulos.length > moduleIndex + 1;
+            console.log({selectedLesson});
+            console.log({course});
+            console.log({moduleSelected});
+            if(selectedLesson){
+                const moduleIndex = selectedLesson.modulos.findIndex(e => e.id === moduleSelected.id);
+                hasNext = selectedLesson.modulos.length > moduleIndex + 1;
+            }
         }
         return hasNext;
     }
