@@ -129,6 +129,20 @@ export default ({ id }) => {
         }
     }
 
+
+	const getList = (lection) => (
+		lection.modulos.map(
+			mod => (
+				{
+					'id': mod.id,
+					'lectionId': lection.id,
+					'title': mod.nombre,
+					'type': mod.tipo
+				}
+			)
+		)
+	);
+
     return (
         <React.Fragment>
             {
@@ -148,17 +162,16 @@ export default ({ id }) => {
                                                 <Navbar bg="light" variant="light" className="w-100 d-flex flex-row justify-content-between">
                                                     <Hamburger callback={() => { setCollapsable(!collapsable) }} className="justify-content-end" />
                                                 </Navbar>
-                                                {course && course.lecciones && course.lecciones.map(lection => {
-                                                    return (
+                                                {course && course.lecciones && course.lecciones.map(lection => (
                                                         <Accordion
                                                             key={`accordion-${lection.id}`}
                                                             title={lection.nombre}
                                                             collapsed={collapsable}
-                                                            list={lection.modulos.map(mod => { return { 'id': mod.id, 'lectionId': lection.id, 'title': mod.nombre } })}
+                                                            list={getList(lection)}
                                                             callback={(cbItem) => { changeModule(cbItem.lectionId, cbItem.id) }}
                                                         />
                                                     )
-                                                })}
+                                                )}
                                             </Row>
                                         </div>
                                     </Col>

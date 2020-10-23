@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { MdExpandLess, MdExpandMore } from 'react-icons/md';
+import { FaVideo, FaPaperclip, FaPenFancy, FaRegStickyNote } from "react-icons/fa";
 
 import "./styles.scss";
 
@@ -26,6 +27,28 @@ function Accordion(props) {
     }
   }
 
+  const getIcon = (type) => {
+    let icon = '';
+    switch(type) {
+      case 0: 
+        icon = null;
+      break;
+      case 1: 
+        icon = <FaVideo size="20" className="mr-2" />;
+      break;
+      case 2: 
+        icon = <FaRegStickyNote size="20" className="mr-2" /> ;
+      break;
+      case 3: 
+        icon = <FaPaperclip size="20" className="mr-2" />;
+      break;
+      case 4: 
+        icon = <FaPenFancy size="20" className="mr-2" />;
+      break;
+    }
+    return icon;
+  }
+
   return (
     <div className="estudiar-accordion__section">
       <button className={`estudiar-accordion ${setActive}`} onClick={toggleAccordion}>
@@ -42,6 +65,7 @@ function Accordion(props) {
           props.list && props.list.map((item, index) => {
             return (
               <div key={`${item.title}-${index}`} className="estudiar-accordion__text pointer" onClick={() => { handleClick(item) }}>
+                {getIcon(item.type)}
                 {item.title}
                 {item.description}
               </div>
