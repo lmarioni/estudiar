@@ -209,16 +209,22 @@ export default ({ id }) => {
                                                 }
                                             </Jumbotron>
                                         </Container>
-
                                     </Row>
                                 </Col>
                             </Row >
-                            <Navbar collapseOnSelect expand="lg" fixed="bottom" className="mainNavbar">
-                                <div className="d-flex flex-row justify-content-evenly w-100">
-                                    <Button disabled={disabledPrev} onClick={goPrevModule}>Anterior</Button>
-                                    <Button disabled={disabledNext} onClick={goNextModule}>Siguiente</Button>
-                                </div>
-                            </Navbar>
+							<Row>
+								<Navbar collapseOnSelect expand="lg" className="mainNavbar paginator d-flex justify-content-center">
+									<Row className="w-100">
+										<Col sm={0} md={collapsable ? 1 : 3} className='p-0'></Col>
+										<Col sm={12} md={collapsable ? 11 : 9}>
+											<div className="d-flex flex-row justify-content-evenly w-100">
+												<Button disabled={disabledPrev} onClick={goPrevModule}>Anterior</Button>
+												<Button disabled={disabledNext} onClick={goNextModule}>Siguiente</Button>
+											</div>
+										</Col>
+									</Row>
+								</Navbar>
+							</Row>
                         </Container >
                     )
             }
