@@ -21,11 +21,9 @@ import {
     EditModuleModal,
     EditLessonModal,
 } from '../Modals/index.js';
-import EmptyBook from '../../assets/img/emptyBook.png';
 
 const CourseLessons = ({ course, actions }) => {
 
-    const { token } = useContext(Context);
     const [toastActions, setToastActions] = useState({});
 
     const [invitationCode, setInvitationCode] = useState('');
@@ -142,7 +140,7 @@ const CourseLessons = ({ course, actions }) => {
                 for (var i = 0; i < lessonsAux.length; i++) {
                     if (lessonsAux[i].modulos.length > 0) {
                         for (var j = 0; j < lessonsAux[i].modulos.length; j++) {
-                            if (lessonsAux[i].modulos[j].id == data.modulo.id) {
+                            if (lessonsAux[i].modulos[j].id === data.modulo.id) {
                                 console.log('data.modulo', data.modulo)
                                 lessonsAux[i].modulos[j] = data.modulo
                             }
@@ -249,10 +247,10 @@ const CourseLessons = ({ course, actions }) => {
                     modules.map(module =>
                         <ListGroup.Item key={`module-${module.id}`} className="pr-0">
                             {
-                                module.tipo == 1 ?
-                                    <FaVideo size="20" className="mr-2" /> : module.tipo == 2 ?
-                                        <FaRegStickyNote size="20" className="mr-2" /> : module.tipo == 3 ?
-                                            <FaPaperclip size="20" className="mr-2" /> : module.tipo == 4 ?
+                                module.tipo === 1 ?
+                                    <FaVideo size="20" className="mr-2" /> : module.tipo === 2 ?
+                                        <FaRegStickyNote size="20" className="mr-2" /> : module.tipo === 3 ?
+                                            <FaPaperclip size="20" className="mr-2" /> : module.tipo === 4 ?
                                                 <FaPenFancy size="20" className="mr-2" /> : null
 
                             } {''}

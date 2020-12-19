@@ -9,7 +9,9 @@ const Hamburger = ({callback=()=>{}, size='sm'}) => {
     useEffect(function () {}, [size]);
 
     const toggleMode = () => { 
-        callback ? callback() : '';
+        if(callback) {
+            callback()
+        }
         setActive(!active); 
     }
 

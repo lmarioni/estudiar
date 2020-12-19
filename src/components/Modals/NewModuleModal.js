@@ -178,7 +178,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                         <option value="5" disabled>Evaluación (proximamente)</option>
                                     </Form.Control>
                                 </Form.Group>
-                                {contentType == 1 && (
+                                {contentType === 1 && (
                                     <div>
                                         <Form.Group controlId="simpleContent">
                                             <Form.Label>Contenido módulo</Form.Label>
@@ -200,7 +200,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                         }
                                     </div>
                                 )}
-                                {contentType == 3 && (
+                                {contentType === 3 && (
                                     <div>
                                         <Form.Group controlId="simpleContent">
                                             <Form.Label>Contenido módulo</Form.Label>
@@ -212,14 +212,14 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                         </FilePond>
                                     </div>
                                 )}
-                                {contentType == 4 && (<div><CustomToolbar />
+                                {contentType === 4 && (<div><CustomToolbar />
                                     <ReactQuill theme="snow" value={htmlEditorValue} onChange={setHtmlEditorValue} modules={modules}
                                         formats={formats} /></div>)}
                             </Form>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleNewModuleModal}> Cerrar </Button>
-                            <Button variant="primary" disabled={disableButton || !moduleTitle || contentType == 0 || (contentType == 1 && !urlVideo) || (contentType == 3 && !files) || (contentType == 4 && !htmlEditorValue)} onClick={handleSubmit}> {!disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{ width: 100 }} size='25' className='spin' />}</Button>
+                            <Button variant="primary" disabled={disableButton || !moduleTitle || contentType === 0 || (contentType === 1 && !urlVideo) || (contentType === 3 && !files) || (contentType === 4 && !htmlEditorValue)} onClick={handleSubmit}> {!disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{ width: 100 }} size='25' className='spin' />}</Button>
                         </Modal.Footer>
                     </Modal>
 

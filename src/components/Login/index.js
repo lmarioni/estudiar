@@ -1,19 +1,9 @@
 import React, {useState, useContext} from 'react'
-import { Link , Redirect} from '@reach/router';
 
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import { Context } from '../../Context'
 
-const divRegistro = {
-    border: '1px solid #EBEBEB',
-    borderRadius: 5
-}
-
-const errorDiv = {
-    color: 'red',
-    textAlign: 'center!important'
-}
 
 export const Login = ({idCurso = ''}) => {
     
@@ -45,7 +35,6 @@ export const Login = ({idCurso = ''}) => {
             .then(response => {
                 if(response.status === 'success'){
                    activateAuth(response.token)
-                // renderRedirect()
                 if(idCurso != ''){
                     window.location.href = `https://estudiar.btcj.com.ar/${idCurso}`;
                 }else{

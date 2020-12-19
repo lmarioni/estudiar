@@ -5,11 +5,6 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import { Context } from '../../Context'
 
-const divRegistro = {
-    border: '1px solid #EBEBEB',
-    borderRadius: 5
-}
-
 const errorDiv = {
     color: 'red',
     textAlign: 'center!important'

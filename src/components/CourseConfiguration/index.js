@@ -14,7 +14,6 @@ import { addToast } from "../../actions";
 const CourseConfiguration = ({ idCurso, courseInfo, actions }) => {
 
   const { token } = useContext(Context);
-  const [validated, setValidated] = useState(false);
   const [course, setCourse] = useState('');
   const [newTitle, setNewTitle] = useState('');
   const [loading, setLoading] = useState(true);
@@ -54,7 +53,6 @@ const CourseConfiguration = ({ idCurso, courseInfo, actions }) => {
       } else {
         addToast({ color: '#F97A85', text: `Hubo un error, intentelo nuevamente.` });
       }
-      setValidated(true);
       setDisableButton(false);
     }
     changeTitle();

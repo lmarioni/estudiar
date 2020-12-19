@@ -98,7 +98,8 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                 actionUrl = `${process.env.REACT_APP_BTCJ_URL}/contenido-editar.php`;
                 break;
             case 4:
-                htmlEditorValue !== oldModule.contenido ? payload.contenido = htmlEditorValue : ''; break;
+				htmlEditorValue !== oldModule.contenido ? payload.contenido = htmlEditorValue : ''; break;
+			default: break;
         }
 
         const requestOptions = {
@@ -131,27 +132,27 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
 
     const handleUpdateFiles = (fileItems) => { fileItems.length && setFiles(fileItems[0].file) }
 
-    const shouldBeDisabled = () => {
-        let shouldDisable = !moduleTitle;
-        switch (contentType) {
-            case 0: // Si no eligio tipo, no debería poder guardar.
-                shouldDisable = true;
-                break;
-            case 1: // Video, sólo con url
-                shouldDisable = shouldDisable || !urlVideo;
-                break;
-            case 3: // Documento, sólo con archivo(s)
-                shouldDisable = shouldDisable || !files ;
-                break;
-            case 4: // Texto
-                shouldDisable = shouldDisable || !htmlEditorValue
-                break;
-            default:  // En otro caso, no debería pdoer guardar ya que el tipo es inválido.
-                shouldDisable = true;
-                break;
-        }
-        return shouldDisable;
-    }
+    // const shouldBeDisabled = () => {
+    //     let shouldDisable = !moduleTitle;
+    //     switch (contentType) {
+    //         case 0: // Si no eligio tipo, no debería poder guardar.
+    //             shouldDisable = true;
+    //             break;
+    //         case 1: // Video, sólo con url
+    //             shouldDisable = shouldDisable || !urlVideo;
+    //             break;
+    //         case 3: // Documento, sólo con archivo(s)
+    //             shouldDisable = shouldDisable || !files ;
+    //             break;
+    //         case 4: // Texto
+    //             shouldDisable = shouldDisable || !htmlEditorValue
+    //             break;
+    //         default:  // En otro caso, no debería pdoer guardar ya que el tipo es inválido.
+    //             shouldDisable = true;
+    //             break;
+    //     }
+    //     return shouldDisable;
+    // }
 
     return (
         <div>
@@ -186,7 +187,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                         <option value="4">Texto con formato</option>
                                     </Form.Control>
                                 </Form.Group>
-                                {contentType == 1 && (
+                                {contentType === 1 && (
                                     <div>
                                         <Form.Group controlId="simpleContent">
                                             <Form.Label>Contenido módulo</Form.Label>
@@ -208,7 +209,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                         }
                                     </div>
                                 )}
-                                {contentType == 3 && (
+                                {contentType === 3 && (
                                     <div>
                                         <Form.Group controlId="simpleContent">
                                             <Form.Label>Contenido módulo</Form.Label>
@@ -221,14 +222,14 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                         </FilePond>
                                     </div>
                                 )}
-                                {contentType == 4 && (<div><CustomToolbar />
+                                {contentType === 4 && (<div><CustomToolbar />
                                     <ReactQuill theme="snow" value={htmlEditorValue} onChange={setHtmlEditorValue} modules={modules}
                                         formats={formats} /></div>)}
                             </Form>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleEditModuleModal}> Cerrar </Button>
-                            <Button variant="primary"  disabled={disableButton || !moduleTitle || contentType == 0 || (contentType == 1 && !urlVideo) || (contentType == 3 && !files) || (contentType == 4 && !htmlEditorValue)} onClick={handleSubmit}> {!disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{ width: 100 }} size='25' className='spin' />} </Button>
+                            <Button variant="primary"  disabled={disableButton || !moduleTitle || contentType === 0 || (contentType === 1 && !urlVideo) || (contentType === 3 && !files) || (contentType === 4 && !htmlEditorValue)} onClick={handleSubmit}> {!disableButton ? "Guardar cambios" : <AiOutlineLoading3Quarters style={{ width: 100 }} size='25' className='spin' />} </Button>
                         </Modal.Footer>
                     </Modal>
 

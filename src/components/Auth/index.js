@@ -6,11 +6,6 @@ import {Tabs, Tab} from 'react-bootstrap';
 import {Login} from '../Login'
 import {Register} from '../Register'
 
-const divRegistro = {
-    border: '1px solid #EBEBEB',
-    borderRadius: 5
-}
-
 export const Auth = ({idCurso = ''}) => {
     
 return(

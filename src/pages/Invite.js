@@ -7,7 +7,6 @@ import { Inscripto } from "../components/Invite/Inscripto";
 import { Error } from "../components/Invite/Error";
 import { Success } from "../components/Invite/Success";
 
-import { Register } from "../components/Register";
 import { Auth } from "../components/Auth";
 
 

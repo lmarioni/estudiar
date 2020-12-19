@@ -2,18 +2,11 @@ import React from 'react';
 import '../styles/NotRegister.css';
 import { navigate, Link } from "@reach/router";
 
-import Button from "react-bootstrap/Button";
 import Cookies from 'universal-cookie';
 
 const authCookie = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOiIyMTA5NSJ9.MezTb9xGhGCU0h-JkjBuLAN1KfyysJslNd5n130403g`;
 
 export const NotRegister = () => {
-
-    const login = () => {
-        const cookies = new Cookies();
-        cookies.set('token', authCookie);
-        navigate("./");
-    }
 
     return (
         <div>
