@@ -31,7 +31,7 @@ export default ({ id }) => {
 
   return (
     <React.Fragment>
-      {loading ? <Loading /> : <Course curso={course} />}
+      ROTO{/* {loading ? <Loading /> : <Course curso={course} />} */}
     </React.Fragment>
   );
 };

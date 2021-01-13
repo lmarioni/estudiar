@@ -16,7 +16,7 @@ import { NavBar } from './components/NavBar';
 
 import { Context } from './Context';
 
-const Course = React.lazy(() => import('./pages/CourseView.js'));
+const Course = React.lazy(() => import('./pages/CourseLayout.js'));
 
 function App() {
   const { isAuth } = useContext(Context)

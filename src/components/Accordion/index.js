@@ -34,16 +34,16 @@ function Accordion(props) {
         icon = null;
       break;
       case 1: 
-        icon = <FaVideo size="20" className="mr-2" />;
+        icon = <FaVideo size="12" className="mr-2" />;
       break;
       case 2: 
-        icon = <FaRegStickyNote size="20" className="mr-2" /> ;
+        icon = <FaRegStickyNote size="12" className="mr-2" /> ;
       break;
       case 3: 
-        icon = <FaPaperclip size="20" className="mr-2" />;
+        icon = <FaPaperclip size="12" className="mr-2" />;
       break;
       case 4: 
-        icon = <FaPenFancy size="20" className="mr-2" />;
+        icon = <FaPenFancy size="12" className="mr-2" />;
       break;
     }
     return icon;

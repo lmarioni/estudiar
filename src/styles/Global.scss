@@ -106,7 +106,17 @@
     justify-content: space-evenly;
 }
 .paginator{
-    position: fixed;
+	position: fixed;
     bottom: 0px;
     width: 100%;
+    left: 250px;
+    width: calc(100% - 250px);
 }
+
+.b-0 {
+	bottom: 0;
+}
+
+.fixed { position: fixed; }
+
+.center { text-align: center; }
