@@ -14,7 +14,7 @@ const ConfirmationDeleteModal = ({ showModal, lessonToDelete, callback }) => {
     useEffect(function () {
         setShow(showModal);
         setLesson(lessonToDelete);
-    }, [{lessonToDelete}]);
+    }, [lessonToDelete]);
 
     const handleCloseConfirmationModal = () => {
         setLesson({});

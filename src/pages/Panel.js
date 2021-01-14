@@ -15,68 +15,70 @@ import CourseLessons from "../components/CourseLessons";
 import "../styles/Global.scss";
 
 export const Panel = ({ id }) => {
-  const { token } = useContext(Context);
+	const { token } = useContext(Context);
 
-  const tabsMapper = [
-    { key: 'invite', label: 'Invitar alumnos' },
-    { key: 'student-list', label: 'Listado de alumnos' },
-    { key: 'course-configuration', label: 'Configuración' },
-    { key: 'course-test', label: 'Evaluación' },
-    { key: 'course-lessons', label: 'Unidades' },
-  ];
+	const tabsMapper = [
+		{ key: 'invite', label: 'Invitar alumnos' },
+		{ key: 'student-list', label: 'Listado de alumnos' },
+		{ key: 'course-configuration', label: 'Configuración' },
+		{ key: 'course-test', label: 'Evaluación' },
+		{ key: 'course-lessons', label: 'Unidades' },
+		];
+		
+	const [copySuccess, setCopySuccess] = useState(false);
+	const textAreaRef = useRef(null);
+	const [inviteCode, setInviteCode] = useState('Cargando...');
+	
+	const inviteQR = `https://estudiar.btcj.com.ar/i/${inviteCode}`;
+		
+	const [loading, setLoading] = useState(true)
+	const [course, setCourse] = useState({})
 
-  const [copySuccess, setCopySuccess] = useState(false);
-  const textAreaRef = useRef(null);
-  const [inviteCode, setInviteCode] = useState('Cargando...');
-  const [inviteQR, setInviteQR] = useState(`https://estudiar.btcj.com.ar/i/${inviteCode}`);
-  const [loading, setLoading] = useState(true)
-  const [course, setCourse] = useState({})
+	const [selectedTab, setSelectedTab] = useState('Listado de alumnos');
 
-  const [selectedTab, setSelectedTab] = useState('Listado de alumnos');
+	const copyToClipboard = () => {
+		const str = inviteCode;
+		const el = document.createElement('textarea');
+		el.value = str;
+		el.setAttribute('readonly', '');
+		el.style.position = 'absolute';
+		el.style.left = '-9999px';
+		document.body.appendChild(el);
+		const selected =
+		document.getSelection().rangeCount > 0
+			? document.getSelection().getRangeAt(0)
+			: false;
+		el.select();
+		document.execCommand('copy');
+		document.body.removeChild(el);
+		if (selected) {
+		document.getSelection().removeAllRanges();
+		document.getSelection().addRange(selected);
+		}
+		setCopySuccess(true);
 
-  const copyToClipboard = () => {
-    const str = inviteCode;
-    const el = document.createElement('textarea');
-    el.value = str;
-    el.setAttribute('readonly', '');
-    el.style.position = 'absolute';
-    el.style.left = '-9999px';
-    document.body.appendChild(el);
-    const selected =
-      document.getSelection().rangeCount > 0
-        ? document.getSelection().getRangeAt(0)
-        : false;
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    if (selected) {
-      document.getSelection().removeAllRanges();
-      document.getSelection().addRange(selected);
-    }
-    setCopySuccess(true);
+		setTimeout(() => {
+		setCopySuccess(false);
+		}, 1500);
+	};
 
-    setTimeout(() => {
-      setCopySuccess(false);
-    }, 1500);
-  };
+	useEffect(function () {
+		const data = {
+		headers: new Headers({
+			Authorization: "Bearer " + token
+		})
+		};
 
-  useEffect(function () {
-    const data = {
-      headers: new Headers({
-        Authorization: "Bearer " + token
-      })
-    };
+		fetch(`${process.env.REACT_APP_BASE_URL}/cursos/${id}?novisible=true`, data)
+		.then(res => res.json())
+		.then(courseResponse => {
+			setInviteCode(`http://estudiar.btcj.com.ar/i/${courseResponse.codigoInvitacion}`);
+			setCourse({ ...courseResponse, id });
+			setLoading(false);
+		});
+	}, []);
 
-    fetch(`${process.env.REACT_APP_BASE_URL}/cursos/${id}?novisible=true`, data)
-      .then(res => res.json())
-      .then(courseResponse => {
-        setInviteCode(`http://estudiar.btcj.com.ar/i/${courseResponse.codigoInvitacion}`);
-        setCourse({ ...courseResponse, id });
-        setLoading(false);
-      });
-  }, []);
-
-  const handleSelectedTab = (tab) => { setSelectedTab(tabsMapper.find(eachTab => eachTab.key === tab).label); }
+	const handleSelectedTab = (tab) => { setSelectedTab(tabsMapper.find(eachTab => eachTab.key === tab).label); }
 
   return (
     <div>

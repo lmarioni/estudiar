@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { Context } from '../../Context';
+import React, { useEffect, useState } from 'react';
 import { Skeleton } from '../Skeleton';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -25,12 +24,7 @@ import {
 const CourseLessons = ({ course, actions }) => {
 
     const [toastActions, setToastActions] = useState({});
-
-    const [invitationCode, setInvitationCode] = useState('');
-    const [picture, setPicture] = useState('');
-    const [profilePicture, setProfilePicture] = useState('');
     const [title, setTitle] = useState('');
-    const [courseId, setCourseId] = useState('');
 
     const [lesson, setLesson] = useState({});
     const [selectedModule, setSelectedModule] = useState({}); //Module es una palabra reservada, CUAK
@@ -49,11 +43,7 @@ const CourseLessons = ({ course, actions }) => {
 
     useEffect(() => {
         if (course) {
-            const { codigoInvitacion, imagen, imagen_perfil, lecciones, nombre, id } = course;
-            setInvitationCode(codigoInvitacion);
-            setPicture(imagen);
-            setCourseId(id);
-            setProfilePicture(imagen_perfil);
+            const { lecciones, nombre } = course;
             setTitle(nombre);
             setLessons(lecciones);
             setToastActions(actions);
@@ -96,7 +86,8 @@ const CourseLessons = ({ course, actions }) => {
         if (data.status === 'success') {
             if (data.create) {
                 setLoading(true);
-                const newLessonArray = lessons;
+				const newLessonArray = lessons;
+				data.leccion.modulos = [];
                 newLessonArray.push(data.leccion);
                 setLessons(newLessonArray);
                 addToast({ text: (data.message ? data.message : 'Exito') });
@@ -182,9 +173,9 @@ const CourseLessons = ({ course, actions }) => {
         const { addToast } = toastActions;
         if (data.status === 'success') {
             if (data.delete) {
-                setLoading(true);
+				setLoading(true);
                 const newLessonArray = lessons.map(singleLesson => {
-                    if (singleLesson.id === parseInt(deleteModule.leccionid)) {
+                    if (singleLesson.id == parseInt(deleteModule.leccionid)) {
                         const lessonModules = singleLesson.modulos.filter(mod => mod.id !== deleteModule.id);
                         singleLesson.modulos = lessonModules;
                     }
@@ -212,8 +203,11 @@ const CourseLessons = ({ course, actions }) => {
             }
         } else {
             addToast({ color:"#F97A85", text: data.message });
-        }
-        data.close && setShowConfirmationDelete(false);
+		}
+
+		if(data.close) {
+			setShowConfirmationDelete(false);
+		}
     }
 
     const NoLessonsFound = () => {
@@ -232,19 +226,11 @@ const CourseLessons = ({ course, actions }) => {
         )
     }
 
-    const renderTypeIcon = (mod) => {
-        console.log('Mira: ', mod);
-
-        const renderedIcon = [
-        ];
-        return renderedIcon[mod.tipo];
-    }
-
-    const renderDescription = (modules) => {
+    const renderDescription = ({ id, modulos }) => {
         return (
             <ListGroup variant="flush">
-                {modules && modules.length ?
-                    modules.map(module =>
+                {modulos && modulos.length ?
+                    modulos.map(module =>
                         <ListGroup.Item key={`module-${module.id}`} className="pr-0">
                             {
                                 module.tipo === 1 ?
@@ -255,7 +241,7 @@ const CourseLessons = ({ course, actions }) => {
 
                             } {''}
                             {module.nombre}
-                            <div onClick={() => { openDeleteModuleModal(module) }} className="float-right btn btn-outline-secondary"><FaTrash /></div>
+                            <div onClick={() => { openDeleteModuleModal({...module, leccionid: id}) }} className="float-right btn btn-outline-secondary"><FaTrash /></div>
                             <div onClick={() => { openModuleModal(module) }} className="float-right btn btn-outline-primary mr-1" ><MdBuild /></div>
                         </ListGroup.Item>) : null}
             </ListGroup>
@@ -277,7 +263,7 @@ const CourseLessons = ({ course, actions }) => {
                             <div className="w-100 d-flex flex-row justify-content-between">
                                 <h3>{title}</h3>
                                 <div>
-                                    <a target="_blank" className="btn btn-outline-primary mr-4" href={`/course/${course.id}`} > Previsualizar </a>
+                                    <a target="_blank" className="btn btn-outline-primary mr-4" href={`/course/${course.id}`} rel="noopener noreferrer"> Previsualizar </a>
                                     <Button onClick={() => { openLessonModal() }}> Nueva Unidad </Button>
                                 </div>
 
@@ -290,7 +276,7 @@ const CourseLessons = ({ course, actions }) => {
                                             <ListCard
                                                 title={courseLesson.nombre}
                                                 subtitle={`${courseLesson.modulos && courseLesson.modulos.length ? courseLesson.modulos.length : 'Sin'} modulos`}
-                                                description={renderDescription(courseLesson.modulos)}
+                                                description={renderDescription(courseLesson)}
                                                 action={
                                                     <div className="float-right">
                                                         <div className="btn btn-outline-primary mr-1" onClick={() => { openNewModule(courseLesson) }}><FaPlus /></div>

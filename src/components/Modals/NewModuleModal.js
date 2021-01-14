@@ -89,7 +89,10 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                 break;
             case 4:
                 payload.contenido = htmlEditorValue;
-                break;
+				break;
+			default:
+				payload.contenido = null;
+				break;
         }
 
         const requestOptions = {
@@ -102,7 +105,6 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
 
         const parsedResponse = await response.json();
         if (parsedResponse.status === 'success') {
-
             callback({ close: true, create: true, status: 'success', message: parsedResponse.message, module: { ...parsedResponse.modulo, ...parsedResponse.content } });
         } else {
             callback({ close: true, create: false, status: 'error', message: 'Hubo un error, intentelo nuevamente.' });
@@ -121,28 +123,6 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
     }
 
     const handleUpdateFiles = (fileItems) => { fileItems.length && setFiles(fileItems[0].file) }
-
-    const shouldBeDisabled = () => {
-        let shouldDisable = !moduleTitle;
-        switch (contentType) {
-            case 0: // Si no eligio tipo, no debería poder guardar.
-                shouldDisable = true;
-                break;
-            case 1: // Video, sólo con url
-                shouldDisable = shouldDisable || !urlVideo;
-                break;
-            case 3: // Documento, sólo con archivo(s)
-                shouldDisable = shouldDisable || !files;
-                break;
-            case 4: // Texto
-                shouldDisable = shouldDisable || !htmlEditorValue
-                break;
-            default:  // En otro caso, no debería pdoer guardar ya que el tipo es inválido.
-                shouldDisable = true;
-                break;
-        }
-        return shouldDisable ? `${shouldDisable}` : '';
-    }
 
     return (
         <div>
@@ -170,7 +150,7 @@ const NewModuleModal = ({ fulllesson, showModal, callback }) => {
                                 />
                                 <Form.Group controlId="contentType">
                                     <Form.Label>Elija un tipo de contenido</Form.Label>
-                                    <Form.Control as="select" value={contentType} onChange={e => setContentType(e.target.value)}>
+                                    <Form.Control as="select" value={contentType} onChange={e => setContentType(parseInt(e.target.value))}>
                                         <option value="0">Seleccionar tipo de contenido</option>
                                         <option value="1">Video (Youtube, Vimeo, etc..)</option>
                                         <option value="3">Documento (PPT, word, excel, etc...)</option>

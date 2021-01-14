@@ -6,9 +6,9 @@ import "./styles.scss";
 
 export const CourseSidenav = ({ children, course, moduleSelected, loading, changeModuleSelected }) => {
 	
-	const [collapsable, setCollapsable] = useState(false);
+	const collapsable = false;
 	
-	useEffect(function () { }, [moduleSelected]);
+	useEffect(() => { }, [moduleSelected]);
 	
 
 	const getList = (lection) => (

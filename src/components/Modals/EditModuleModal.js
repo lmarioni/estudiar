@@ -215,7 +215,7 @@ const EditModuleModal = ({ fullModule, showModal, callback }) => {
                                             <Form.Label>Contenido módulo</Form.Label>
                                             <Form.Control type="text" placeholder="Ingrese el contenido" value={content} onChange={e => setContent(e.target.value)} />
                                         </Form.Group>
-                                        <p> Documento actual: <a target="_blank" href={fullModule.urlDocumento}> Ver <FiExternalLink /> </a> </p>
+                                        <p> Documento actual: <a target="_blank" href={fullModule.urlDocumento} rel="noopener noreferrer"> Ver <FiExternalLink /> </a> </p>
                                         <FilePond
                                             labelIdle='Arrastre y suelte aqui sus archivos o haga click <span class="filepond--label-action"> aquí </span> para buscarlos'
                                             onupdatefiles={handleUpdateFiles}>

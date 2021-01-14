@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { MdExpandLess, MdExpandMore } from 'react-icons/md';
+import { MdExpandLess } from 'react-icons/md';
 import { FaVideo, FaPaperclip, FaPenFancy, FaRegStickyNote } from "react-icons/fa";
 
 import "./styles.scss";
@@ -44,7 +44,8 @@ function Accordion(props) {
       break;
       case 4: 
         icon = <FaPenFancy size="12" className="mr-2" />;
-      break;
+	  break;
+	  default: icon = null;
     }
     return icon;
   }

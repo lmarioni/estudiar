@@ -1,16 +1,16 @@
 import React, {useState, useContext} from 'react'
-
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
-import { Context } from '../../Context'
-
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Context } from '../../Context';
+import '../../styles/Login.scss';
 
 export const Login = ({idCurso = ''}) => {
     
     const { activateAuth } = useContext(Context)
-    const [error, setError] = useState('');//se usa por si hay algun error en el formulario
+    const [error, setError] = useState('');
     const [inputs, setInputs] = useState({});
-    const [loading, setLoading] = useState(false); //cuando envia a registrar
+	const [loading, setLoading] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
 
     const handleInputChange = (event) => {
         event.persist();
@@ -35,7 +35,7 @@ export const Login = ({idCurso = ''}) => {
             .then(response => {
                 if(response.status === 'success'){
                    activateAuth(response.token)
-                if(idCurso != ''){
+                if(idCurso !== ''){
                     window.location.href = `https://estudiar.btcj.com.ar/${idCurso}`;
                 }else{
                     window.location.href = `https://estudiar.btcj.com.ar/`;
@@ -61,7 +61,22 @@ export const Login = ({idCurso = ''}) => {
                       </div>
                       <div class="form-group">
                           <label for="pwd">Contraseña:</label>
-                          <input type="password" class="form-control" name="pwd" value={inputs.pwd} onChange={handleInputChange} required />
+						  <div className="passwordWrapper">
+							<input 
+								type={showPassword ? 'text' : 'password'} 
+								class="form-control"
+								name="pwd"
+								value={inputs.pwd}
+								onChange={handleInputChange}
+								required
+							/>
+							<span className="showPasswordWrapper">
+								{ showPassword
+									? <FaEye size="12" className="mr-2 pointer" onClick={() => setShowPassword(!showPassword)}/>
+									: <FaEyeSlash size="12" className="mr-2 pointer" onClick={() => setShowPassword(!showPassword)}/>
+								}
+							</span>
+						  </div>
                       </div>
                       { error && 
                   <div class="alert alert-danger text-center" role="alert">

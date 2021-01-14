@@ -1,7 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Context } from "../Context";
 import { Skeleton } from '../components/Skeleton';
-import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Alert from "react-bootstrap/Alert";
@@ -75,7 +74,7 @@ export const StudentsList = ({ id }) => {
 
   const renderTableData = () => {
     return students.map((student, key) => {
-      const { id_usuario, nombre_usuario, apellido_usuario, email_usuario } = student;
+      const { nombre_usuario, apellido_usuario, email_usuario } = student;
       return (
         <React.Fragment key={key}>
           <div className="row">

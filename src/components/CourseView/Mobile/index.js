@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
@@ -16,7 +16,7 @@ import './styles.scss';
 
 export const CourseMobile = ({moduleSelected, loading, course, changeModuleSelected}) => {
 
-	useEffect(function () { }, [moduleSelected]);
+	useEffect(() => { }, [moduleSelected]);
 	const changeModule = (lectionId, moduleId) => {
 		const lectionIndex = course.lecciones.findIndex(lecture => lecture.id === lectionId);
 		const selectedModule = course.lecciones[lectionIndex].modulos.find(mod => mod.id === moduleId);
@@ -122,8 +122,8 @@ export const CourseMobile = ({moduleSelected, loading, course, changeModuleSelec
 										{
 											moduleSelected.tipo === 3 &&
 											<>
-												<p className="text-center"> Si no puedes ver el documento <a target="_blank" href={moduleSelected.urlDocumento}> haz click aqui </a> </p>
-												<iframe width="100%" height="700" frameborder="1" src={`https://docs.google.com/gview?url=${moduleSelected.urlDocumento}&embedded=true`}></iframe>
+												<p className="text-center"> Si no puedes ver el documento <a target="_blank" href={moduleSelected.urlDocumento} rel="noopener noreferrer"> haz click aqui </a> </p>
+												<iframe title="pdfIframeMobile" width="100%" height="700" frameborder="1" src={`https://docs.google.com/gview?url=${moduleSelected.urlDocumento}&embedded=true`} rel="noopener noreferrer"></iframe>
 											</>
 											
 										}
