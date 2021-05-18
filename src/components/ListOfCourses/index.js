@@ -4,10 +4,10 @@ import { ListCard } from "../ListCard";
 import { Link } from "@reach/router";
 
 export const ListOfCourses = ({ courses = [] }) => {
-
+console.log('courses', courses)
   return (
     <React.Fragment>
-      {courses.map((course, i) => {
+      {courses.length > 0 && courses.map((course, i) => {
         return (
           <React.Fragment key={i}>
             <ListCard
