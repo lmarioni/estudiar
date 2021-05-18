@@ -70,7 +70,7 @@ export default ({ id }) => {
     const hasNextModule = () => {
         let hasNext = false;
         if (Object.keys(moduleSelected).length === 0) {
-            if (curso && course.lecciones && course.lecciones[0].modulos) {
+            if (course && course.lecciones && course.lecciones[0].modulos) {
                 hasNext = true;
             }
         } else {
@@ -117,7 +117,7 @@ export default ({ id }) => {
                 changeModule(selectedLesson.id, selectedLesson.modulos[moduleIndex + 1].id);
             }
             else {
-                if (curso && course.lecciones && course.lecciones[0].modulos) {
+                if (course && course.lecciones && course.lecciones[0].modulos) {
                     changeModule(course.lecciones[0].id, course.lecciones[0].modulos[0].id);
                 }
             }
